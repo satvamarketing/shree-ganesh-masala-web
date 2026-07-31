@@ -8,3 +8,5 @@ node_modules/
 # NOTE: public/catalog/ and public/departments/ are deliberately NOT ignored.
 # The imported images are committed on purpose — that is what removes the
 # site's runtime dependency on Shopify. See the spec, §4.1.
+
+.verify/
