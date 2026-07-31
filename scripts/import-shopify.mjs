@@ -7,6 +7,7 @@
 // committed output means the site keeps working after the Shopify store is
 // retired. See spec §4.1.
 import { mkdir, writeFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 import { parsePack } from "../src/lib/parse-pack.ts";
@@ -18,8 +19,8 @@ const OUT_DEPT_IMG = "public/departments";
 /** How many image downloads run at once. */
 const IMAGE_CONCURRENCY = 12;
 
-/** The six house brands, matched against title and product_type. */
-const HOUSE_BRANDS = [
+/** Spellings to look for in title/product_type, including store variants. */
+const HOUSE_BRAND_MATCHES = [
   "Shree Ganesh",
   "Ganesh",
   "Amdavadi",
@@ -29,6 +30,17 @@ const HOUSE_BRANDS = [
   "Henna",
   "Vipul Dudhiya",
   "Dhiraj",
+];
+
+/** The six house brands, canonical spelling. A product is a house-brand line
+ *  if and only if its resolved brand is one of these — see brandOf. */
+const HOUSE_BRANDS = [
+  "Shree Ganesh",
+  "Amdavadi",
+  "Herbs & Spices",
+  "Dhiraj",
+  "Vipul Dudhiya",
+  "Henaa",
 ];
 
 /** Collections that are empty or merchandising-only, not real departments. */
@@ -106,9 +118,16 @@ async function fetchCollectionMembership(collections) {
   return membership;
 }
 
-/** Downloads and re-encodes to WebP. Returns the public path, or null. */
+/**
+ * Downloads and re-encodes to WebP. Returns the public path, or null.
+ * Skips the fetch when the file already exists, so re-running the import to
+ * pick up a data-shape change costs seconds rather than re-pulling ~1000
+ * images. Delete the directory to force a true refresh.
+ */
 async function saveImage(url, dir, name, width) {
   if (!url) return null;
+  const out = path.join(dir, `${name}.webp`);
+  if (existsSync(out)) return `/${path.basename(dir)}/${name}.webp`;
   try {
     const res = await fetch(url);
     if (!res.ok) return null;
@@ -139,7 +158,7 @@ async function mapPool(items, limit, worker) {
 
 function brandOf(product) {
   const blob = `${product.title} ${product.product_type}`.toLowerCase();
-  const hit = HOUSE_BRANDS.find((b) => blob.includes(b.toLowerCase()));
+  const hit = HOUSE_BRAND_MATCHES.find((b) => blob.includes(b.toLowerCase()));
   if (hit) {
     // Collapse the spelling variants onto their canonical brand name.
     if (hit === "Ganesh" || hit === "Shree Ganesh") return "Shree Ganesh";
@@ -147,7 +166,12 @@ function brandOf(product) {
     if (hit === "Henna") return "Henaa";
     return hit;
   }
-  return product.product_type?.trim() || product.vendor || "Imported";
+  // `vendor` is deliberately NOT used as a fallback. On this store it holds
+  // the seller ("Shree Ganesh") or the manufacturer ("Harihar Foods"), not a
+  // consumer brand — falling back to it labelled 285 third-party items like
+  // "3G Dust Free Broom" as Shree Ganesh house-brand lines.
+  const type = product.product_type?.trim();
+  return type && type.length > 0 ? type : "Imported";
 }
 
 function plainText(html) {
@@ -183,14 +207,16 @@ async function main() {
 
   const products = raw.map((p, i) => {
     const { name, size, unitsPerCarton } = parsePack(p.title);
+    const brand = brandOf(p);
     return {
       handle: p.handle,
       title: name,
       rawTitle: p.title.trim(),
-      brand: brandOf(p),
-      isHouseBrand: HOUSE_BRANDS.some((b) =>
-        `${p.title} ${p.product_type}`.toLowerCase().includes(b.toLowerCase()),
-      ),
+      brand,
+      // Derived from the resolved brand, so brand and isHouseBrand can never
+      // disagree — otherwise a product shows under both its brand chip and
+      // the "Imported brands" chip.
+      isHouseBrand: HOUSE_BRANDS.includes(brand),
       departments: [...(membership.get(p.id) ?? [])].sort(),
       size,
       unitsPerCarton,
