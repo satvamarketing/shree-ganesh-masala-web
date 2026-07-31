@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ProductJsonLd } from "@/components/json-ld";
 import { ProductCard, packLine } from "@/components/product-card";
 import { Button, WordmarkFallback } from "@/components/ui";
 import { products, productByHandle } from "@/data/catalog";
@@ -59,6 +60,7 @@ export default async function ProductPage({
 
   return (
     <>
+      <ProductJsonLd product={product} />
       <section className="shell py-[clamp(32px,5vw,64px)]">
         <nav aria-label="Breadcrumb" className="mb-8 text-[13.5px] text-muted">
           <Link href="/range" className="font-semibold text-red hover:text-red-dark">
