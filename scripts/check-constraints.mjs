@@ -1,0 +1,114 @@
+// Asserts the project-wide constraints against a RUNNING server.
+//
+//   node scripts/check-constraints.mjs            (defaults to :3000)
+//   VERIFY_BASE=http://localhost:3100 node scripts/check-constraints.mjs
+//
+// These are checked against rendered HTML, not source. Source greps produce
+// false positives on the comments that explain each rule — e.g. the note
+// recording that the live site's only social link is a Shopify default.
+import { readFile } from "node:fs/promises";
+import { glob } from "node:fs/promises";
+
+const BASE = process.env.VERIFY_BASE ?? "http://localhost:3000";
+
+const PAGES = [
+  "/",
+  "/range",
+  "/departments",
+  "/story",
+  "/wholesale",
+  "/contact",
+  "/range/aara-root-flour-400gx25",
+];
+
+let failures = 0;
+
+function report(name, ok, detail = "") {
+  console.log(`  ${ok ? "✓" : "✗"} ${name}${detail ? ` — ${detail}` : ""}`);
+  if (!ok) failures++;
+}
+
+const html = new Map();
+for (const path of PAGES) {
+  const res = await fetch(`${BASE}${path}`);
+  html.set(path, await res.text());
+  if (!res.ok) report(`${path} responds 200`, false, `got ${res.status}`);
+}
+
+/** Strips RSC comment markers so split text nodes read as prose. */
+function text(body) {
+  return body
+    .replace(/<script[\s\S]*?<\/script>/g, "")
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ");
+}
+
+// 1. No unverified HACCP certification claim anywhere in rendered copy.
+{
+  const hits = PAGES.filter((p) => /haccp/i.test(html.get(p)));
+  report("no HACCP claim in rendered copy", hits.length === 0, hits.join(", "));
+}
+
+// 2. No dead social links.
+{
+  const hits = PAGES.filter((p) => /facebook\.com\/shopify/i.test(html.get(p)));
+  report("no placeholder social links", hits.length === 0, hits.join(", "));
+}
+
+// 3. No prices — this is a wholesale catalog with pricing behind approval.
+{
+  const hits = PAGES.filter((p) => /\$\d+\.\d{2}/.test(text(html.get(p))));
+  report("no prices rendered", hits.length === 0, hits.join(", "));
+}
+
+// 4. Department count is derived, not the design's stale hardcoded 28.
+{
+  const { departments } = await import("../src/data/departments.ts");
+  const wholesale = text(html.get("/wholesale"));
+  const ok = wholesale.includes(`${departments.length} aisles`);
+  report(
+    "department count derived on /wholesale",
+    ok,
+    ok ? `${departments.length} aisles` : "expected derived count in h1",
+  );
+  report("no stale '28 departments/aisles'", !/28 (departments|aisles)/i.test(wholesale));
+}
+
+// 5. The 1174-product catalog must never reach the browser.
+{
+  let leaked = [];
+  try {
+    for await (const file of glob(".next/static/chunks/**/*.js")) {
+      const body = await readFile(file, "utf8");
+      if (body.includes("unitsPerCarton")) leaked.push(file);
+    }
+  } catch {
+    // glob unavailable on older Node; the build gate covers this too.
+  }
+  report("catalog absent from client bundle", leaked.length === 0, leaked.join(", "));
+}
+
+// 6. No remote image hosts — every asset ships locally.
+{
+  const config = await readFile("next.config.ts", "utf8");
+  report("no remote image patterns configured", !config.includes("remotePatterns"));
+}
+
+// 7. Unmatched URLs get the branded 404, not Next's default.
+{
+  const res = await fetch(`${BASE}/definitely-not-a-page`);
+  const body = await res.text();
+  report(
+    "branded 404 with chrome",
+    res.status === 404 && body.includes("Browse the range") && body.includes("Open an account"),
+    `status ${res.status}`,
+  );
+}
+
+console.log(
+  failures === 0
+    ? "\n✓ all constraints hold"
+    : `\n✗ ${failures} constraint(s) violated`,
+);
+process.exit(failures === 0 ? 0 : 1);

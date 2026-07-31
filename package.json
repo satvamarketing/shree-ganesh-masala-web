@@ -9,7 +9,8 @@
     "lint": "eslint",
     "test": "vitest run",
     "import:catalog": "node scripts/import-shopify.mjs",
-    "check:assets": "node scripts/check-assets.mjs"
+    "check:assets": "node scripts/check-assets.mjs",
+    "check:constraints": "node scripts/check-constraints.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.28.0",
