@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * Shree Ganesh — design tokens, lifted from Shree Ganesh Retail v5.
+ * Warm pantry palette: brand red + gold on cream, forest green panels.
+ * Type: DM Serif Display (headings) · Plus Jakarta Sans (body).
+ * ------------------------------------------------------------------ */
+@theme {
+  /* surfaces */
+  --color-cream: #fff8ee;
+  --color-sand: #fbf1e0;
+  --color-sand-deep: #f1e4ce;
+  --color-mint: #edf3e9;
+
+  /* brand red */
+  --color-red: #c40a13;
+  --color-red-dark: #8f070e;
+
+  /* forest green */
+  --color-forest: #1f4a34;
+  --color-forest-light: #2a5a40;
+  --color-forest-line: #3d6e52;
+  --color-mint-ink: #4a6553;
+
+  /* gold */
+  --color-gold: #e8a20c;
+
+  /* text ramp */
+  --color-ink: #22160f;
+  --color-body: #5c4a38;
+  --color-muted: #7a6752;
+  --color-faint: #a08a72;
+  --color-footer-text: #b9a68f;
+
+  /* lines */
+  --color-line: #ebdcc4;
+  --color-line-deep: #e0cfb4;
+
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-dm-serif), Georgia, "Times New Roman", serif;
+
+  --shadow-card: 0 2px 14px rgba(34, 22, 15, 0.08);
+  --shadow-card-lg: 0 18px 34px rgba(34, 22, 15, 0.12);
+  --shadow-float: 0 16px 34px rgba(34, 22, 15, 0.14);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Sticky header clearance for in-page anchors (header is 78px). */
+    scroll-padding-top: 7rem;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Guards the project-wide rule that the body never scrolls sideways. */
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+
+  /* Visible focus ring everywhere, in the brand red rather than the UA blue. */
+  :focus-visible {
+    outline: 2px solid var(--color-red);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  /* The design's edge-to-edge marquee (reference lines 82-91). */
+  @keyframes sg-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: sg-marquee 34s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+      animation: none;
+    }
+  }
+
+  /* Shared page shell: max-width 1280 + the design's fluid gutter. */
+  .shell {
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 4vw, 40px);
+  }
+
+  /* Screen-reader-only, for labels the design renders as placeholders. */
+  .sr-only-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
