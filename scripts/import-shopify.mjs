@@ -6,8 +6,9 @@
 // build-time fetch of ~1000 images would make deploys slow and flaky. The
 // committed output means the site keeps working after the Shopify store is
 // retired. See spec §4.1.
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, writeFile, readFile, unlink } from "node:fs/promises";
 import { existsSync } from "node:fs";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import sharp from "sharp";
 import { parsePack } from "../src/lib/parse-pack.ts";
@@ -42,6 +43,27 @@ const HOUSE_BRANDS = [
   "Vipul Dudhiya",
   "Henaa",
 ];
+
+/**
+ * The store serves a branded "Image Available On Request" graphic for products
+ * with no photograph — 131 of them, in three re-encodings of the same artwork.
+ * It is not a product photo, so it is rejected and those products fall through
+ * to the site's own typographic fallback tile, which is cleaner and lighter.
+ *
+ * These are md5s of the *output* WebP, which is deterministic for a given
+ * source and encode settings. Anything appearing suspiciously often that is not
+ * listed here is reported at the end of the run, so a fourth variant cannot
+ * slip in unnoticed. Genuine photos reused across pack sizes (e.g. papad in
+ * four weights) repeat far less often and must not be added here.
+ */
+const PLACEHOLDER_IMAGE_HASHES = new Set([
+  "aa8c313b2127b588ef8e23c323165cfb",
+  "709040e0f58202d9eb8654918ea6dead",
+  "5b9ea69ef7e4769f5399a1e17e1dd2a3",
+]);
+
+/** Reuse above this count is almost certainly a placeholder, not a photo. */
+const SUSPICIOUS_REUSE = 20;
 
 /** Collections that are empty or merchandising-only, not real departments. */
 const SKIP_COLLECTIONS = new Set([
@@ -124,22 +146,36 @@ async function fetchCollectionMembership(collections) {
  * pick up a data-shape change costs seconds rather than re-pulling ~1000
  * images. Delete the directory to force a true refresh.
  */
-async function saveImage(url, dir, name, width) {
+const hashCounts = new Map();
+
+async function saveImage(url, dir, name, width, { rejectPlaceholders = false } = {}) {
   if (!url) return null;
   const out = path.join(dir, `${name}.webp`);
-  if (existsSync(out)) return `/${path.basename(dir)}/${name}.webp`;
-  try {
-    const res = await fetch(url);
-    if (!res.ok) return null;
-    const buf = Buffer.from(await res.arrayBuffer());
-    await sharp(buf)
-      .resize({ width, withoutEnlargement: true })
-      .webp({ quality: 82 })
-      .toFile(path.join(dir, `${name}.webp`));
-    return `/${path.basename(dir)}/${name}.webp`;
-  } catch {
+  const publicPath = `/${path.basename(dir)}/${name}.webp`;
+
+  if (!existsSync(out)) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) return null;
+      const buf = Buffer.from(await res.arrayBuffer());
+      await sharp(buf)
+        .resize({ width, withoutEnlargement: true })
+        .webp({ quality: 82 })
+        .toFile(out);
+    } catch {
+      return null;
+    }
+  }
+
+  if (!rejectPlaceholders) return publicPath;
+
+  const hash = createHash("md5").update(await readFile(out)).digest("hex");
+  hashCounts.set(hash, (hashCounts.get(hash) ?? 0) + 1);
+  if (PLACEHOLDER_IMAGE_HASHES.has(hash)) {
+    await unlink(out).catch(() => {});
     return null;
   }
+  return publicPath;
 }
 
 /** Runs `worker` over `items` with a bounded number in flight. */
@@ -202,7 +238,9 @@ async function main() {
   console.log(`Downloading images for ${raw.length} products…`);
   const imagePaths = await mapPool(raw, IMAGE_CONCURRENCY, async (p, i) => {
     if (i > 0 && i % 100 === 0) process.stdout.write(`  ${i}/${raw.length}\n`);
-    return saveImage(p.images?.[0]?.src, OUT_CATALOG_IMG, p.handle, 600);
+    return saveImage(p.images?.[0]?.src, OUT_CATALOG_IMG, p.handle, 600, {
+      rejectPlaceholders: true,
+    });
   });
 
   const products = raw.map((p, i) => {
@@ -253,10 +291,23 @@ async function main() {
       `export const departments: Department[] = ${JSON.stringify(departments, null, 2)};\n`,
   );
 
+  const rejected = products.length - withImage;
   console.log(
-    `\nDone. ${products.length} products (${withImage} with images), ` +
-      `${departments.length} departments.`,
+    `\nDone. ${products.length} products (${withImage} with images, ` +
+      `${rejected} without), ${departments.length} departments.`,
   );
+
+  const suspicious = [...hashCounts.entries()]
+    .filter(([h, n]) => n >= SUSPICIOUS_REUSE && !PLACEHOLDER_IMAGE_HASHES.has(h))
+    .sort((a, b) => b[1] - a[1]);
+  if (suspicious.length > 0) {
+    console.warn(
+      `\n⚠ ${suspicious.length} image(s) reused ${SUSPICIOUS_REUSE}+ times and not ` +
+        `on the placeholder denylist — check whether the store added a new ` +
+        `"Image Available On Request" variant:`,
+    );
+    for (const [h, n] of suspicious) console.warn(`   ${n} x ${h}`);
+  }
 }
 
 main().catch((err) => {
