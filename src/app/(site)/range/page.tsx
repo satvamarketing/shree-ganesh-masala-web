@@ -15,7 +15,7 @@ import { brandFilterOptions, IMPORTED, queryProducts } from "@/lib/catalog-query
 export const metadata: Metadata = {
   title: "Our Range",
   description:
-    "Every line we stock — six house brands manufactured in Ahmedabad plus imported staples across 30 departments. Search the full catalog and open a wholesale account for carton pricing.",
+    `Every line we stock: six house brands manufactured in Ahmedabad plus imported staples across ${departments.length} departments. Search the full catalog and open a wholesale account for carton pricing.`,
   // Filtered views canonicalise to the base page so they do not compete in the
   // index with one another.
   alternates: { canonical: "/range" },

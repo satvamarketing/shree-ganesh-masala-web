@@ -23,7 +23,7 @@ export async function sendFormEmail({
   lines: [string, string][];
 }): Promise<void> {
   const text = lines
-    .map(([label, value]) => `${label}: ${value || "—"}`)
+    .map(([label, value]) => `${label}: ${value || "not provided"}`)
     .join("\n");
   const key = process.env.RESEND_API_KEY;
 
@@ -38,7 +38,7 @@ export async function sendFormEmail({
       .map(
         ([label, value]) =>
           `<tr><td><strong>${escapeHtml(label)}</strong></td>` +
-          `<td>${escapeHtml(value) || "—"}</td></tr>`,
+          `<td>${escapeHtml(value) || "not provided"}</td></tr>`,
       )
       .join("") +
     `</table>`;

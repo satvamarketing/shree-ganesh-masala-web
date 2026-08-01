@@ -4,11 +4,11 @@ import { departments } from "@/data/departments";
 export const benefits = [
   {
     title: "One supplier for the whole shop",
-    body: `${departments.length} departments from spices to frozen — no juggling five importers.`,
+    body: `${departments.length} departments from spices to frozen. No juggling five importers.`,
   },
   {
     title: "Manufacturer margins",
-    body: `We manufacture all ${brands.length} house brands ourselves in Ahmedabad — no reseller markup in between.`,
+    body: `We manufacture all ${brands.length} house brands ourselves in Ahmedabad. No reseller markup in between.`,
   },
   {
     title: "Free Brisbane-metro delivery over $500",
@@ -27,10 +27,10 @@ export const faqs = [
   },
   {
     question: "Do you supply restaurants?",
-    answer: "Yes — bulk packs and catering sizes across most departments.",
+    answer: "Yes. Bulk packs and catering sizes across most departments.",
   },
   {
     question: "Can we get private-label runs?",
-    answer: "We manufacture in-house, so talk to us — minimums apply.",
+    answer: "We manufacture in-house, so talk to us. Minimums apply.",
   },
 ];

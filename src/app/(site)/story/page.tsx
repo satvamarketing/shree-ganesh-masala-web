@@ -43,7 +43,7 @@ export default function StoryPage() {
             </h1>
             <p className="mb-7.5 max-w-[520px] text-[clamp(16px,1.4vw,18px)] leading-[1.7] text-[#F5EADA]/82">
               The story of Shree Ganesh starts with a founder who saw the
-              ready-masala market before anyone else did — and refused to let
+              ready-masala market before anyone else did, and refused to let
               quality slip as it grew.
             </p>
             <div className="flex flex-wrap gap-[clamp(20px,3vw,44px)] border-t border-[#F5EADA]/18 pt-6">
@@ -175,7 +175,7 @@ export default function StoryPage() {
                 dropped here — see spec §8.1. */}
             <p className="mb-6.5 text-[16.5px] leading-[1.75] text-body">
               Every masala, snack and sweet is manufactured, blended and packed
-              at our facility in Ahmedabad — the same city, the same recipes,
+              at our facility in Ahmedabad: the same city, the same recipes,
               since {site.foundedYear}. Stock lands at our Acacia Ridge
               warehouse in Brisbane, and we deliver from there.
             </p>

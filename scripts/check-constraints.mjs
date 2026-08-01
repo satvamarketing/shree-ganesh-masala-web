@@ -67,7 +67,15 @@ function text(body) {
   }
 }
 
-// 2. No dead social links.
+// 2. No em dashes in rendered copy — a house style rule for this site.
+// Checked against rendered text, so code comments are unaffected.
+{
+  const EM = String.fromCharCode(0x2014);
+  const hits = PAGES.filter((p) => text(html.get(p)).includes(EM));
+  report("no em dash in rendered copy", hits.length === 0, hits.join(", "));
+}
+
+// 3. No dead social links.
 {
   const hits = PAGES.filter((p) => /facebook\.com\/shopify/i.test(html.get(p)));
   report("no placeholder social links", hits.length === 0, hits.join(", "));

@@ -11,7 +11,7 @@ export const CONTACT_FIELDS: FieldSpec[] = [
 export const POST = makeFormRoute({
   name: "contact",
   spec: CONTACT_FIELDS,
-  subject: (v) => `Website enquiry — ${v.subject}`,
+  subject: (v) => `Website enquiry: ${v.subject}`,
   failureMessage:
     "We could not send your message. Please email info@shreeganesh.com.au instead.",
 });

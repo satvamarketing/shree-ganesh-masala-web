@@ -16,7 +16,7 @@ export function ContactForm() {
           Message sent
         </h2>
         <p className="mb-6 text-base leading-[1.65] text-body">
-          Thanks — we&apos;ll get back to you within one business day.
+          Thanks, we&apos;ll get back to you within one business day.
         </p>
         <button
           type="button"

@@ -71,7 +71,7 @@ export default function HomePage() {
       <FeaturePanel
         eyebrow="The Masala Range"
         title="Ground in small batches, never bulk-blended"
-        body="Whole spices roasted and milled to order, so the oils are still in the powder when it reaches your kitchen. Tea masala, garam masala, dabeli, pav bhaji, chaat — the blends your family actually cooks with."
+        body="Whole spices roasted and milled to order, so the oils are still in the powder when it reaches your kitchen. Tea masala, garam masala, dabeli, pav bhaji, chaat: the blends your family actually cooks with."
         image={images.masalaFeature}
         actions={
           <>
@@ -127,8 +127,8 @@ export default function HomePage() {
             <p className="mb-4">
               Shree Ganesh began in Ahmedabad, blending masalas for neighbours
               who knew exactly what good chai tasted like. Every product is
-              still manufactured there — ground, blended and packed at our
-              facility in Ahmedabad — then shipped to our Brisbane warehouse for
+              still manufactured there: ground, blended and packed at our facility
+              in Ahmedabad, then shipped to our Brisbane warehouse for
               distribution.
             </p>
             <p>

@@ -6,7 +6,7 @@ import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Talk to Shree Ganesh — ${site.address.street}, ${site.address.suburb} ${site.address.state} ${site.address.postcode}. Phone ${site.phone}, ${site.hours}.`,
+  description: `Talk to Shree Ganesh. ${site.address.street}, ${site.address.suburb} ${site.address.state} ${site.address.postcode}. Phone ${site.phone}, ${site.hours}.`,
   alternates: { canonical: "/contact" },
 };
 
@@ -39,7 +39,7 @@ export default function ContactPage() {
             Talk to us
           </h1>
           <p className="max-w-[520px] text-[clamp(16px,1.4vw,18px)] leading-[1.65] text-body">
-            New accounts, order questions, product enquiries — someone in the
+            New accounts, order questions, product enquiries: someone in the
             warehouse will answer.
           </p>
         </div>

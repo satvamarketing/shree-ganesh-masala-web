@@ -8,7 +8,7 @@ import { products } from "@/data/catalog";
 
 export const metadata: Metadata = {
   title: "Departments",
-  description: `Browse all ${departments.length} departments we stock — from spices and frozen to kitchenware and puja — and open a wholesale account for carton pricing.`,
+  description: `Browse all ${departments.length} departments we stock, from spices and frozen to kitchenware and puja, and open a wholesale account for carton pricing.`,
   alternates: { canonical: "/departments" },
 };
 
@@ -34,7 +34,7 @@ export default function DepartmentsPage() {
             Everything for the Indian kitchen
           </h1>
           <p className="max-w-[600px] text-[clamp(16px,1.4vw,18px)] leading-[1.65] text-body">
-            One supplier for the whole shop — {departments.length} departments and{" "}
+            One supplier for the whole shop: {departments.length} departments and{" "}
             {products.length.toLocaleString("en-AU")} lines, from spices and
             frozen to kitchenware and puja. Browse the aisles, then open a
             wholesale account for carton pricing.
@@ -93,7 +93,7 @@ export default function DepartmentsPage() {
             Trade updates, once a fortnight
           </h2>
           <p className="mb-7.5 text-[16.5px] leading-[1.65] text-mint-ink">
-            Festival ordering guides, new lines and price-list changes — straight
+            Festival ordering guides, new lines and price-list changes, straight
             to your inbox. No spam, unsubscribe any time.
           </p>
           <NewsletterForm />

@@ -38,7 +38,7 @@ export function Hero() {
 
           <p className="mb-8.5 max-w-[500px] text-[clamp(16px,1.4vw,18.5px)] leading-[1.65] text-body">
             {brands.length} house brands made in Ahmedabad, plus{" "}
-            {departments.length} departments of Indian pantry staples — supplied
+            {departments.length} departments of Indian pantry staples, supplied
             by the carton to grocers, restaurants and caterers across
             Queensland.
           </p>

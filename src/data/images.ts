@@ -21,7 +21,7 @@ export const images: Record<string, ImageSlot> = {
   },
   pickleFeature: {
     src: "/banners/pickle-range.webp",
-    alt: "The Shree Ganesh pickle range — mixed, green chilli, gorkeri, mango, kerda and thokku mango",
+    alt: "The Shree Ganesh pickle range: mixed, green chilli, gorkeri, mango, kerda and thokku mango",
   },
 
   /**

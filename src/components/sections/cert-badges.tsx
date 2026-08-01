@@ -35,8 +35,8 @@ export function CertBadges() {
           </h2>
           <p className="max-w-[420px] text-[15.5px] leading-[1.65] text-muted">
             An Australian-owned family business importing and distributing our
-            own manufacturing out of Ahmedabad — the paperwork your buyers ask
-            for, ready on request.
+            own manufacturing out of Ahmedabad. The paperwork your buyers ask for,
+            ready on request.
           </p>
         </div>
 

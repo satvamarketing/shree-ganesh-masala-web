@@ -17,7 +17,7 @@ export const brands: Brand[] = [
     logo: "/brands/shree-ganesh.webp",
     bg: "#FFF8EE",
     blurb:
-      "The flagship — masalas, pickles, instant mixes and mithai to the original family recipes.",
+      "The flagship: masalas, pickles, instant mixes and mithai to the original family recipes.",
   },
   {
     name: "Amdavadi",
@@ -25,7 +25,7 @@ export const brands: Brand[] = [
     logo: "/brands/amdavadi.webp",
     bg: "#FFF8EE",
     blurb:
-      "Gujarati snacks — khakhra, chevda and farsan the way Ahmedabad's old city makes them.",
+      "Gujarati snacks: khakhra, chevda and farsan the way Ahmedabad's old city makes them.",
   },
   {
     name: "Herbs & Spices",
@@ -43,7 +43,7 @@ export const brands: Brand[] = [
     // Corrected: the design described Dhiraj as "flours, dals and rice", but
     // all five Dhiraj lines in the real catalog are cookies. See spec §8.2.
     blurb:
-      "Biscuits and cookies — coconut, chocolate, cashew, and Surti jeera butter and nankhati.",
+      "Biscuits and cookies: coconut, chocolate, cashew, and Surti jeera butter and nankhati.",
   },
   {
     name: "Vipul Dudhiya",

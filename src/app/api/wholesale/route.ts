@@ -14,7 +14,7 @@ export const WHOLESALE_FIELDS: FieldSpec[] = [
 export const POST = makeFormRoute({
   name: "wholesale",
   spec: WHOLESALE_FIELDS,
-  subject: (v) => `Wholesale application — ${v.business}`,
+  subject: (v) => `Wholesale application: ${v.business}`,
   failureMessage:
     "We could not send your application. Please call us instead on 0490 729 900.",
 });

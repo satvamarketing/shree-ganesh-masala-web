@@ -9,7 +9,7 @@ export function NewsletterForm() {
   if (state === "sent") {
     return (
       <p className="font-serif text-xl text-forest">
-        Thanks — you&apos;re on the list.
+        Thanks, you&apos;re on the list.
       </p>
     );
   }

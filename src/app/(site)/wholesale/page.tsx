@@ -8,7 +8,7 @@ import { benefits, faqs } from "@/data/wholesale";
 
 export const metadata: Metadata = {
   title: "Wholesale Accounts",
-  description: `Open a wholesale account with Shree Ganesh — ${departments.length} departments of Indian pantry staples by the carton, approved within one business day, free ${site.deliveryArea} delivery over $${site.freeDeliveryThreshold}.`,
+  description: `Open a wholesale account with Shree Ganesh: ${departments.length} departments of Indian pantry staples by the carton, approved within one business day, free ${site.deliveryArea} delivery over $${site.freeDeliveryThreshold}.`,
   alternates: { canonical: "/wholesale" },
 };
 
@@ -26,7 +26,7 @@ export default function WholesalePage() {
           </h1>
           <p className="max-w-[580px] text-[clamp(16px,1.4vw,18px)] leading-[1.65] text-body">
             Grocers, restaurants and caterers order our full house range by the
-            carton — plus imported staples across {departments.length}{" "}
+            carton, plus imported staples across {departments.length}{" "}
             departments. Approved within one business day.
           </p>
         </div>

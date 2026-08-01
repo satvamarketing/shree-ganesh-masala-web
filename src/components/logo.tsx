@@ -21,7 +21,7 @@ export function Logo({
     <Link
       href="/"
       className={`flex shrink-0 items-center ${className}`}
-      aria-label="Shree Ganesh — home"
+      aria-label="Shree Ganesh home"
     >
       <Image
         src={slot.src}

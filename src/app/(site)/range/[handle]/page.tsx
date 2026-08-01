@@ -25,7 +25,7 @@ export async function generateMetadata({
   return {
     title: product.title,
     description:
-      `${product.title}${pack ? ` — ${pack}` : ""}. ${product.brand}, ` +
+      `${product.title}${pack ? `, ${pack}` : ""}. ${product.brand}, ` +
       `wholesale from our Brisbane warehouse to grocers, restaurants and caterers.`,
     alternates: { canonical: `/range/${product.handle}` },
   };
