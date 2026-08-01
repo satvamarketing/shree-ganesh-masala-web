@@ -37,7 +37,7 @@ export function Footer() {
         <div className="grid gap-10 border-b border-cream/15 pb-10 [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))]">
           <div>
             <div className="mb-4.5">
-              <Logo height={44} onCream={false} />
+              <Logo height={44} />
             </div>
             <p className="max-w-[280px] text-sm leading-relaxed">
               Indian pantry staples made in Ahmedabad, delivered across
