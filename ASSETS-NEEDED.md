@@ -12,26 +12,22 @@ every path resolves.
 
 ---
 
-## 1. Blocked by a tooling limit — you already own these two
+## 1. Blocked by a tooling limit — you already own this one
 
-These exist at full quality in the Claude Design project, but the design MCP
-caps a single file read at 256 KiB and both exceed it, so they arrived
-truncated (one cut off mid-wordmark, the other decoding as repeating garbage).
-Copy them out of the design project manually and they are done.
+This exists at full quality in the Claude Design project, but the design MCP
+caps a single file read at 256 KiB and it exceeds that, so it arrived truncated
+(cut off mid-wordmark). Copy it out of the design project manually and it is
+done.
 
 | Design project path | Save as | Then set |
 | --- | --- | --- |
 | `uploads/pasted-1785528957810-0.png` | `public/brands/herbs-and-spices.webp` | `brands.ts` → Herbs & Spices `logo` |
-| `uploads/badge-australian-owned.png` | `public/badges/australian-owned.webp` | `images.ts` → `badgeAustralianOwned.src` |
 
-Until then: the Herbs & Spices brand tile renders its name as a typographic
-wordmark, and the certification section renders without a badge image. Both
-read as intentional.
+Until then the Herbs & Spices brand tile renders its name as a typographic
+wordmark, which reads as intentional.
 
-There is also `uploads/AO_LOGO_KEY_1_b8b07b31f3.webp` in the design project. It
-came through intact but is the brand-guidelines *key* artwork — the roundel
-overlaid with numbered callout dots and a `#00000` placeholder — so it is not
-usable as a site badge. A clean "Australian Owned Certified" roundel would be.
+The same cap also truncated `uploads/badge-australian-owned.png` and all four
+`Screenshot 2026-08-01 …png` files. The badge was re-sourced instead — see §4.
 
 ## 2. Photography
 
@@ -53,15 +49,39 @@ None of these exist anywhere on the current site.
 - **Henaa** — what the range actually covers, to firm up the brand blurb.
 - **ABN** — for the footer (`site.abn` in `src/data/site.ts`).
 
-## 4. Claims to confirm
+## 4. Certification badges — licences to confirm
 
-- **HACCP certification.** The design asserted it — as a hero statistic, a
-  marquee item, and a certification badge — but the word appears nowhere on the
-  current shreeganesh.com.au and no certificate was supplied. Publishing an
-  unverified food-safety certification is a compliance exposure, so it is
-  omitted site-wide. Send the certificate and it can be switched on: the badge
-  slot and the copy are already in place, commented, in `src/data/images.ts`
-  and the certification section.
+All three trust marks now render in the certification strip on the home and
+wholesale pages (`src/components/sections/cert-badges.tsx`), sourced as:
+
+| Badge | Source | Status |
+| --- | --- | --- |
+| 100% Australian Owned & Operated | Built for this site, in the brand palette | Generic marketing badge — no certifier, no licence needed |
+| Australian Owned | Official artwork from `ausowned.com.au` | **Licensed certification trade mark** |
+| HACCP International | Official artwork from `haccp-international.com` | **Licensed certification trade mark** |
+
+**Two of these are licensed marks, and both certifiers restrict their use.**
+Please confirm before this goes live:
+
+- **Australian Owned** — [ausowned.com.au](https://ausowned.com.au/certification/)
+  issues each licensee a unique **AO ID number**, and the official artwork
+  carries it. The key file in the design project shows `#00000` where that
+  number belongs. Send me your AO ID and I will use the numbered artwork; if
+  the licence has lapsed, say so and I will pull the badge.
+- **HACCP International** — the mark is the property of HACCP Australia Pty Ltd
+  and, per their published
+  [trade mark rules](https://haccp-international.com/wp-content/uploads/2017/11/Rules-of-use-of-Certification-marks.pdf),
+  "may not be used in any form without the consent and licence" of the owner.
+  Confirm the certificate is current and in Shree Ganesh's name.
+
+Removing either badge is a one-line change — delete its entry from `BADGES` in
+`cert-badges.tsx`.
+
+Related copy that still omits the HACCP claim, in case you want it restored now
+that the badge is up: the home hero's third statistic reads "1969 / Established"
+rather than "HACCP / Certified facility"; the marquee says "Since 1969" rather
+than "HACCP certified"; and the Story page's "Ahmedabad makes it" paragraph says
+"our facility in Ahmedabad" rather than "our HACCP-certified facility".
 
 ## 5. Social
 

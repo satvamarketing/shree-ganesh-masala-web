@@ -105,12 +105,14 @@ rather than guessing.
 Recorded in full in `docs/superpowers/specs/2026-08-01-shree-ganesh-retail-design.md` §8.
 The two worth flagging here:
 
-- **The HACCP certification claim is omitted site-wide.** The design asserted
-  it as a hero statistic, a marquee item and a badge, but the word appears
-  nowhere on shreeganesh.com.au and no certificate was supplied. Publishing an
-  unverified food-safety certification is a compliance exposure. The badge slot
-  and copy are in place, commented, ready to switch on — see
-  `src/components/sections/cert-badges.tsx` and `ASSETS-NEEDED.md`.
+- **The certification strip carries three trust marks**, added at the client's
+  direction: a "100% Australian Owned & Operated" badge built for this site,
+  plus the official **Australian Owned** and **HACCP International** marks. The
+  latter two are *licensed certification trade marks* — Australian Owned issues
+  a per-licensee AO ID number that belongs on the artwork, and HACCP
+  International's mark requires written consent. Both licences must be current
+  and in Shree Ganesh's name before this goes live; see `ASSETS-NEEDED.md` §4.
+  Removing a badge is one line in `src/components/sections/cert-badges.tsx`.
 - **Recipes became Departments.** The Recipes page had no real content behind
   it: no blog, no recipes and no food photography exist. Rather than invent a
   content section for the client, that slot became a department index backed

@@ -44,10 +44,27 @@ function text(body) {
     .replace(/\s+/g, " ");
 }
 
-// 1. No unverified HACCP certification claim anywhere in rendered copy.
+// 1. The three certification badges render on the pages that carry the strip.
+//
+// This previously asserted the opposite — that "HACCP" appeared nowhere —
+// because the claim was unverified. The client has since supplied the marks
+// and directed that all three be shown, so the check now guards that they
+// actually render rather than that they are absent. The licence conditions
+// attached to two of them are tracked in ASSETS-NEEDED.md §4.
 {
-  const hits = PAGES.filter((p) => /haccp/i.test(html.get(p)));
-  report("no HACCP claim in rendered copy", hits.length === 0, hits.join(", "));
+  const { images } = await import("../src/data/images.ts");
+  const badges = [
+    images.badgeAustralianOwnedOperated,
+    images.badgeAustralianOwned,
+    images.badgeHaccp,
+  ];
+  report("all three badge slots have a source", badges.every((b) => b.src !== ""));
+
+  for (const page of ["/", "/wholesale"]) {
+    const body = html.get(page);
+    const missing = badges.filter((b) => !body.includes(b.src.replace(/\//g, "%2F")) && !body.includes(b.src));
+    report(`badges present on ${page}`, missing.length === 0, `${missing.length} missing`);
+  }
 }
 
 // 2. No dead social links.

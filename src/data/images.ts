@@ -24,13 +24,24 @@ export const images: Record<string, ImageSlot> = {
     alt: "The Shree Ganesh pickle range — mixed, green chilli, gorkeri, mango, kerda and thokku mango",
   },
 
-  // The client owns this badge, but it could not be pulled through the design
-  // MCP's 256 KiB file cap intact. Drop the file in and set src to enable the
-  // badge in the certification section. See ASSETS-NEEDED.md.
-  badgeAustralianOwned: {
-    src: "",
+  /**
+   * Certification and trust marks, shown in the certification strip.
+   *
+   * `badgeAustralianOwned` and `badgeHaccp` are licensed certification trade
+   * marks — see ASSETS-NEEDED.md §4 for what each licence requires before
+   * these may be published.
+   */
+  badgeAustralianOwnedOperated: {
+    src: "/badges/australian-owned-operated.webp",
     alt: "100% Australian owned and operated",
-    needsReal: true,
+  },
+  badgeAustralianOwned: {
+    src: "/badges/australian-owned.webp",
+    alt: "Australian Owned certified",
+  },
+  badgeHaccp: {
+    src: "/badges/haccp-international.webp",
+    alt: "HACCP International food safety certification",
   },
 
   // Awaiting client photography. Until then these render as designed panels,
