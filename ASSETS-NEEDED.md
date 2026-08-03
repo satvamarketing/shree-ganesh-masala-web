@@ -33,13 +33,16 @@ The same cap also truncated `uploads/badge-australian-owned.png` and all four
 
 None of these exist anywhere on the current site.
 
-| Slot (`src/data/images.ts`) | Subject | Target ratio |
-| --- | --- | --- |
-| `hero` | Finished dish styled on a table, warm daylight | 4:3 |
-| `founder` | Shri Vrajlal Manilal Shah, archival portrait | 3:4 |
-| `warehouse` | Pallets / cartons on the Acacia Ridge dock | 16:9 |
-| `archival1969` | The original Ahmedabad shop or early packing | 16:9 |
-| `qualityLine` | Ahmedabad packing line or spice pouches | 4:3 |
+| Slot (`src/data/images.ts`) | Where it appears | Subject | Target ratio |
+| --- | --- | --- | --- |
+| `founder` | About hero | Shri Vrajlal Manilal Shah, or the original masala house | 3:4 |
+| `plantRoom` | About, why choose us | Ahmedabad blending / grinding room | 4:3 |
+| `batchTesting` | About, why choose us | Batch testing, lab measurement | 4:3 |
+| `warehouse` | About, why choose us | Acacia Ridge racking, or the delivery van | 4:3 |
+
+Two real banners pulled from the live site (`masalaFeature`, `pickleFeature`)
+are in `public/banners/` but currently unplaced: Trade v7's home page is
+typographic and has no photographic feature panel. They are kept for reuse.
 
 ## 3. Festival dates
 
@@ -51,16 +54,13 @@ has passed drops off the countdown rather than sitting at zero.
 
 ## 4. Copy
 
-- **Our Story, chapter 04** — the year Shree Ganesh began distributing in
-  Australia, the first Queensland stockists, and how the Acacia Ridge facility
-  began. The design itself flags this as awaiting client input.
 - **Henaa** — what the range actually covers, to firm up the brand blurb.
 - **ABN** — for the footer (`site.abn` in `src/data/site.ts`).
 
 ## 5. Certification badges — licences to confirm
 
-All three trust marks now render in the certification strip on the home and
-wholesale pages (`src/components/sections/cert-badges.tsx`), sourced as:
+All three trust marks render in the certification strip on the home and About
+pages (`src/components/sections/cert-badges.tsx`), sourced as:
 
 | Badge | Source | Status |
 | --- | --- | --- |
@@ -85,11 +85,10 @@ Please confirm before this goes live:
 Removing either badge is a one-line change — delete its entry from `BADGES` in
 `cert-badges.tsx`.
 
-Related copy that still omits the HACCP claim, in case you want it restored now
-that the badge is up: the home hero's third statistic reads "1969 / Established"
-rather than "HACCP / Certified facility"; the marquee says "Since 1969" rather
-than "HACCP certified"; and the Story page's "Ahmedabad makes it" paragraph says
-"our facility in Ahmedabad" rather than "our HACCP-certified facility".
+Trade v7 also states the claim in copy, and that wording is now live: the ticker
+reads "HACCP certified" and the About page's plant caption reads "Ground,
+blended and packed at our HACCP-certified facility." If the certificate is not
+current, both need pulling along with the badge.
 
 ## 6. Social
 

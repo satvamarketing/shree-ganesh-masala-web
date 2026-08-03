@@ -15,6 +15,9 @@ export type ImageSlot = {
 export const images: Record<string, ImageSlot> = {
   logo: { src: "/logo/shree-ganesh.webp", alt: "Shree Ganesh" },
 
+  // Real photography from the live site. v7's home page is typographic and has
+  // no photographic feature panel, so these are currently unplaced; they are
+  // kept because they are genuine assets and the checker validates them.
   masalaFeature: {
     src: "/banners/masala-lineup.webp",
     alt: "Shree Ganesh masala packets with whole spices and ground spice bowls",
@@ -46,7 +49,6 @@ export const images: Record<string, ImageSlot> = {
 
   // Awaiting client photography. Until then these render as designed panels,
   // never as stock photography that would misrepresent the business.
-  hero: { src: "", alt: "Shree Ganesh pantry staples", needsReal: true },
   founder: {
     src: "",
     alt: "Shri Vrajlal Manilal Shah, or the original masala house",
@@ -55,11 +57,6 @@ export const images: Record<string, ImageSlot> = {
   warehouse: {
     src: "",
     alt: "Acacia Ridge racking, or the delivery van",
-    needsReal: true,
-  },
-  archival1969: {
-    src: "",
-    alt: "The original Ahmedabad masala shop, 1969",
     needsReal: true,
   },
   plantRoom: {
@@ -72,5 +69,4 @@ export const images: Record<string, ImageSlot> = {
     alt: "Batch testing and lab measurement",
     needsReal: true,
   },
-  qualityLine: { src: "", alt: "The Ahmedabad packing line", needsReal: true },
 };
