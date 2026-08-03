@@ -36,7 +36,7 @@ function LogoWell({
       ) : (
         <span
           className={`px-4 text-center font-serif text-[22px] leading-tight ${
-            brand.slug === "dhiraj" ? "text-cream" : "text-ink"
+            brand.slug === "dhiraj" ? "text-cream" : "text-teal"
           }`}
         >
           {brand.name}
@@ -65,7 +65,7 @@ export function BrandCard({
     <div className="flex flex-col overflow-hidden rounded-[22px] border border-line bg-white">
       <LogoWell brand={brand} height={140} padded />
       <div className="flex-1 px-6 py-[22px]">
-        <div className="mb-1.5 text-lg font-bold text-ink">{brand.name}</div>
+        <div className="mb-1.5 text-lg font-bold text-teal">{brand.name}</div>
         <p className="text-[14.5px] leading-[1.65] text-muted">{brand.blurb}</p>
       </div>
     </div>

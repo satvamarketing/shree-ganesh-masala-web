@@ -6,7 +6,7 @@ export function DepartmentCard({ department }: { department: Department }) {
   return (
     <Link
       href={`/range?department=${department.slug}`}
-      className="block overflow-hidden rounded-[20px] border border-line bg-white text-ink transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-[5px] hover:shadow-card-lg"
+      className="block overflow-hidden rounded-[20px] border border-line bg-white text-teal transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-[5px] hover:shadow-card-lg"
     >
       <div className="h-[168px] overflow-hidden bg-sand-deep">
         <Image

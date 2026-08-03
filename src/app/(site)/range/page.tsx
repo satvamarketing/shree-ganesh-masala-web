@@ -87,7 +87,7 @@ export default async function RangePage({
         <div className="shell py-[clamp(48px,6vw,80px)]">
           <Eyebrow className="mb-3.5">Our Range</Eyebrow>
           <h1
-            className="mb-4.5 max-w-[720px] font-serif text-[clamp(38px,4.6vw,62px)] leading-[1.06] font-normal text-ink"
+            className="mb-4.5 max-w-[720px] font-serif text-[clamp(38px,4.6vw,62px)] leading-[1.06] font-normal text-teal"
             style={{ textWrap: "pretty" }}
           >
             {brands.length} house brands, one pantry
@@ -146,7 +146,7 @@ export default async function RangePage({
 
         {result.total === 0 ? (
           <div className="rounded-[24px] border border-line bg-sand px-8 py-14 text-center">
-            <p className="mb-1.5 font-serif text-2xl text-ink">
+            <p className="mb-1.5 font-serif text-2xl text-teal">
               No products match those filters.
             </p>
             <p className="mb-7 text-[15.5px] text-muted">
@@ -172,18 +172,18 @@ export default async function RangePage({
       </section>
 
       <section className="shell pb-[clamp(64px,8vw,96px)]">
-        <div className="grid items-center gap-8 rounded-[26px] bg-mint p-[clamp(32px,4vw,52px)] [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
+        <div className="grid items-center gap-8 rounded-[26px] bg-teal p-[clamp(32px,4vw,52px)] [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
           <div>
-            <h2 className="mb-3 font-serif text-[clamp(26px,2.8vw,36px)] leading-[1.15] font-normal text-forest">
+            <h2 className="mb-3 font-serif text-[clamp(26px,2.8vw,36px)] leading-[1.15] font-normal text-teal">
               Buying for a shop or kitchen?
             </h2>
-            <p className="text-base leading-[1.65] text-mint-ink">
+            <p className="text-base leading-[1.65] text-cream/80">
               Wholesale accounts get carton pricing across this range plus{" "}
               {departments.length} departments of imported staples.
             </p>
           </div>
           <div className="justify-self-start">
-            <Button href="/wholesale" variant="forest">
+            <Button href="/#apply" variant="teal">
               Open a wholesale account
             </Button>
           </div>

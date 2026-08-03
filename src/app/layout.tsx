@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { Archivo, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
 import { SITE_URL } from "@/lib/seo";
 
-const jakarta = Plus_Jakarta_Sans({
+const archivo = Archivo({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-jakarta",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-archivo",
   display: "swap",
 });
 
+// v7 sets headings in DM Serif Display and uses the italic for its pull-lines,
+// so both styles are loaded.
 const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
   weight: ["400"],
+  style: ["normal", "italic"],
   variable: "--font-dm-serif",
   display: "swap",
 });
@@ -55,7 +58,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-AU"
-      className={`${jakarta.variable} ${dmSerif.variable} h-full antialiased`}
+      className={`${archivo.variable} ${dmSerif.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">{children}</body>
     </html>

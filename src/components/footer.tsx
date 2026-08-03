@@ -4,14 +4,17 @@ import { Logo } from "@/components/logo";
 import { brands } from "@/data/brands";
 import { site } from "@/data/site";
 
-const TRADE = [
-  { label: "Our range", href: "/range" },
-  { label: "Departments", href: "/departments" },
-  { label: "Wholesale", href: "/wholesale" },
+const STORY = [
+  { label: "About us", href: "/about" },
+  { label: "The house", href: "/#ch-1" },
+  { label: "The dabba", href: "/#ch-2" },
+  { label: "Trade school", href: "/#ch-3" },
 ];
 
-const COMPANY = [
-  { label: "Our story", href: "/story" },
+const TRADE = [
+  { label: "Open an account", href: "/#apply" },
+  { label: "Our range", href: "/range" },
+  { label: "Departments", href: "/departments" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -31,26 +34,34 @@ export function Footer() {
     { href: site.social.instagram, label: "Instagram", Icon: InstagramIcon },
   ].filter((s) => s.href !== "");
 
+  const brandList = brands
+    .map((b) => b.name)
+    .join(", ")
+    .replace(/, ([^,]*)$/, " and $1");
+
   return (
-    <footer className="bg-ink text-footer-text">
+    <footer className="bg-teal text-footer-text">
       <div className="shell pt-[clamp(48px,6vw,72px)] pb-9">
-        <div className="grid gap-10 border-b border-cream/15 pb-10 [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))]">
+        <div className="grid gap-10 border-b border-cream/14 pb-10 [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))]">
           <div>
             <div className="mb-4.5">
               <Logo height={44} />
             </div>
-            <p className="max-w-[280px] text-sm leading-relaxed">
-              Indian pantry staples made in Ahmedabad, delivered across
-              Queensland. Makers of{" "}
-              {brands.map((b) => b.name).join(", ").replace(/, ([^,]*)$/, " and $1")}.
+            <p className="max-w-[300px] text-sm leading-relaxed">
+              A masala house since {site.foundedYear}. Made in Ahmedabad,
+              delivered across Queensland. Makers of {brandList}.
             </p>
           </div>
 
           <div>
-            <ColumnHeading>Trade</ColumnHeading>
+            <ColumnHeading>The story</ColumnHeading>
             <div className="grid gap-2.5 text-[14.5px]">
-              {TRADE.map((l) => (
-                <Link key={l.href} href={l.href} className="text-footer-text hover:text-white">
+              {STORY.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="text-footer-text hover:text-white"
+                >
                   {l.label}
                 </Link>
               ))}
@@ -58,10 +69,14 @@ export function Footer() {
           </div>
 
           <div>
-            <ColumnHeading>Company</ColumnHeading>
+            <ColumnHeading>Trade</ColumnHeading>
             <div className="grid gap-2.5 text-[14.5px]">
-              {COMPANY.map((l) => (
-                <Link key={l.href} href={l.href} className="text-footer-text hover:text-white">
+              {TRADE.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="text-footer-text hover:text-white"
+                >
                   {l.label}
                 </Link>
               ))}
@@ -74,9 +89,13 @@ export function Footer() {
               <span>
                 {site.address.street},
                 <br />
-                {site.address.suburb} {site.address.state} {site.address.postcode}
+                {site.address.suburb} {site.address.state}{" "}
+                {site.address.postcode}
               </span>
-              <a href={site.phoneHref} className="text-footer-text hover:text-white">
+              <a
+                href={site.phoneHref}
+                className="text-footer-text hover:text-white"
+              >
                 {site.phone}
               </a>
               <a
@@ -95,22 +114,21 @@ export function Footer() {
             © {new Date().getFullYear()} {site.legalName}. All rights reserved.
             {site.abn ? ` ABN ${site.abn}.` : ""}
           </span>
-          {socials.length > 0 ? (
-            <div className="flex gap-4">
-              {socials.map(({ href, label, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  className="text-footer-text hover:text-white"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <Icon size={18} />
-                </a>
-              ))}
-            </div>
-          ) : null}
+          <div className="flex items-center gap-4">
+            <span>Trade enquiries only.</span>
+            {socials.map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                className="text-footer-text hover:text-white"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <Icon size={18} />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

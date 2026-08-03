@@ -22,7 +22,7 @@ export function ActiveFilters({
           key={`${f.param}:${f.label}`}
           type="button"
           onClick={() => navigate(f.param, null)}
-          className="flex cursor-pointer items-center gap-2 rounded-full border-[1.5px] border-ink bg-ink px-4 py-2 text-[13px] font-bold text-cream hover:bg-red hover:border-red"
+          className="flex cursor-pointer items-center gap-2 rounded-full border-[1.5px] border-teal bg-teal px-4 py-2 text-[13px] font-bold text-cream hover:bg-red hover:border-red"
         >
           {f.label}
           <X size={14} aria-hidden="true" />

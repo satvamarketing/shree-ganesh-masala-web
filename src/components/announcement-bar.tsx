@@ -14,7 +14,7 @@ export function AnnouncementBar() {
         </span>
         <span className="hidden opacity-40 sm:inline">•</span>
         <Link
-          href="/wholesale"
+          href="/#apply"
           className="hidden font-bold text-gold hover:text-white sm:inline"
         >
           Wholesale enquiries →

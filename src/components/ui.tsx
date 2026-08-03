@@ -2,16 +2,18 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 /* ------------------------------------------------------------------ *
- * Shared primitives. Variants map to the exact button treatments in
- * Shree Ganesh Retail v5 — see design/shree-ganesh-retail-v5.reference.html.
+ * Shared primitives, from Shree Ganesh Trade v7.
+ * See design/shree-ganesh-trade-v7.reference.html.
  * ------------------------------------------------------------------ */
 
 const BUTTON_VARIANTS = {
   red: "bg-red text-white hover:bg-red-dark",
-  gold: "bg-gold text-ink hover:bg-white",
-  outline: "bg-white text-ink border-[1.5px] border-line-deep hover:border-ink",
-  ink: "bg-ink text-white hover:bg-forest",
-  forest: "bg-forest text-white hover:bg-ink",
+  gold: "bg-gold text-teal hover:bg-gold-soft",
+  teal: "bg-teal text-sand hover:bg-red hover:text-white",
+  outlineLight:
+    "border-b-2 border-gold text-cream hover:text-gold rounded-none px-1.5",
+  outlineDark:
+    "border-[1.5px] border-line-deep bg-white text-teal hover:border-teal",
 } as const;
 
 export type ButtonVariant = keyof typeof BUTTON_VARIANTS;
@@ -27,152 +29,186 @@ export function Button({
   children: ReactNode;
   className?: string;
 }) {
+  const pill = variant === "outlineLight" ? "" : "rounded-full px-8 py-4.5";
   return (
     <Link
       href={href}
-      className={`inline-block rounded-full px-7 py-4 text-[15.5px] font-bold transition-colors ${BUTTON_VARIANTS[variant]} ${className}`}
+      className={`inline-block text-[15px] font-extrabold tracking-[0.4px] transition-colors ${pill} ${BUTTON_VARIANTS[variant]} ${className}`}
     >
       {children}
     </Link>
   );
 }
 
-/** The design's repeated small uppercase label above a heading. */
+/** The small uppercase label above every heading. */
 export function Eyebrow({
   children,
   tone = "red",
   className = "",
 }: {
   children: ReactNode;
-  tone?: "red" | "gold";
+  tone?: "red" | "gold" | "faint" | "redDeep";
   className?: string;
 }) {
+  const colour = {
+    red: "text-red",
+    gold: "text-gold",
+    faint: "text-faint",
+    redDeep: "text-red-deeper",
+  }[tone];
   return (
     <div
-      className={`text-[12.5px] font-extrabold uppercase tracking-[2.5px] ${
-        tone === "gold" ? "text-gold" : "text-red"
-      } ${className}`}
+      className={`text-[11.5px] font-extrabold tracking-[2.5px] uppercase ${colour} ${className}`}
     >
       {children}
     </div>
   );
 }
 
-/** Eyebrow + serif title, with an optional right-aligned action link. */
-export function SectionHeading({
-  eyebrow,
-  title,
-  tone = "light",
-  action,
-  align = "start",
-  className = "",
-}: {
-  eyebrow?: string;
-  title: ReactNode;
-  tone?: "light" | "dark";
-  action?: { href: string; label: string };
-  align?: "start" | "center";
-  className?: string;
-}) {
-  const centered = align === "center";
+/** The pill badge used at the top of the dark heroes. */
+export function HeroBadge({ children }: { children: ReactNode }) {
   return (
-    <div
-      className={`mb-10 flex flex-col gap-6 sm:flex-row ${
-        centered ? "items-center text-center" : "sm:items-end sm:justify-between"
-      } ${className}`}
-    >
-      <div className={centered ? "mx-auto" : ""}>
-        {eyebrow ? (
-          <Eyebrow tone={tone === "dark" ? "gold" : "red"} className="mb-3">
-            {eyebrow}
-          </Eyebrow>
-        ) : null}
-        <h2
-          className={`font-serif text-[clamp(32px,3.6vw,50px)] leading-[1.1] font-normal ${
-            tone === "dark" ? "text-cream" : "text-ink"
-          }`}
-          style={{ textWrap: "pretty" }}
-        >
-          {title}
-        </h2>
-      </div>
-      {action ? (
-        <Link
-          href={action.href}
-          className="shrink-0 border-b-2 border-red pb-[3px] text-[14.5px] font-bold whitespace-nowrap text-red hover:text-red-dark"
-        >
-          {action.label}
-        </Link>
-      ) : null}
+    <div className="inline-flex items-center gap-2.5 rounded-full border border-red/45 px-4.5 py-2.5 text-[11.5px] font-extrabold tracking-[2.2px] text-gold uppercase">
+      <span className="h-1.5 w-1.5 rounded-full bg-gold" aria-hidden="true" />
+      {children}
     </div>
   );
 }
 
-/** The hero / story statistic pair. */
-export function Stat({
-  value,
-  label,
-  tone = "light",
+/** Serif heading, the workhorse of v7. */
+export function Display({
+  children,
+  as: Tag = "h2",
+  size = "chapter",
+  className = "",
 }: {
-  value: string;
-  label: string;
-  tone?: "light" | "dark";
+  children: ReactNode;
+  as?: "h1" | "h2" | "h3";
+  size?: "hero" | "chapter" | "section" | "card";
+  className?: string;
+}) {
+  const scale = {
+    hero: "text-[clamp(40px,6.4vw,92px)] leading-[1.02]",
+    chapter: "text-[clamp(32px,4.6vw,62px)] leading-[1.08]",
+    section: "text-[clamp(28px,3.6vw,48px)] leading-[1.1]",
+    card: "text-[clamp(22px,2.2vw,28px)] leading-[1.15]",
+  }[size];
+  return (
+    <Tag
+      className={`font-serif font-normal ${scale} ${className}`}
+      style={{ textWrap: "pretty" }}
+    >
+      {children}
+    </Tag>
+  );
+}
+
+/** The italic gold pull-line under the hero headings. */
+export function PullLine({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
 }) {
   return (
+    <p
+      className={`font-serif text-[clamp(22px,2.9vw,38px)] leading-[1.32] text-gold italic ${className}`}
+    >
+      {children}
+    </p>
+  );
+}
+
+/** Hero statistic: big serif figure over an uppercase caption. */
+export function Stat({ value, label }: { value: string; label: string }) {
+  return (
     <div>
-      <div
-        className={`font-serif text-3xl ${tone === "dark" ? "text-gold" : "text-forest"}`}
-      >
+      <div className="font-serif text-[clamp(30px,3.4vw,44px)] leading-none text-gold">
         {value}
       </div>
-      <div
-        className={`mt-0.5 text-[13px] ${
-          tone === "dark" ? "text-cream/65" : "text-muted"
-        }`}
-      >
+      <div className="mt-2 text-[12px] tracking-[1.4px] text-cream/60 uppercase">
         {label}
       </div>
     </div>
   );
 }
 
+/** The oversized chapter numeral behind each section. */
+export function ChapterNumeral({
+  numeral,
+  side = "right",
+  tone = "light",
+}: {
+  numeral: string;
+  side?: "left" | "right";
+  tone?: "light" | "dark" | "sand";
+}) {
+  const colour = {
+    light: "text-shell",
+    sand: "text-sand-deeper",
+    dark: "text-cream/[0.055]",
+  }[tone];
+  return (
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none absolute -top-8 font-serif text-[clamp(180px,26vw,360px)] leading-[0.8] select-none ${colour} ${
+        side === "right" ? "right-0 lg:-right-10" : "left-0 lg:-left-8"
+      }`}
+    >
+      {numeral}
+    </div>
+  );
+}
+
 /**
- * Renders in place of an unfilled image slot: a brand-palette gradient with
- * the slot's subject as quiet centred text. Deliberately not stock
- * photography, which would misrepresent the business. Must never read as a
- * broken image.
+ * Stands in for an image slot the client has not supplied yet. Deliberately
+ * not stock photography, which would misrepresent the business.
  */
 export function DesignedPanel({
   label,
+  tone = "sand",
   className = "",
 }: {
   label: string;
+  tone?: "sand" | "teal";
   className?: string;
 }) {
+  const dark = tone === "teal";
   return (
     <div
-      className={`relative flex h-full w-full items-center justify-center overflow-hidden bg-sand-deep ${className}`}
+      className={`relative flex h-full w-full items-center justify-center overflow-hidden ${
+        dark ? "bg-teal-soft" : "bg-sand-deep"
+      } ${className}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-sand via-sand-deep to-[#E6D3B4]" />
       <div
-        className="absolute inset-0 opacity-[0.07]"
+        className={`absolute inset-0 ${
+          dark
+            ? "bg-gradient-to-br from-teal via-teal-soft to-teal-deep"
+            : "bg-gradient-to-br from-sand via-sand-deep to-sand-deeper"
+        }`}
+      />
+      <div
+        className="absolute inset-0 opacity-[0.08]"
         style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, #22160F 1px, transparent 0)",
+          backgroundImage: `radial-gradient(circle at 1px 1px, ${
+            dark ? "#F4EFE9" : "#133E51"
+          } 1px, transparent 0)`,
           backgroundSize: "14px 14px",
         }}
       />
-      <span className="relative max-w-[22ch] px-6 text-center font-serif text-lg leading-snug text-faint">
+      <span
+        className={`relative max-w-[24ch] px-6 text-center font-serif text-lg leading-snug ${
+          dark ? "text-cream/45" : "text-faint"
+        }`}
+      >
         {label}
       </span>
     </div>
   );
 }
 
-/**
- * Fallback for a product or brand with no image file: its name set in the
- * brand serif on a warm field. Used by ProductCard and BrandCard.
- */
+/** Fallback for a product or brand with no image file. */
 export function WordmarkFallback({
   name,
   className = "",
@@ -187,6 +223,45 @@ export function WordmarkFallback({
       <span className="text-center font-serif text-lg leading-tight text-faint">
         {name}
       </span>
+    </div>
+  );
+}
+
+/** Heading row with an optional right-aligned action, for catalogue pages. */
+export function SectionHeading({
+  eyebrow,
+  title,
+  action,
+  align = "start",
+  className = "",
+}: {
+  eyebrow?: string;
+  title: ReactNode;
+  action?: { href: string; label: string };
+  align?: "start" | "center";
+  className?: string;
+}) {
+  const centered = align === "center";
+  return (
+    <div
+      className={`mb-10 flex flex-col gap-6 sm:flex-row ${
+        centered ? "items-center text-center" : "sm:items-end sm:justify-between"
+      } ${className}`}
+    >
+      <div className={centered ? "mx-auto" : ""}>
+        {eyebrow ? <Eyebrow className="mb-3">{eyebrow}</Eyebrow> : null}
+        <Display size="section" className="text-teal">
+          {title}
+        </Display>
+      </div>
+      {action ? (
+        <Link
+          href={action.href}
+          className="shrink-0 border-b-2 border-red pb-[3px] text-[14.5px] font-bold whitespace-nowrap text-red hover:text-red-dark"
+        >
+          {action.label}
+        </Link>
+      ) : null}
     </div>
   );
 }

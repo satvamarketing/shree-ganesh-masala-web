@@ -13,10 +13,9 @@ const BASE = process.env.VERIFY_BASE ?? "http://localhost:3000";
 
 const PAGES = [
   "/",
+  "/about",
   "/range",
   "/departments",
-  "/story",
-  "/wholesale",
   "/contact",
   "/range/aara-root-flour-400gx25",
 ];
@@ -60,7 +59,7 @@ function text(body) {
   ];
   report("all three badge slots have a source", badges.every((b) => b.src !== ""));
 
-  for (const page of ["/", "/wholesale"]) {
+  for (const page of ["/", "/about"]) {
     const body = html.get(page);
     const missing = badges.filter((b) => !body.includes(b.src.replace(/\//g, "%2F")) && !body.includes(b.src));
     report(`badges present on ${page}`, missing.length === 0, `${missing.length} missing`);
@@ -87,17 +86,31 @@ function text(body) {
   report("no prices rendered", hits.length === 0, hits.join(", "));
 }
 
-// 4. Department count is derived, not the design's stale hardcoded 28.
+// 4. Counts are derived, not v7's stale hardcoded 28.
 {
   const { departments } = await import("../src/data/departments.ts");
-  const wholesale = text(html.get("/wholesale"));
-  const ok = wholesale.includes(`${departments.length} aisles`);
+  const home = text(html.get("/"));
   report(
-    "department count derived on /wholesale",
-    ok,
-    ok ? `${departments.length} aisles` : "expected derived count in h1",
+    "department count derived in the home hero",
+    home.includes(String(departments.length)),
+    `${departments.length} departments`,
   );
-  report("no stale '28 departments/aisles'", !/28 (departments|aisles)/i.test(wholesale));
+  const stale = PAGES.filter((p) => /28 (departments|aisles)/i.test(text(html.get(p))));
+  report("no stale '28 departments/aisles' anywhere", stale.length === 0, stale.join(", "));
+}
+
+// 4b. The v5 routes v7 folds away still resolve, so nothing that linked to
+// them 404s.
+{
+  for (const [from, to] of [["/story", "/about"], ["/wholesale", "/#apply"]]) {
+    const res = await fetch(`${BASE}${from}`, { redirect: "manual" });
+    const location = res.headers.get("location") ?? "";
+    report(
+      `${from} redirects to ${to}`,
+      res.status === 308 && location.endsWith(to),
+      `${res.status} -> ${location}`,
+    );
+  }
 }
 
 // 5. The 1174-product catalog must never reach the browser.

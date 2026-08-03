@@ -45,7 +45,7 @@ export function ProductCard({
           <WordmarkFallback name={product.brand} />
         )}
         {showBrandTag ? (
-          <span className="absolute top-3.5 left-3.5 rounded-full bg-ink px-[11px] py-[5px] text-[10.5px] font-bold tracking-[1px] text-[#FFF1DE] uppercase">
+          <span className="absolute top-3.5 left-3.5 rounded-full bg-teal px-[11px] py-[5px] text-[10.5px] font-bold tracking-[1px] text-[#FFF1DE] uppercase">
             {product.brand}
           </span>
         ) : null}
@@ -54,13 +54,13 @@ export function ProductCard({
       <div className="flex flex-1 flex-col gap-[5px] px-5 py-[18px]">
         <Link
           href={`/range/${product.handle}`}
-          className="text-[15.5px] leading-[1.35] font-bold text-ink hover:text-red"
+          className="text-[15.5px] leading-[1.35] font-bold text-teal hover:text-red"
         >
           {product.title}
         </Link>
         {pack ? <div className="text-[13px] text-muted">{pack}</div> : null}
         <Link
-          href="/wholesale"
+          href="/#apply"
           className="mt-auto pt-3 text-[13.5px] font-bold text-red hover:text-red-dark"
         >
           Log in for carton pricing →

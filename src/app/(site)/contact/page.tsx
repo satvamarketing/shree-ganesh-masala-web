@@ -22,7 +22,7 @@ function InfoCard({
       <div className="mb-2 text-[12px] font-extrabold tracking-[2px] text-red uppercase">
         {label}
       </div>
-      <div className="text-[17px] leading-[1.5] font-semibold text-ink">
+      <div className="text-[17px] leading-[1.5] font-semibold text-teal">
         {children}
       </div>
     </div>
@@ -35,7 +35,7 @@ export default function ContactPage() {
       <section className="border-b border-line bg-sand">
         <div className="shell py-[clamp(48px,6vw,80px)]">
           <Eyebrow className="mb-3.5">Contact</Eyebrow>
-          <h1 className="mb-4.5 font-serif text-[clamp(38px,4.6vw,62px)] leading-[1.06] font-normal text-ink">
+          <h1 className="mb-4.5 font-serif text-[clamp(38px,4.6vw,62px)] leading-[1.06] font-normal text-teal">
             Talk to us
           </h1>
           <p className="max-w-[520px] text-[clamp(16px,1.4vw,18px)] leading-[1.65] text-body">
@@ -55,13 +55,13 @@ export default function ContactPage() {
             </InfoCard>
 
             <InfoCard label="Phone">
-              <a href={site.phoneHref} className="text-ink hover:text-red">
+              <a href={site.phoneHref} className="text-teal hover:text-red">
                 {site.phone}
               </a>
             </InfoCard>
 
             <InfoCard label="Email">
-              <a href={`mailto:${site.email}`} className="text-ink hover:text-red">
+              <a href={`mailto:${site.email}`} className="text-teal hover:text-red">
                 {site.email}
               </a>
             </InfoCard>

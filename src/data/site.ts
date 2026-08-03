@@ -1,9 +1,10 @@
 export const site = {
   name: "Shree Ganesh",
   legalName: "Shree Ganesh Australia",
-  tagline: "Stock the taste your customers grew up with.",
+  tagline: "Anyone can sell you a carton.",
+  pullLine: "We grind what's in it.",
   description:
-    "Indian pantry staples made in Ahmedabad, distributed across Queensland. Wholesale masalas, snacks, sweets and pickles for grocers, restaurants and caterers.",
+    "Shree Ganesh Australia, a masala house since 1969. Wholesale trade accounts for grocers, restaurants and caterers across Queensland.",
   foundedYear: 1969,
   address: {
     street: "Unit 3/32 Success St",
@@ -21,18 +22,33 @@ export const site = {
   deliveryArea: "Brisbane metro",
   manufacturing: "Ahmedabad, India",
   distribution: "Acacia Ridge, Brisbane",
-  // Empty until the client supplies real handles. The live Shopify site
-  // links to facebook.com/shopify, an unreplaced default — see spec §8.4.
+  // Empty until the client supplies real handles. The live Shopify site links
+  // to facebook.com/shopify, an unreplaced default — see spec §8.4.
   social: { facebook: "", instagram: "" },
   // Empty until the client supplies it — see spec §9.
   abn: "",
 } as const;
 
-export const nav = [
-  { label: "Our Range", href: "/range" },
+/**
+ * v7's nav is the five story chapters plus About. The catalogue links are ours:
+ * v7 drops the range entirely, but the 1174-product catalogue is the site's
+ * strongest indexable surface, so it stays reachable.
+ */
+export const storyNav = [
+  { label: "The house", href: "/#ch-1" },
+  { label: "The dabba", href: "/#ch-2" },
+  { label: "Trade school", href: "/#ch-3" },
+] as const;
+
+export const catalogNav = [
+  { label: "Our range", href: "/range" },
   { label: "Departments", href: "/departments" },
-  { label: "Our Story", href: "/story" },
-  { label: "Contact", href: "/contact" },
+] as const;
+
+export const nav = [
+  ...storyNav,
+  ...catalogNav,
+  { label: "About us", href: "/about" },
 ] as const;
 
 export function formattedAddress(): string {

@@ -1,151 +1,300 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { BrandCard } from "@/components/brand-card";
-import { DepartmentCard } from "@/components/department-card";
-import { Marquee } from "@/components/marquee";
-import { ProductCard } from "@/components/product-card";
+import { BrandTile } from "@/components/brand-tile";
+import { ChapterRail } from "@/components/chapter-rail";
+import { Reveal } from "@/components/reveal";
+import { Ticker } from "@/components/ticker";
+import { Apply } from "@/components/sections/apply";
 import { CertBadges } from "@/components/sections/cert-badges";
-import { CtaBand } from "@/components/sections/cta-band";
-import { FeaturePanel } from "@/components/sections/feature-panel";
+import { FestivalCountdown } from "@/components/sections/festival-countdown";
 import { Hero } from "@/components/sections/hero";
-import { Button, SectionHeading } from "@/components/ui";
+import { SpiceTin } from "@/components/sections/spice-tin";
+import { TradeSchool } from "@/components/sections/trade-school";
+import { Button, ChapterNumeral, Display, Eyebrow } from "@/components/ui";
 import { brands } from "@/data/brands";
-import { products } from "@/data/catalog";
 import { departments } from "@/data/departments";
-import { images } from "@/data/images";
+import { site } from "@/data/site";
+import {
+  houseCards,
+  rhythmDays,
+  sampleTin,
+  withOneAccount,
+  withoutUs,
+} from "@/data/story";
 
 export const metadata: Metadata = {
-  title: "Wholesale Indian Pantry Staples, Brisbane",
-  description:
-    "Six house brands made in Ahmedabad plus 30 departments of Indian pantry staples, supplied by the carton to grocers, restaurants and caterers across Queensland.",
+  title: "A Masala House Since 1969",
+  description: site.description,
   alternates: { canonical: "/" },
 };
 
-/** The six biggest departments lead the range grid. */
-const topDepartments = [...departments]
-  .sort((a, b) => b.count - a.count)
-  .slice(0, 6);
-
-/**
- * Four house-brand lines with both a packshot and a carton quantity, one per
- * title and one per department — otherwise the row fills with the same product
- * in several sizes ("Ajwain 200g", "Ajwain 454g") and reads as thin.
- */
-const bestSellers = (() => {
-  const seenTitle = new Set<string>();
-  const seenDepartment = new Set<string>();
-  const picked = [];
-  for (const p of products) {
-    if (!p.isHouseBrand || !p.image || !p.unitsPerCarton) continue;
-    const department = p.departments[0] ?? "";
-    if (seenTitle.has(p.title) || seenDepartment.has(department)) continue;
-    seenTitle.add(p.title);
-    seenDepartment.add(department);
-    picked.push(p);
-    if (picked.length === 4) break;
-  }
-  return picked;
-})();
+const CHAPTER = "relative overflow-hidden";
+const CHAPTER_INNER = "shell relative py-[clamp(64px,8vw,112px)]";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <Marquee />
+      <Ticker />
+      <ChapterRail />
 
-      <section className="shell pt-[clamp(64px,8vw,104px)] pb-[clamp(30px,4vw,50px)]">
-        <SectionHeading
-          eyebrow="Our Range"
-          title="Everything for the Indian kitchen"
-          action={{ href: "/range", label: "See all products" }}
-        />
-        {/* Explicit columns rather than auto-fit: with exactly six cards,
-            auto-fit lands on 5+1 at desktop widths, which reads as a mistake. */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {topDepartments.map((department) => (
-            <DepartmentCard key={department.slug} department={department} />
-          ))}
+      {/* ---------------------------- 01 The house --------------------------- */}
+      <section id="ch-1" className={`${CHAPTER} bg-white`}>
+        <ChapterNumeral numeral="01" side="right" tone="light" />
+        <div className={CHAPTER_INNER}>
+          <Reveal>
+            <Eyebrow className="mb-4">Chapter One · The House</Eyebrow>
+          </Reveal>
+          <Reveal delay={70}>
+            <Display className="mb-[clamp(22px,2.6vw,30px)] max-w-[20ch] text-teal">
+              Wholesale is a race to the cheapest carton. We&apos;re not in that
+              race.
+            </Display>
+          </Reveal>
+          <Reveal delay={140}>
+            <p className="mb-[clamp(40px,5vw,60px)] max-w-[62ch] text-[clamp(16px,1.4vw,18.5px)] leading-[1.75] text-body">
+              In 1969 our founder, Shri Vrajlal Manilal Shah, called his
+              standard{" "}
+              <em className="font-serif text-teal italic">Quality Vision</em>. He
+              was the first in the market to see where ready masala was going,
+              and he refused to let volume dictate the blend. Fifty-seven years
+              on, that is still the only reason to choose us over a cheaper
+              pallet: what&apos;s actually in the packet.
+            </p>
+          </Reveal>
+          <Reveal
+            delay={210}
+            className="grid gap-[clamp(16px,2vw,24px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))]"
+          >
+            {houseCards.map((card) => (
+              <div
+                key={card.title}
+                className="rounded-[20px] border border-line bg-sand p-[clamp(26px,3vw,36px)]"
+              >
+                <div className="mb-3 font-serif text-[26px] text-red">
+                  {card.title}
+                </div>
+                <p className="text-[15.5px] leading-[1.7] text-body">
+                  {card.body}
+                </p>
+              </div>
+            ))}
+          </Reveal>
         </div>
       </section>
 
-      <FeaturePanel
-        eyebrow="The Masala Range"
-        title="Ground in small batches, never bulk-blended"
-        body="Whole spices roasted and milled to order, so the oils are still in the powder when it reaches your kitchen. Tea masala, garam masala, dabeli, pav bhaji, chaat: the blends your family actually cooks with."
-        image={images.masalaFeature}
-        actions={
-          <>
-            <Button href="/range?department=herbs-and-spices" variant="gold">
-              Shop masalas
+      {/* ---------------------------- 02 The dabba --------------------------- */}
+      <section
+        id="ch-2"
+        className={`${CHAPTER} bg-teal text-cream`}
+       
+      >
+        <ChapterNumeral numeral="02" side="left" tone="dark" />
+        <div className={CHAPTER_INNER}>
+          <Reveal>
+            <Eyebrow tone="gold" className="mb-4">
+              Chapter Two · The Dabba
+            </Eyebrow>
+          </Reveal>
+          <Reveal delay={70}>
+            <Display className="mb-[clamp(20px,2.4vw,28px)] max-w-[22ch]">
+              Every Indian kitchen already has a spice tin.
+            </Display>
+          </Reveal>
+          <Reveal delay={140}>
+            <p className="mb-[clamp(44px,5.5vw,64px)] max-w-[60ch] text-[clamp(16px,1.4vw,18.5px)] leading-[1.75] text-cream/80">
+              Seven wells, one lid, always within reach of the stove. Your
+              customers don&apos;t need convincing that it matters, because they
+              grew up with it. Our job is to be what&apos;s inside it. Tap a
+              well.
+            </p>
+          </Reveal>
+          <Reveal delay={210}>
+            <SpiceTin />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* --------------------------- 03 Trade school -------------------------- */}
+      <section id="ch-3" className={`${CHAPTER} bg-sand`}>
+        <ChapterNumeral numeral="03" side="right" tone="sand" />
+        <div className={CHAPTER_INNER}>
+          <Reveal>
+            <Eyebrow tone="redDeep" className="mb-4">
+              Chapter Three · Trade School
+            </Eyebrow>
+          </Reveal>
+          <Reveal delay={70}>
+            <Display className="mb-[clamp(20px,2.4vw,28px)] max-w-[22ch] text-teal">
+              What we know about spice, you can sell with.
+            </Display>
+          </Reveal>
+          <Reveal delay={140}>
+            <p className="mb-[clamp(36px,4.5vw,52px)] max-w-[60ch] text-[clamp(16px,1.4vw,18.5px)] leading-[1.75] text-body">
+              Fifty-seven years of grinding teaches you things a distributor
+              never learns. We hand them over, because a grocer who can answer
+              these questions at the counter sells more than one who can&apos;t.
+            </p>
+          </Reveal>
+          <Reveal delay={210}>
+            <TradeSchool />
+          </Reveal>
+          <Reveal
+            delay={280}
+            className="mt-[clamp(34px,4vw,46px)] flex flex-wrap items-center gap-4"
+          >
+            <Button href="/#apply" variant="teal">
+              Get the trade pack
             </Button>
-            <Link
-              href="/departments"
-              className="border-b-2 border-gold px-2 py-4 text-[15px] font-bold text-[#F2F7EF] hover:text-gold"
-            >
-              Browse departments →
-            </Link>
-          </>
-        }
-      />
-
-      <section className="shell py-[clamp(24px,3vw,40px)]">
-        <SectionHeading
-          eyebrow="Our Brands"
-          title={`${brands.length} labels, one family`}
-          align="center"
-        />
-        <div className="grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(170px,1fr))]">
-          {brands.map((brand) => (
-            <BrandCard key={brand.slug} brand={brand} />
-          ))}
+            <span className="text-[14.5px] text-muted">
+              Blend sheets, shelf-life guides and counter cards, free with every
+              account.
+            </span>
+          </Reveal>
         </div>
       </section>
 
-      <section className="shell py-[clamp(40px,5vw,64px)]">
-        <SectionHeading
-          eyebrow="Best Sellers"
-          title="What everyone's buying"
-          action={{ href: "/range", label: "Shop the range" }}
-        />
-        <div className="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(220px,1fr))]">
-          {bestSellers.map((product) => (
-            <ProductCard key={product.handle} product={product} />
-          ))}
+      {/* ---------------------------- 04 The rhythm --------------------------- */}
+      <section
+        id="ch-4"
+        className={`${CHAPTER} bg-teal-soft text-cream`}
+       
+      >
+        <ChapterNumeral numeral="04" side="left" tone="dark" />
+        <div className={CHAPTER_INNER}>
+          <Reveal>
+            <Eyebrow tone="gold" className="mb-4">
+              Chapter Four · The Rhythm
+            </Eyebrow>
+          </Reveal>
+          <Reveal delay={70}>
+            <Display className="mb-[clamp(20px,2.4vw,28px)] max-w-[20ch]">
+              Order Monday. Shelved Wednesday. Every week.
+            </Display>
+          </Reveal>
+          <Reveal delay={140}>
+            <p className="mb-[clamp(44px,5.5vw,62px)] max-w-[58ch] text-[clamp(16px,1.4vw,18.5px)] leading-[1.75] text-cream/80">
+              Restocking shouldn&apos;t be a phone call you dread. It should be a
+              rhythm you stop thinking about: the same three days, the same
+              driver, the same shelf full on Wednesday morning.
+            </p>
+          </Reveal>
+
+          <Reveal
+            delay={210}
+            className="mb-[clamp(52px,6.5vw,78px)] grid gap-[clamp(14px,1.8vw,20px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))]"
+          >
+            {rhythmDays.map((d) => (
+              <div
+                key={d.day}
+                className="rounded-[18px] border border-red/25 bg-cream/7 p-[clamp(22px,2.6vw,30px)]"
+              >
+                <div className="mb-3 text-[11.5px] font-extrabold tracking-[1.8px] text-gold uppercase">
+                  {d.day}
+                </div>
+                <div className="mb-2 font-serif text-[23px]">{d.title}</div>
+                <p className="text-[14.5px] leading-[1.65] text-cream/72">
+                  {d.body}
+                </p>
+              </div>
+            ))}
+            <div className="rounded-[18px] bg-red p-[clamp(22px,2.6vw,30px)] text-white">
+              <div className="mb-3 text-[11.5px] font-extrabold tracking-[1.8px] uppercase">
+                {sampleTin.day}
+              </div>
+              <div className="mb-2 font-serif text-[23px]">
+                {sampleTin.title}
+              </div>
+              <p className="text-[14.5px] leading-[1.65]">{sampleTin.body}</p>
+            </div>
+          </Reveal>
+
+          <Reveal className="border-t border-red/25 pt-[clamp(34px,4vw,48px)]">
+            <div className="mb-[clamp(24px,3vw,34px)] flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <Eyebrow tone="gold" className="mb-3 tracking-[2.2px]">
+                  The other rhythm
+                </Eyebrow>
+                <h3 className="max-w-[24ch] font-serif text-[clamp(24px,2.8vw,36px)] font-normal">
+                  The festival calendar decides your best months.
+                </h3>
+              </div>
+              <p className="max-w-[40ch] text-[15px] leading-[1.7] text-cream/72">
+                Stock lands from Ahmedabad in about six weeks. These are the
+                dates that should already be in your order book.
+              </p>
+            </div>
+            <FestivalCountdown />
+          </Reveal>
         </div>
       </section>
 
-      <FeaturePanel
-        tone="cream"
-        reverse
-        eyebrow="Our Story"
-        title="A family masala house that moved to Queensland"
-        image={images.pickleFeature}
-        /* The jars sit on the banner's right; the left is logo and lettering. */
-        imageClassName="object-right"
-        body={
-          <>
-            <p className="mb-4">
-              Shree Ganesh began in Ahmedabad, blending masalas for neighbours
-              who knew exactly what good chai tasted like. Every product is
-              still manufactured there: ground, blended and packed at our facility
-              in Ahmedabad, then shipped to our Brisbane warehouse for
-              distribution.
+      {/* ----------------------------- 05 The aisle --------------------------- */}
+      <section id="ch-5" className={`${CHAPTER} bg-white`}>
+        <ChapterNumeral numeral="05" side="right" tone="light" />
+        <div className={CHAPTER_INNER}>
+          <Reveal>
+            <Eyebrow className="mb-4">Chapter Five · The Aisle</Eyebrow>
+          </Reveal>
+          <Reveal delay={70}>
+            <Display className="mb-[clamp(20px,2.4vw,28px)] max-w-[20ch] text-teal">
+              Run an Indian aisle like a specialist.
+            </Display>
+          </Reveal>
+          <Reveal delay={140}>
+            <p className="mb-[clamp(40px,5vw,58px)] max-w-[58ch] text-[clamp(16px,1.4vw,18.5px)] leading-[1.75] text-body">
+              Most independent grocers can&apos;t compete with a chain on an
+              Indian aisle, because it takes five importers, five minimums and
+              five invoices to fill one. One account here replaces all of that.
             </p>
-            <p>
-              We make what we sell, we test every batch, and we don&apos;t cut
-              the fill weights. That&apos;s the whole policy.
-            </p>
-          </>
-        }
-        actions={
-          <Button href="/story" variant="ink">
-            Read our story
-          </Button>
-        }
-      />
+          </Reveal>
 
-      <CtaBand />
+          <Reveal
+            delay={210}
+            className="mb-[clamp(44px,5vw,60px)] grid gap-[clamp(16px,2vw,24px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))]"
+          >
+            <div className="rounded-[20px] border border-line-deep bg-sand-deep p-[clamp(26px,3vw,36px)]">
+              <Eyebrow tone="faint" className="mb-5 tracking-[2.2px]">
+                Without us
+              </Eyebrow>
+              <div className="grid gap-3.5 text-[15.5px] leading-[1.6] text-muted">
+                {withoutUs.map((line) => (
+                  <span key={line}>{line}</span>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-[20px] bg-teal p-[clamp(26px,3vw,36px)] text-cream">
+              <Eyebrow tone="gold" className="mb-5 tracking-[2.2px]">
+                With one account
+              </Eyebrow>
+              <div className="grid gap-3.5 text-[15.5px] leading-[1.6]">
+                {withOneAccount(departments.length, brands.length).map(
+                  (line) => (
+                    <span key={line}>{line}</span>
+                  ),
+                )}
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal
+            delay={280}
+            className="grid gap-[clamp(14px,2vw,22px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))]"
+          >
+            {brands.map((b) => (
+              <BrandTile key={b.slug} brand={b} />
+            ))}
+          </Reveal>
+
+          <Reveal delay={350} className="mt-[clamp(34px,4vw,46px)]">
+            <Button href="/range" variant="outlineDark">
+              Browse the full range
+            </Button>
+          </Reveal>
+        </div>
+      </section>
+
       <CertBadges />
+      <Apply />
     </>
   );
 }

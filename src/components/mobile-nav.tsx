@@ -111,7 +111,7 @@ export function MobileNav() {
         aria-expanded={open}
         aria-controls="mobile-nav-drawer"
         aria-label={open ? "Close menu" : "Open menu"}
-        className="flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-line-deep text-ink transition-colors hover:border-ink"
+        className="flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-cream/35 text-cream transition-colors hover:border-gold hover:text-gold"
       >
         {open ? <X size={20} /> : <Menu size={20} />}
       </button>
@@ -131,25 +131,25 @@ export function MobileNav() {
                 type="button"
                 aria-label="Close menu"
                 onClick={close}
-                className="absolute inset-0 h-full w-full cursor-default bg-ink/55 backdrop-blur-[2px]"
+                className="absolute inset-0 h-full w-full cursor-default bg-teal-deep/70 backdrop-blur-[2px]"
               />
 
               <div
                 ref={panelRef}
                 tabIndex={-1}
-                className="absolute inset-y-0 right-0 flex outline-none w-[min(88vw,380px)] flex-col overflow-y-auto bg-cream shadow-[0_0_60px_rgba(34,22,15,0.35)]"
+                className="absolute inset-y-0 right-0 flex outline-none w-[min(88vw,380px)] flex-col overflow-y-auto bg-teal shadow-[0_0_60px_rgba(0,0,0,0.5)]"
                 style={{
                   paddingTop: "max(env(safe-area-inset-top), 0px)",
                   paddingBottom: "max(env(safe-area-inset-bottom), 0px)",
                 }}
               >
-                <div className="flex items-center justify-between border-b border-line px-5 py-4">
+                <div className="flex items-center justify-between border-b border-cream/15 px-5 py-4">
                   <Logo height={38} className="[&_img]:!h-[38px]" />
                   <button
                     type="button"
                     onClick={close}
                     aria-label="Close menu"
-                    className="flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-line-deep text-ink"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-cream/35 text-cream"
                   >
                     <X size={20} />
                   </button>
@@ -166,8 +166,8 @@ export function MobileNav() {
                         href={item.href}
                         aria-current={active ? "page" : undefined}
                         onClick={close}
-                        className={`border-b border-line py-4 text-xl font-bold ${
-                          active ? "text-red" : "text-ink"
+                        className={`border-b border-cream/12 py-4 text-lg font-bold tracking-[0.6px] uppercase ${
+                          active ? "text-gold" : "text-cream"
                         }`}
                       >
                         {item.label}
@@ -178,37 +178,37 @@ export function MobileNav() {
 
                 <div className="flex flex-col gap-3 px-5 pt-6">
                   <Link
-                    href="/wholesale"
+                    href="/#apply"
                     onClick={close}
                     className="rounded-full bg-red px-7 py-4 text-center text-base font-bold text-white"
                   >
                     Open an account
                   </Link>
                   <Link
-                    href="/wholesale"
+                    href="/range"
                     onClick={close}
-                    className="rounded-full border-[1.5px] border-line-deep bg-white px-7 py-4 text-center text-base font-bold text-ink"
+                    className="rounded-full border-[1.5px] border-cream/35 px-7 py-4 text-center text-base font-bold text-cream"
                   >
-                    Wholesale pricing
+                    Our range
                   </Link>
                 </div>
 
-                <div className="mt-auto border-t border-line px-5 py-6 text-[15px]">
+                <div className="mt-auto border-t border-cream/15 px-5 py-6 text-[15px]">
                   <a
                     href={site.phoneHref}
-                    className="flex items-center gap-2.5 py-1.5 font-semibold text-ink"
+                    className="flex items-center gap-2.5 py-1.5 font-semibold text-cream"
                   >
-                    <Phone size={16} className="text-red" aria-hidden="true" />
+                    <Phone size={16} className="text-gold" aria-hidden="true" />
                     {site.phone}
                   </a>
                   <a
                     href={`mailto:${site.email}`}
-                    className="flex items-center gap-2.5 py-1.5 font-semibold break-all text-ink"
+                    className="flex items-center gap-2.5 py-1.5 font-semibold break-all text-cream"
                   >
-                    <Mail size={16} className="text-red" aria-hidden="true" />
+                    <Mail size={16} className="text-gold" aria-hidden="true" />
                     {site.email}
                   </a>
-                  <p className="mt-2 text-[14px] text-muted">{site.hours}</p>
+                  <p className="mt-2 text-[14px] text-footer-text">{site.hours}</p>
                 </div>
               </div>
             </div>,

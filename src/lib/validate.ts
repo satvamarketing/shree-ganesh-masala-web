@@ -4,6 +4,11 @@ export type FieldSpec = {
   required?: boolean;
   email?: boolean;
   max?: number;
+  /**
+   * Closed set of accepted values, for select fields. Enforced server-side so
+   * a tampered <select> cannot post an arbitrary string.
+   */
+  oneOf?: readonly string[];
 };
 
 export type ValidateResult =
@@ -40,6 +45,9 @@ export function validate(body: unknown, spec: FieldSpec[]): ValidateResult {
     }
     if (value !== "" && field.email && !EMAIL.test(value)) {
       return { ok: false, error: `${field.label} must be a valid email address.` };
+    }
+    if (value !== "" && field.oneOf && !field.oneOf.includes(value)) {
+      return { ok: false, error: `${field.label} is not a valid choice.` };
     }
     values[field.key] = value;
   }

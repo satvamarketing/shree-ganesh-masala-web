@@ -41,7 +41,15 @@ None of these exist anywhere on the current site.
 | `archival1969` | The original Ahmedabad shop or early packing | 16:9 |
 | `qualityLine` | Ahmedabad packing line or spice pouches | 4:3 |
 
-## 3. Copy
+## 3. Festival dates
+
+Chapter Four counts down to four festivals from `src/data/story.ts`. The design
+carried the note "Confirm festival dates against your 2026-27 calendar before
+publishing" and these are the dates as drawn, unverified against an almanac.
+Please confirm, and note the list needs a yearly top-up: a festival whose date
+has passed drops off the countdown rather than sitting at zero.
+
+## 4. Copy
 
 - **Our Story, chapter 04** — the year Shree Ganesh began distributing in
   Australia, the first Queensland stockists, and how the Acacia Ridge facility
@@ -49,7 +57,7 @@ None of these exist anywhere on the current site.
 - **Henaa** — what the range actually covers, to firm up the brand blurb.
 - **ABN** — for the footer (`site.abn` in `src/data/site.ts`).
 
-## 4. Certification badges — licences to confirm
+## 5. Certification badges — licences to confirm
 
 All three trust marks now render in the certification strip on the home and
 wholesale pages (`src/components/sections/cert-badges.tsx`), sourced as:
@@ -83,7 +91,7 @@ rather than "HACCP / Certified facility"; the marquee says "Since 1969" rather
 than "HACCP certified"; and the Story page's "Ahmedabad makes it" paragraph says
 "our facility in Ahmedabad" rather than "our HACCP-certified facility".
 
-## 5. Social
+## 6. Social
 
 - Real Facebook and Instagram handles. The current site links to
   `facebook.com/shopify`, an unreplaced Shopify default, so social links are

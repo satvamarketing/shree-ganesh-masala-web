@@ -1,100 +1,66 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Glow } from "@/components/sections/glow";
+import { Reveal } from "@/components/reveal";
+import { Button, Display, HeroBadge, PullLine, Stat } from "@/components/ui";
 import { brands } from "@/data/brands";
-import { products } from "@/data/catalog";
 import { departments } from "@/data/departments";
-import { images } from "@/data/images";
 import { site } from "@/data/site";
-import { Button, DesignedPanel, Stat } from "@/components/ui";
 
-/**
- * The first house-brand line that has both a packshot and a carton quantity,
- * for the floating reorder card. Picked from real data so the card never shows
- * a placeholder or an invented pack size.
- */
-function featuredReorder() {
-  return products.find(
-    (p) => p.isHouseBrand && p.image && p.unitsPerCarton && p.departments.length > 0,
-  );
-}
-
+/** v7's opening statement (reference lines 46-69). */
 export function Hero() {
-  const hero = images.hero;
-  const reorder = featuredReorder();
-
   return (
-    <section className="border-b border-line bg-cream">
-      <div className="shell grid items-center gap-[clamp(32px,5vw,72px)] pt-[clamp(48px,6vw,84px)] pb-[clamp(56px,6vw,92px)] lg:[grid-template-columns:minmax(0,1.05fr)_minmax(280px,1fr)]">
-        <div className="min-w-0">
-          <div className="mb-6 inline-flex items-center gap-2.5 rounded-full bg-mint px-4 py-2.5 text-[12.5px] font-bold tracking-[1.5px] text-forest uppercase">
-            🌾 Made in Ahmedabad · Supplied from Brisbane
-          </div>
+    <section className="relative overflow-hidden bg-teal text-cream">
+      <Glow />
 
-          <h1
-            className="mb-5.5 font-serif text-[clamp(42px,5.6vw,78px)] leading-[1.04] font-normal text-ink"
-            style={{ textWrap: "pretty" }}
-          >
+      <div className="shell relative pt-[clamp(72px,9vw,132px)] pb-[clamp(56px,7vw,96px)]">
+        <Reveal className="mb-[clamp(26px,3.5vw,40px)]">
+          <HeroBadge>A masala house since {site.foundedYear}</HeroBadge>
+        </Reveal>
+
+        <Reveal delay={70}>
+          <Display as="h1" size="hero" className="max-w-[15ch]">
             {site.tagline}
-          </h1>
+          </Display>
+        </Reveal>
 
-          <p className="mb-8.5 max-w-[500px] text-[clamp(16px,1.4vw,18.5px)] leading-[1.65] text-body">
-            {brands.length} house brands made in Ahmedabad, plus{" "}
-            {departments.length} departments of Indian pantry staples, supplied
-            by the carton to grocers, restaurants and caterers across
-            Queensland.
+        <Reveal delay={140} className="mt-[clamp(24px,3vw,34px)]">
+          <PullLine className="max-w-[24ch]">{site.pullLine}</PullLine>
+        </Reveal>
+
+        <Reveal delay={210} className="mt-[clamp(30px,4vw,44px)]">
+          <p className="max-w-[58ch] text-[clamp(16px,1.45vw,19px)] leading-[1.72] text-cream/82">
+            Shree Ganesh has been blending masala in Ahmedabad since{" "}
+            {site.foundedYear}: {brands.length} house brands, made by us,
+            shipped to our Brisbane warehouse and delivered to grocers,
+            restaurants and caterers across Queensland. Trade only. No middlemen
+            in between.
           </p>
+        </Reveal>
 
-          <div className="mb-8.5 flex flex-wrap gap-3">
-            <Button href="/wholesale" variant="red">
-              Open a wholesale account
-            </Button>
-            <Button href="/range" variant="outline">
-              See the range
-            </Button>
-          </div>
+        <Reveal
+          delay={280}
+          className="mt-[clamp(34px,4.5vw,48px)] flex flex-wrap items-center gap-3.5"
+        >
+          <Button href="/#apply" variant="red">
+            Open a trade account
+          </Button>
+          <Link
+            href="/#ch-1"
+            className="border-b-2 border-gold px-1.5 py-4.5 text-[15px] font-bold text-cream transition-colors hover:text-gold"
+          >
+            Start at the beginning ↓
+          </Link>
+        </Reveal>
 
-          <div className="flex flex-wrap gap-[clamp(20px,3vw,40px)] border-t border-line pt-6.5">
-            <Stat value={String(departments.length)} label="Departments" />
-            <Stat value={String(brands.length)} label="House brands" />
-            {/* The design's third stat was "HACCP / Certified facility";
-                replaced with a verifiable figure. See spec §8.1. */}
-            <Stat value={String(site.foundedYear)} label="Established" />
-          </div>
-        </div>
-
-        <div className="relative min-w-0">
-          <div className="h-[clamp(340px,42vw,520px)] overflow-hidden rounded-[24px] bg-sand-deep">
-            {hero.src ? (
-              <Image
-                src={hero.src}
-                alt={hero.alt}
-                width={1200}
-                height={900}
-                priority
-                className="h-full w-full object-cover"
-              />
-            ) : (
-              <DesignedPanel label="Finished dish, styled on a table" />
-            )}
-          </div>
-
-          {reorder ? (
-            <div className="absolute -bottom-5.5 -left-4.5 hidden max-w-[260px] items-center gap-3.5 rounded-[18px] bg-white p-3.5 shadow-float sm:flex">
-              <Image
-                src={reorder.image as string}
-                alt=""
-                width={54}
-                height={54}
-                className="h-[54px] w-[54px] shrink-0 object-contain"
-              />
-              <div className="min-w-0">
-                <div className="text-sm font-bold text-ink">{reorder.title}</div>
-                <div className="text-[12.5px] text-muted">
-                  Carton of {reorder.unitsPerCarton} · top reorder
-                </div>
-              </div>
-            </div>
-          ) : null}
-        </div>
+        <Reveal
+          delay={350}
+          className="mt-[clamp(48px,6vw,80px)] grid max-w-[900px] gap-[clamp(20px,3vw,44px)] border-t border-red/24 pt-[clamp(28px,3.5vw,40px)] [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))]"
+        >
+          <Stat value={String(site.foundedYear)} label="Blending since" />
+          <Stat value={String(brands.length)} label="House brands" />
+          <Stat value={String(departments.length)} label="Departments" />
+          <Stat value="1 day" label="Account approval" />
+        </Reveal>
       </div>
     </section>
   );

@@ -1,59 +1,63 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ *
- * Shree Ganesh — design tokens, lifted from Shree Ganesh Retail v5.
- * Warm pantry palette: brand red + gold on cream, forest green panels.
- * Type: DM Serif Display (headings) · Plus Jakarta Sans (body).
+ * Shree Ganesh — design tokens, from Shree Ganesh Trade v7.
+ * Deep teal ground, brand red, gold accent, warm sand mid-tones.
+ * Type: DM Serif Display (headings, incl. italic) · Archivo (body).
  * ------------------------------------------------------------------ */
 @theme {
-  /* surfaces */
-  --color-cream: #fff8ee;
-  --color-sand: #fbf1e0;
-  --color-sand-deep: #f1e4ce;
-  --color-mint: #edf3e9;
+  /* teal ground */
+  --color-teal: #133e51;
+  --color-teal-soft: #163340;
+  --color-teal-deep: #0e2f3e;
 
   /* brand red */
-  --color-red: #c40a13;
-  --color-red-dark: #8f070e;
+  --color-red: #cf322d;
+  --color-red-dark: #a8241f;
+  --color-red-deeper: #b4231e;
 
-  /* forest green */
-  --color-forest: #1f4a34;
-  --color-forest-light: #2a5a40;
-  --color-forest-line: #3d6e52;
-  --color-mint-ink: #4a6553;
+  /* gold accent */
+  --color-gold: #fbcf00;
+  --color-gold-soft: #fde9a0;
 
-  /* gold */
-  --color-gold: #e8a20c;
+  /* warm neutrals */
+  --color-cream: #f4efe9;
+  --color-sand: #eee1d8;
+  --color-sand-deep: #e5dad1;
+  --color-sand-deeper: #e3d3c7;
+  --color-shell: #f0e7df;
 
   /* text ramp */
-  --color-ink: #22160f;
-  --color-body: #5c4a38;
-  --color-muted: #7a6752;
-  --color-faint: #a08a72;
-  --color-footer-text: #b9a68f;
+  --color-ink: #133e51;
+  --color-ink-deep: #2a2420;
+  --color-body: #4a4038;
+  --color-muted: #6e6259;
+  --color-faint: #8a7f76;
+  --color-footer-text: #a9bcc6;
 
   /* lines */
-  --color-line: #ebdcc4;
-  --color-line-deep: #e0cfb4;
+  --color-line: #e0d2c7;
+  --color-line-deep: #dbc9bc;
+  --color-field-line: #dccbc0;
 
-  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-dm-serif), Georgia, "Times New Roman", serif;
 
-  --shadow-card: 0 2px 14px rgba(34, 22, 15, 0.08);
-  --shadow-card-lg: 0 18px 34px rgba(34, 22, 15, 0.12);
-  --shadow-float: 0 16px 34px rgba(34, 22, 15, 0.14);
+  --shadow-card: 0 2px 14px rgba(19, 62, 81, 0.08);
+  --shadow-card-lg: 0 18px 34px rgba(19, 62, 81, 0.14);
+  --shadow-float: 0 30px 60px rgba(0, 0, 0, 0.45);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* Sticky header clearance for in-page anchors (header is 78px). */
-    scroll-padding-top: 7rem;
+    /* Header (74px) + sticky chapter rail (56px) clearance for anchors. */
+    scroll-padding-top: 8.5rem;
   }
 
   body {
     margin: 0;
-    background: var(--color-cream);
+    background: #ffffff;
     color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -63,11 +67,10 @@
   }
 
   ::selection {
-    background: var(--color-gold);
-    color: var(--color-ink);
+    background: var(--color-red);
+    color: #ffffff;
   }
 
-  /* Visible focus ring everywhere, in the brand red rather than the UA blue. */
   :focus-visible {
     outline: 2px solid var(--color-red);
     outline-offset: 2px;
@@ -75,7 +78,7 @@
 }
 
 @layer utilities {
-  /* The design's edge-to-edge marquee (reference lines 82-91). */
+  /* Edge-to-edge ticker (reference lines 72-81). */
   @keyframes sg-marquee {
     from {
       transform: translateX(0);
@@ -89,9 +92,53 @@
     animation: sg-marquee 34s linear infinite;
   }
 
+  /* Slow breathing glow behind the dark sections (reference lines 47-50). */
+  @keyframes sg-pulse {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.12);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: sg-pulse 9s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow-slow {
+    animation: sg-pulse 12s ease-in-out 1.5s infinite;
+  }
+
+  /* Scroll reveal. The visible state is a class rather than inline style so
+     it degrades to "always visible" when JavaScript is unavailable — see
+     components/reveal.tsx. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.7s cubic-bezier(0.2, 0.7, 0.3, 1),
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+
+  .reveal-shown {
+    opacity: 1;
+    transform: none;
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .animate-marquee {
+    .animate-marquee,
+    .animate-pulse-glow,
+    .animate-pulse-glow-slow {
       animation: none;
+    }
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
     }
   }
 

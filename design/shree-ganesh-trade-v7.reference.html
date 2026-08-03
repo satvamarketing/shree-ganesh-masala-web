@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Shree Ganesh Australia — a masala house since 1969. Wholesale trade accounts for grocers, restaurants and caterers across Queensland.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin: 0; font-family: 'Archivo', sans-serif; color: #133E51; background: #FFFFFF; -webkit-font-smoothing: antialiased; }
+a { color: #CF322D; text-decoration: none; }
+a:hover { color: #A8241F; }
+::selection { background: #CF322D; color: #FFFFFF; }
+@keyframes sg-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes sg-bob { 0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); } 50% { transform: translateY(-8px) rotate(var(--r, 0deg)); } }
+@keyframes sg-pulse { 0%, 100% { opacity: 0.35; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.12); } }
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<!-- ============ HEADER ============ -->
+<header style="position: sticky; top: 0; z-index: 50; background: #133E51; border-bottom: 1px solid rgba(207,50,45,0.28);">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px); height: 74px; display: flex; align-items: center; gap: clamp(18px, 3vw, 40px);">
+    <img src="uploads/pasted-1785505166571-0.png" alt="Shree Ganesh" style="height: 40px; background: #fff; border-radius: 9px; padding: 5px 11px; display: block; flex-shrink: 0;">
+    <div style="display: none;"></div>
+    <nav style="display: flex; gap: clamp(14px, 2vw, 28px); font-size: 13px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; margin-left: auto; align-items: center; flex-wrap: wrap;">
+      <a href="#ch-1" onClick="{{ navHouse }}" style="{{ navHomeStyle }}">The house</a>
+      <a href="#ch-2" onClick="{{ navDabba }}" style="{{ navHomeStyle }}">The dabba</a>
+      <a href="#ch-3" onClick="{{ navSchool }}" style="{{ navHomeStyle }}">Trade school</a>
+      <a href="#about" onClick="{{ navAbout }}" style="{{ navAboutStyle }}">About us</a>
+      <a href="#apply" style="background: #CF322D; color: #fff; padding: 12px 20px; border-radius: 999px; letter-spacing: 1px;" style-hover="background: #CF322D; color: #FFFFFF;">Open an account</a>
+    </nav>
+  </div>
+</header>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div>
+
+<!-- ============ HERO ============ -->
+<section style="background: #133E51; color: #F4EFE9; position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; opacity: 0.4; pointer-events: none;">
+    <div style="position: absolute; left: 12%; top: 22%; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(207,50,45,0.55), transparent 68%); animation: sg-pulse 9s ease-in-out infinite;"></div>
+    <div style="position: absolute; right: 6%; bottom: -8%; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(207,50,45,0.4), transparent 68%); animation: sg-pulse 12s ease-in-out 1.5s infinite;"></div>
+  </div>
+  <div style="max-width: 1280px; margin: 0 auto; padding: clamp(72px, 9vw, 132px) clamp(20px, 4vw, 40px) clamp(56px, 7vw, 96px); position: relative;">
+    <div data-reveal style="display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(207,50,45,0.45); border-radius: 999px; padding: 9px 18px; font-size: 11.5px; font-weight: 800; letter-spacing: 2.2px; text-transform: uppercase; color: #FBCF00; margin-bottom: clamp(26px, 3.5vw, 40px);">
+      <span style="width: 6px; height: 6px; border-radius: 50%; background: #FBCF00;"></span>A masala house since 1969
+    </div>
+    <h1 data-reveal style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(40px, 6.4vw, 92px); line-height: 1.02; margin: 0 0 clamp(24px, 3vw, 34px); max-width: 15ch; text-wrap: pretty;">Anyone can sell you a carton.</h1>
+    <p data-reveal style="font-family: 'DM Serif Display', serif; font-style: italic; font-size: clamp(22px, 2.9vw, 38px); line-height: 1.32; margin: 0 0 clamp(30px, 4vw, 44px); max-width: 24ch; color: #FBCF00;">We grind what's in it.</p>
+    <p data-reveal style="font-size: clamp(16px, 1.45vw, 19px); line-height: 1.72; margin: 0 0 clamp(34px, 4.5vw, 48px); max-width: 58ch; color: rgba(244,239,233,0.82);">Shree Ganesh has been blending masala in Ahmedabad since 1969 — six house brands, made by us, shipped to our Brisbane warehouse and delivered to grocers, restaurants and caterers across Queensland. Trade only. No middlemen in between.</p>
+    <div data-reveal style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center;">
+      <a href="#apply" style="background: #CF322D; color: #fff; font-size: 15px; font-weight: 800; letter-spacing: 0.4px; padding: 18px 32px; border-radius: 999px;" style-hover="background: #CF322D; color: #FFFFFF;">Open a trade account</a>
+      <a href="#ch-1" style="color: #F4EFE9; font-size: 15px; font-weight: 700; padding: 18px 6px; border-bottom: 2px solid #FBCF00;" style-hover="color: #FBCF00;">Start at the beginning ↓</a>
+    </div>
+    <div data-reveal style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 44px); margin-top: clamp(48px, 6vw, 80px); padding-top: clamp(28px, 3.5vw, 40px); border-top: 1px solid rgba(207,50,45,0.24); max-width: 900px;">
+      <div><div style="font-family: 'DM Serif Display', serif; font-size: clamp(30px, 3.4vw, 44px); color: #FBCF00; line-height: 1;">1969</div><div style="font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; margin-top: 8px; color: rgba(244,239,233,0.6);">Blending since</div></div>
+      <div><div style="font-family: 'DM Serif Display', serif; font-size: clamp(30px, 3.4vw, 44px); color: #FBCF00; line-height: 1;">6</div><div style="font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; margin-top: 8px; color: rgba(244,239,233,0.6);">House brands</div></div>
+      <div><div style="font-family: 'DM Serif Display', serif; font-size: clamp(30px, 3.4vw, 44px); color: #FBCF00; line-height: 1;">28</div><div style="font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; margin-top: 8px; color: rgba(244,239,233,0.6);">Departments</div></div>
+      <div><div style="font-family: 'DM Serif Display', serif; font-size: clamp(30px, 3.4vw, 44px); color: #FBCF00; line-height: 1;">1 day</div><div style="font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; margin-top: 8px; color: rgba(244,239,233,0.6);">Account approval</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<div style="background: #CF322D; color: #FFFFFF; overflow: hidden; padding: 13px 0;">
+  <div style="display: flex; width: max-content; animation: sg-marquee 34s linear infinite;">
+    <div style="display: flex; gap: 30px; padding-right: 30px; font-size: 13px; font-weight: 800; letter-spacing: 2.2px; text-transform: uppercase; white-space: nowrap;">
+      <span>Made in Ahmedabad</span><span style="color: rgba(255,255,255,0.72);">✦</span><span>Shipped from Acacia Ridge</span><span style="color: rgba(255,255,255,0.72);">✦</span><span>Trade only</span><span style="color: rgba(255,255,255,0.72);">✦</span><span>HACCP certified</span><span style="color: rgba(255,255,255,0.72);">✦</span><span>Six house brands</span><span style="color: rgba(255,255,255,0.72);">✦</span><span>No minimum first order</span><span style="color: rgba(255,255,255,0.72);">✦</span>
+    </div>
+    <div style="display: flex; gap: 30px; padding-right: 30px; font-size: 13px; font-weight: 800; letter-spacing: 2.2px; text-transform: uppercase; white-space: nowrap;">
+      <span>Made in Ahmedabad</span><span style="color: rgba(255,255,255,0.72);">✦</span><span>Shipped from Acacia Ridge</span><span style="color: rgba(255,255,255,0.72);">✦</span><span>Trade only</span><span style="color: rgba(255,255,255,0.72);">✦</span><span>HACCP certified</span><span style="color: rgba(255,255,255,0.72);">✦</span><span>Six house brands</span><span style="color: rgba(255,255,255,0.72);">✦</span><span>No minimum first order</span><span style="color: rgba(255,255,255,0.72);">✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CHAPTER RAIL ============ -->
+<div style="position: sticky; top: 74px; z-index: 40; z-index: 40; background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid #E0D2C7;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px); display: flex; gap: clamp(14px, 2.4vw, 34px); overflow-x: auto; height: 56px; align-items: center;">
+    <sc-for list="{{ chapters }}" as="c" hint-placeholder-count="5">
+      <a href="{{ c.href }}" style="{{ c.style }}">
+        <span style="font-family: 'DM Serif Display', serif; font-size: 15px;">{{ c.num }}</span>
+        <span>{{ c.label }}</span>
+      </a>
+    </sc-for>
+  </div>
+</div>
+
+<!-- ============ CH 1 — FLIP THE STATUS ============ -->
+<section id="ch-1" data-chapter="1" style="background: #FFFFFF; position: relative; overflow: hidden; scroll-margin-top: 130px;">
+  <div style="position: absolute; right: clamp(-40px, -2vw, 0px); top: -30px; font-family: 'DM Serif Display', serif; font-size: clamp(180px, 26vw, 360px); line-height: 0.8; color: #F0E7DF; pointer-events: none; user-select: none;">01</div>
+  <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(20px, 4vw, 40px); position: relative;">
+    <div data-reveal style="font-size: 11.5px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #CF322D; margin-bottom: 16px;">Chapter One — The House</div>
+    <h2 data-reveal style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(32px, 4.6vw, 62px); line-height: 1.08; margin: 0 0 clamp(22px, 2.6vw, 30px); max-width: 20ch; text-wrap: pretty;">Wholesale is a race to the cheapest carton. We're not in that race.</h2>
+    <p data-reveal style="font-size: clamp(16px, 1.4vw, 18.5px); line-height: 1.75; color: #4A4038; margin: 0 0 clamp(40px, 5vw, 60px); max-width: 62ch;">In 1969 our founder, Shri Vrajlal Manilal Shah, called his standard <em style="font-family: 'DM Serif Display', serif; font-style: italic; color: #133E51;">Quality Vision</em>. He was the first in the market to see where ready masala was going, and he refused to let volume dictate the blend. Fifty-seven years on, that is still the only reason to choose us over a cheaper pallet: what's actually in the packet.</p>
+    <div data-reveal style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: clamp(16px, 2vw, 24px);">
+      <div style="background: #EEE1D8; border: 1px solid #E0D2C7; border-radius: 20px; padding: clamp(26px, 3vw, 36px);">
+        <div style="font-family: 'DM Serif Display', serif; font-size: 26px; color: #CF322D; margin-bottom: 12px;">We are the maker</div>
+        <p style="font-size: 15.5px; line-height: 1.7; color: #4A4038; margin: 0;">Every one of our six brands is manufactured by us in Ahmedabad. You buy at maker price, not at a reseller's markup on someone else's label.</p>
+      </div>
+      <div style="background: #EEE1D8; border: 1px solid #E0D2C7; border-radius: 20px; padding: clamp(26px, 3vw, 36px);">
+        <div style="font-family: 'DM Serif Display', serif; font-size: 26px; color: #CF322D; margin-bottom: 12px;">Tested, batch by batch</div>
+        <p style="font-size: 15.5px; line-height: 1.7; color: #4A4038; margin: 0;">Every product that reaches an end user passes rigorous testing with current-standard technology and measurement before it leaves the plant.</p>
+      </div>
+      <div style="background: #EEE1D8; border: 1px solid #E0D2C7; border-radius: 20px; padding: clamp(26px, 3vw, 36px);">
+        <div style="font-family: 'DM Serif Display', serif; font-size: 26px; color: #CF322D; margin-bottom: 12px;">Quality and quantity</div>
+        <p style="font-size: 15.5px; line-height: 1.7; color: #4A4038; margin: 0;">The recipes stay traditional and the fill weights stay honest. As we grow, we grow stronger in that policy — we don't trim it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CH 2 — HIJACK THE MYTH (THE DABBA) ============ -->
+<section id="ch-2" data-chapter="2" style="background: #133E51; color: #F4EFE9; position: relative; overflow: hidden; scroll-margin-top: 130px;">
+  <div style="position: absolute; left: clamp(-30px, -1vw, 0px); top: -40px; font-family: 'DM Serif Display', serif; font-size: clamp(180px, 26vw, 360px); line-height: 0.8; color: rgba(244,239,233,0.055); pointer-events: none; user-select: none;">02</div>
+  <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(20px, 4vw, 40px); position: relative;">
+    <div data-reveal style="font-size: 11.5px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #FBCF00; margin-bottom: 16px;">Chapter Two — The Dabba</div>
+    <h2 data-reveal style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(32px, 4.6vw, 62px); line-height: 1.08; margin: 0 0 clamp(20px, 2.4vw, 28px); max-width: 22ch; text-wrap: pretty;">Every Indian kitchen already has a spice tin.</h2>
+    <p data-reveal style="font-size: clamp(16px, 1.4vw, 18.5px); line-height: 1.75; color: rgba(244,239,233,0.8); margin: 0 0 clamp(44px, 5.5vw, 64px); max-width: 60ch;">Seven wells, one lid, always within reach of the stove. Your customers don't need convincing that it matters — they grew up with it. Our job is to be what's inside it. Tap a well.</p>
+    <div data-reveal style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center;">
+      <div style="display: flex; justify-content: center;">
+        <div style="position: relative; width: min(100%, 440px); aspect-ratio: 1; border-radius: 50%; background: linear-gradient(145deg, #4C5C63, #22333B); border: 10px solid #5A6A71; box-shadow: 0 30px 60px rgba(0,0,0,0.45), inset 0 2px 12px rgba(255,255,255,0.12);">
+          <sc-for list="{{ wells }}" as="w" hint-placeholder-count="7">
+            <button type="button" onClick="{{ w.pick }}" aria-label="{{ w.name }}" style="{{ w.style }}"></button>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 2.2px; text-transform: uppercase; color: #FBCF00; margin-bottom: 14px;">{{ activeWell.hindi }}</div>
+        <h3 style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(28px, 3.4vw, 46px); line-height: 1.1; margin: 0 0 18px;">{{ activeWell.name }}</h3>
+        <p style="font-size: 16.5px; line-height: 1.75; color: rgba(244,239,233,0.82); margin: 0 0 26px;">{{ activeWell.note }}</p>
+        <div style="display: inline-flex; align-items: center; gap: 14px; background: rgba(244,239,233,0.07); border: 1px solid rgba(207,50,45,0.3); border-radius: 16px; padding: 16px 22px;">
+          <span style="width: 40px; height: 40px; border-radius: 50%; background: {{ activeWell.color }}; flex-shrink: 0;"></span>
+          <span>
+            <span style="display: block; font-size: 15.5px; font-weight: 700;">{{ activeWell.product }}</span>
+            <span style="display: block; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: rgba(244,239,233,0.55); margin-top: 3px;">{{ activeWell.brand }}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CH 3 — OPEN THE HIDDEN DOOR ============ -->
+<section id="ch-3" data-chapter="3" style="background: #EEE1D8; position: relative; overflow: hidden; scroll-margin-top: 130px;">
+  <div style="position: absolute; right: clamp(-40px, -2vw, 0px); top: -30px; font-family: 'DM Serif Display', serif; font-size: clamp(180px, 26vw, 360px); line-height: 0.8; color: #E3D3C7; pointer-events: none; user-select: none;">03</div>
+  <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(20px, 4vw, 40px); position: relative;">
+    <div data-reveal style="font-size: 11.5px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #B4231E; margin-bottom: 16px;">Chapter Three — Trade School</div>
+    <h2 data-reveal style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(32px, 4.6vw, 62px); line-height: 1.08; margin: 0 0 clamp(20px, 2.4vw, 28px); max-width: 22ch; text-wrap: pretty;">What we know about spice, you can sell with.</h2>
+    <p data-reveal style="font-size: clamp(16px, 1.4vw, 18.5px); line-height: 1.75; color: #4A4038; margin: 0 0 clamp(36px, 4.5vw, 52px); max-width: 60ch;">Fifty-seven years of grinding teaches you things a distributor never learns. We hand them over — because a grocer who can answer these questions at the counter sells more than one who can't.</p>
+    <div data-reveal style="display: grid; gap: 12px; max-width: 900px;">
+      <sc-for list="{{ facts }}" as="f" hint-placeholder-count="4">
+        <div style="background: #FFFFFF; border: 1px solid #E0D2C7; border-radius: 18px; overflow: hidden;">
+          <button type="button" onClick="{{ f.toggle }}" style="width: 100%; text-align: left; background: none; border: 0; padding: clamp(20px, 2.4vw, 28px) clamp(20px, 2.4vw, 30px); display: flex; align-items: center; gap: 18px; cursor: pointer; font-family: 'Archivo', sans-serif;">
+            <span style="font-family: 'DM Serif Display', serif; font-size: 19px; color: #CF322D; flex-shrink: 0;">{{ f.num }}</span>
+            <span style="font-size: clamp(16px, 1.5vw, 19px); font-weight: 700; color: #133E51; flex: 1;">{{ f.q }}</span>
+            <span style="font-size: 22px; color: #8A7F76; flex-shrink: 0;">{{ f.sign }}</span>
+          </button>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <p style="font-size: 16px; line-height: 1.75; color: #4A4038; margin: 0; padding: 0 clamp(20px, 2.4vw, 30px) clamp(24px, 2.6vw, 30px) clamp(56px, 5vw, 68px); max-width: 68ch;">{{ f.a }}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div data-reveal style="margin-top: clamp(34px, 4vw, 46px); display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+      <a href="#apply" style="background: #133E51; color: #EEE1D8; font-size: 14.5px; font-weight: 800; letter-spacing: 0.4px; padding: 16px 28px; border-radius: 999px;" style-hover="background: #CF322D; color: #fff;">Get the trade pack</a>
+      <span style="font-size: 14.5px; color: #6E6259;">Blend sheets, shelf-life guides and counter cards — free with every account.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CH 4 — BUILD THE RITUAL ============ -->
+<section id="ch-4" data-chapter="4" style="background: #163340; color: #F4EFE9; position: relative; overflow: hidden; scroll-margin-top: 130px;">
+  <div style="position: absolute; left: clamp(-30px, -1vw, 0px); top: -40px; font-family: 'DM Serif Display', serif; font-size: clamp(180px, 26vw, 360px); line-height: 0.8; color: rgba(244,239,233,0.07); pointer-events: none; user-select: none;">04</div>
+  <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(20px, 4vw, 40px); position: relative;">
+    <div data-reveal style="font-size: 11.5px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #FBCF00; margin-bottom: 16px;">Chapter Four — The Rhythm</div>
+    <h2 data-reveal style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(32px, 4.6vw, 62px); line-height: 1.08; margin: 0 0 clamp(20px, 2.4vw, 28px); max-width: 20ch; text-wrap: pretty;">Order Monday. Shelved Wednesday. Every week.</h2>
+    <p data-reveal style="font-size: clamp(16px, 1.4vw, 18.5px); line-height: 1.75; color: rgba(244,239,233,0.8); margin: 0 0 clamp(44px, 5.5vw, 62px); max-width: 58ch;">Restocking shouldn't be a phone call you dread. It should be a rhythm you stop thinking about — the same three days, the same driver, the same shelf full on Wednesday morning.</p>
+    <div data-reveal style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: clamp(14px, 1.8vw, 20px); margin-bottom: clamp(52px, 6.5vw, 78px);">
+      <div style="background: rgba(244,239,233,0.07); border: 1px solid rgba(207,50,45,0.25); border-radius: 18px; padding: clamp(22px, 2.6vw, 30px);">
+        <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; color: #FBCF00; margin-bottom: 12px;">Monday</div>
+        <div style="font-family: 'DM Serif Display', serif; font-size: 23px; margin-bottom: 8px;">Order by noon</div>
+        <p style="font-size: 14.5px; line-height: 1.65; color: rgba(244,239,233,0.72); margin: 0;">Reorder your last cart in three clicks, or send the list by WhatsApp.</p>
+      </div>
+      <div style="background: rgba(244,239,233,0.07); border: 1px solid rgba(207,50,45,0.25); border-radius: 18px; padding: clamp(22px, 2.6vw, 30px);">
+        <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; color: #FBCF00; margin-bottom: 12px;">Tuesday</div>
+        <div style="font-family: 'DM Serif Display', serif; font-size: 23px; margin-bottom: 8px;">Picked &amp; checked</div>
+        <p style="font-size: 14.5px; line-height: 1.65; color: rgba(244,239,233,0.72); margin: 0;">Picked at Acacia Ridge, checked against your invoice before it's sealed.</p>
+      </div>
+      <div style="background: rgba(244,239,233,0.07); border: 1px solid rgba(207,50,45,0.25); border-radius: 18px; padding: clamp(22px, 2.6vw, 30px);">
+        <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; color: #FBCF00; margin-bottom: 12px;">Wednesday</div>
+        <div style="font-family: 'DM Serif Display', serif; font-size: 23px; margin-bottom: 8px;">On your shelf</div>
+        <p style="font-size: 14.5px; line-height: 1.65; color: rgba(244,239,233,0.72); margin: 0;">Brisbane metro delivery, free over $500. QLD freight quoted on request.</p>
+      </div>
+      <div style="background: #CF322D; color: #FFFFFF; border-radius: 18px; padding: clamp(22px, 2.6vw, 30px);">
+        <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; margin-bottom: 12px;">Every quarter</div>
+        <div style="font-family: 'DM Serif Display', serif; font-size: 23px; margin-bottom: 8px;">The sample tin</div>
+        <p style="font-size: 14.5px; line-height: 1.65; margin: 0;">New blends land at your counter before they hit the catalogue. Taste first, stock second.</p>
+      </div>
+    </div>
+    <div data-reveal style="border-top: 1px solid rgba(207,50,45,0.25); padding-top: clamp(34px, 4vw, 48px);">
+      <div style="display: flex; align-items: end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(24px, 3vw, 34px);">
+        <div>
+          <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 2.2px; text-transform: uppercase; color: #FBCF00; margin-bottom: 12px;">The other rhythm</div>
+          <h3 style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(24px, 2.8vw, 36px); margin: 0; max-width: 24ch;">The festival calendar decides your best months.</h3>
+        </div>
+        <p style="font-size: 15px; line-height: 1.7; color: rgba(244,239,233,0.72); margin: 0; max-width: 40ch;">Stock lands from Ahmedabad in about six weeks. These are the dates that should already be in your order book.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: clamp(14px, 1.8vw, 20px);">
+        <sc-for list="{{ festivals }}" as="f" hint-placeholder-count="4">
+          <div style="background: rgba(0,0,0,0.16); border-radius: 18px; padding: clamp(20px, 2.4vw, 26px);">
+            <div style="font-family: 'DM Serif Display', serif; font-size: clamp(30px, 3.2vw, 40px); color: #FBCF00; line-height: 1;">{{ f.days }}</div>
+            <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; color: rgba(244,239,233,0.5); margin: 8px 0 14px;">days away</div>
+            <div style="font-size: 17px; font-weight: 700; margin-bottom: 6px;">{{ f.name }}</div>
+            <div style="font-size: 13.5px; color: rgba(244,239,233,0.7); line-height: 1.55;">{{ f.date }} · order by {{ f.orderBy }}</div>
+            <div style="font-size: 13.5px; color: #FBCF00; margin-top: 10px;">{{ f.stock }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="font-size: 13px; color: rgba(244,239,233,0.5); margin: 20px 0 0;">[Confirm festival dates against your 2026–27 calendar before publishing.]</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CH 5 — GIVE THEM A SUPERPOWER ============ -->
+<section id="ch-5" data-chapter="5" style="background: #FFFFFF; position: relative; overflow: hidden; scroll-margin-top: 130px;">
+  <div style="position: absolute; right: clamp(-40px, -2vw, 0px); top: -30px; font-family: 'DM Serif Display', serif; font-size: clamp(180px, 26vw, 360px); line-height: 0.8; color: #F0E7DF; pointer-events: none; user-select: none;">05</div>
+  <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(20px, 4vw, 40px); position: relative;">
+    <div data-reveal style="font-size: 11.5px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #CF322D; margin-bottom: 16px;">Chapter Five — The Aisle</div>
+    <h2 data-reveal style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(32px, 4.6vw, 62px); line-height: 1.08; margin: 0 0 clamp(20px, 2.4vw, 28px); max-width: 20ch; text-wrap: pretty;">Run an Indian aisle like a specialist.</h2>
+    <p data-reveal style="font-size: clamp(16px, 1.4vw, 18.5px); line-height: 1.75; color: #4A4038; margin: 0 0 clamp(40px, 5vw, 58px); max-width: 58ch;">Most independent grocers can't compete with a chain on an Indian aisle, because it takes five importers, five minimums and five invoices to fill one. One account here replaces all of that.</p>
+    <div data-reveal style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(16px, 2vw, 24px); margin-bottom: clamp(44px, 5vw, 60px);">
+      <div style="background: #E5DAD1; border: 1px solid #DBC9BC; border-radius: 20px; padding: clamp(26px, 3vw, 36px);">
+        <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 2.2px; text-transform: uppercase; color: #8A7F76; margin-bottom: 20px;">Without us</div>
+        <div style="display: grid; gap: 13px; font-size: 15.5px; line-height: 1.6; color: #6E6259;">
+          <span>Five importers, five minimum orders</span>
+          <span>Spices from one, snacks from another, sweets nowhere</span>
+          <span>Six-week gaps when a line runs out</span>
+          <span>Reseller markup on every carton</span>
+          <span>No idea what to stock before Diwali</span>
+        </div>
+      </div>
+      <div style="background: #133E51; color: #F4EFE9; border-radius: 20px; padding: clamp(26px, 3vw, 36px);">
+        <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 2.2px; text-transform: uppercase; color: #FBCF00; margin-bottom: 20px;">With one account</div>
+        <div style="display: grid; gap: 13px; font-size: 15.5px; line-height: 1.6;">
+          <span>One supplier, no minimum first order</span>
+          <span>28 departments and six house brands on one invoice</span>
+          <span>Weekly delivery rhythm you can plan around</span>
+          <span>Maker pricing, straight from Ahmedabad</span>
+          <span>A festival calendar and a stock list to go with it</span>
+        </div>
+      </div>
+    </div>
+    <div data-reveal style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: clamp(14px, 2vw, 22px);">
+      <sc-for list="{{ brands }}" as="b">
+        <div style="background: #EEE1D8; border: 1px solid #E0D2C7; border-radius: 16px; height: 108px; display: flex; align-items: center; justify-content: center; padding: 18px;">
+          <div role="img" aria-label="{{ b.name }}" style="{{ b.logoStyle }}"></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+</div>
+</sc-if>
+
+<!-- ================================================================ ABOUT ============ -->
+<sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+<div id="about">
+
+  <section style="background: #133E51; color: #F4EFE9; position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; opacity: 0.38; pointer-events: none;">
+      <div style="position: absolute; left: 8%; top: 18%; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(207,50,45,0.55), transparent 68%); animation: sg-pulse 10s ease-in-out infinite;"></div>
+      <div style="position: absolute; right: 4%; bottom: -10%; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(207,50,45,0.4), transparent 68%); animation: sg-pulse 13s ease-in-out 1.5s infinite;"></div>
+    </div>
+    <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 8vw, 116px) clamp(20px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: clamp(36px, 5vw, 72px); align-items: center; position: relative;">
+      <div>
+        <div data-reveal style="display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(207,50,45,0.45); border-radius: 999px; padding: 9px 18px; font-size: 11.5px; font-weight: 800; letter-spacing: 2.2px; text-transform: uppercase; color: #FBCF00; margin-bottom: 30px;">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: #FBCF00;"></span>About us
+        </div>
+        <h1 data-reveal style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(38px, 5.4vw, 76px); line-height: 1.04; margin: 0 0 26px; max-width: 16ch; text-wrap: pretty;">Welcome to Shree Ganesh</h1>
+        <p data-reveal style="font-family: 'DM Serif Display', serif; font-style: italic; font-size: clamp(20px, 2.4vw, 30px); line-height: 1.4; margin: 0; color: #FBCF00; max-width: 26ch;">One standard, set in 1969, still deciding what goes in the packet.</p>
+      </div>
+      <div data-reveal style="min-width: 0; display: flex; justify-content: center;">
+        <div style="width: 100%; max-width: 400px; height: clamp(340px, 42vw, 480px); overflow: hidden; border-radius: 24px; border: 1px solid rgba(207,50,45,0.3); background: rgba(244,239,233,0.05);">
+          <image-slot id="v6-about-hero" shape="rect" placeholder="FOUNDER / HERITAGE PHOTO — portrait of Shri Vrajlal Manilal Shah, or the original masala house"></image-slot>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #FFFFFF; position: relative; overflow: hidden;">
+    <div style="max-width: 820px; margin: 0 auto; padding: clamp(64px, 8vw, 108px) clamp(20px, 4vw, 40px);">
+      <div data-reveal style="font-size: 11.5px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #CF322D; margin-bottom: 28px;">The founder</div>
+      <p data-reveal style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.8; color: #2A2420; margin: 0 0 30px;">The founder of Shree Ganesh, Shri Vrajlal Manilal Shah, had a vision he called "Quality Vision." Gifted with foresight and sharp business acumen, he was the first to identify the vast potential of the rapidly growing ready masala market. In 1969, he introduced a new product range called "Shree Ganesh Masala."</p>
+      <blockquote data-reveal style="margin: clamp(34px, 4vw, 48px) 0; padding: 0 0 0 clamp(22px, 3vw, 34px); border-left: 3px solid #FBCF00;">
+        <p style="font-family: 'DM Serif Display', serif; font-size: clamp(26px, 3.4vw, 42px); line-height: 1.25; margin: 0; color: #133E51;">Health Is Wealth.</p>
+        <cite style="display: block; font-style: normal; font-size: 13px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: #8A7F76; margin-top: 14px;">The golden words we still cook by</cite>
+      </blockquote>
+      <p data-reveal style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.8; color: #2A2420; margin: 0 0 30px;">Since the inception of the company, quality has been our guiding force. We have always focused on the golden words "Health Is Wealth," believing that healthy cooking is the foundation for a healthy life. Our masalas come with a Quality Assurance for healthy cooking without compromising on taste and aroma.</p>
+      <p data-reveal style="font-size: clamp(17px, 1.6vw, 20px); line-height: 1.8; color: #2A2420; margin: 0;">Spices, premium masalas, and now instant mixes occupy a very special place in every customer's heart because we understand their needs. Years ago, we recognised the demand for products that keep up with changing times and increasingly demanding lifestyles. Life moves at lightning speed, and we are ushering in a new era where every requirement is instant. Thus, we launched our product "Shree Ganesh Instant Mix"</p>
+    </div>
+  </section>
+
+  <section style="background: #133E51; color: #F4EFE9;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: clamp(56px, 7vw, 96px) clamp(20px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(20px, 2.5vw, 32px);">
+      <div data-reveal style="background: rgba(244,239,233,0.06); border: 1px solid rgba(207,50,45,0.28); border-radius: 22px; padding: clamp(28px, 3.4vw, 44px);">
+        <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #FBCF00; margin-bottom: 18px;">Our Vision</div>
+        <p style="font-size: clamp(16px, 1.45vw, 18.5px); line-height: 1.78; margin: 0; color: rgba(244,239,233,0.86);">The vision set by our founder, Shri Parmanand Shah, is to provide quality products to end users and earn a well-deserved place in millions of hearts, establishing the huge brand value of "Shree Ganesh."</p>
+      </div>
+      <div data-reveal style="background: rgba(244,239,233,0.06); border: 1px solid rgba(207,50,45,0.28); border-radius: 22px; padding: clamp(28px, 3.4vw, 44px);">
+        <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #FBCF00; margin-bottom: 18px;">Our Mission</div>
+        <p style="font-size: clamp(16px, 1.45vw, 18.5px); line-height: 1.78; margin: 0; color: rgba(244,239,233,0.86);">In today's fiercely competitive market, our mission is to emerge as the market leader by consistently delivering high-quality products. We also aim to expand our reach into overseas markets in the coming years.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #EEE1D8; position: relative; overflow: hidden;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 8vw, 108px) clamp(20px, 4vw, 40px);">
+      <div data-reveal style="font-size: 11.5px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #CF322D; margin-bottom: 16px;">Why choose us</div>
+      <h2 data-reveal style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(30px, 4.2vw, 56px); line-height: 1.08; margin: 0 0 clamp(36px, 4.5vw, 52px); max-width: 22ch; text-wrap: pretty;">100% customer satisfaction is the whole objective.</h2>
+      <div data-reveal style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(20px, 2.5vw, 30px); margin-bottom: clamp(44px, 5vw, 64px);">
+        <p style="font-size: 16.5px; line-height: 1.8; color: #2A2420; margin: 0;">At Shree Ganesh, our sole objective is 100% customer satisfaction. Today, our entire range of products, whether regular masalas, premium masalas, or instant mixes, holds an indispensable position on kitchen shelves. The way to a person's heart is through their stomach, and our masalas are crafted to create delicious dishes that nurture one's emotions.</p>
+        <p style="font-size: 16.5px; line-height: 1.8; color: #2A2420; margin: 0;">Every product that reaches the end user passes through rigorous testing channels with state-of-the-art technology and measurements. This results in products that consistently meet the high standards we set. As time passes, we continue to grow stronger in our policies and persuasions, never compromising on quality and quantity.</p>
+      </div>
+      <div data-reveal style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: clamp(16px, 2vw, 24px);">
+        <div style="min-width: 0;">
+          <div style="height: clamp(220px, 26vw, 300px); overflow: hidden; border-radius: 20px; background: #E5DAD1;">
+            <image-slot id="v6-about-plant" shape="rect" placeholder="PLANT PHOTO — Ahmedabad blending / grinding room"></image-slot>
+          </div>
+          <div style="font-size: 15.5px; font-weight: 700; margin-top: 14px;">Blended in Ahmedabad</div>
+          <div style="font-size: 14px; color: #6E6259; line-height: 1.6; margin-top: 4px;">Ground, blended and packed at our HACCP-certified facility.</div>
+        </div>
+        <div style="min-width: 0;">
+          <div style="height: clamp(220px, 26vw, 300px); overflow: hidden; border-radius: 20px; background: #E5DAD1;">
+            <image-slot id="v6-about-testing" shape="rect" placeholder="QUALITY PHOTO — batch testing / lab measurement"></image-slot>
+          </div>
+          <div style="font-size: 15.5px; font-weight: 700; margin-top: 14px;">Tested batch by batch</div>
+          <div style="font-size: 14px; color: #6E6259; line-height: 1.6; margin-top: 4px;">Rigorous testing channels before anything leaves the plant.</div>
+        </div>
+        <div style="min-width: 0;">
+          <div style="height: clamp(220px, 26vw, 300px); overflow: hidden; border-radius: 20px; background: #E5DAD1;">
+            <image-slot id="v6-about-warehouse" shape="rect" placeholder="WAREHOUSE PHOTO — Acacia Ridge racking / delivery van"></image-slot>
+          </div>
+          <div style="font-size: 15.5px; font-weight: 700; margin-top: 14px;">Shipped from Acacia Ridge</div>
+          <div style="font-size: 14px; color: #6E6259; line-height: 1.6; margin-top: 4px;">Stock lands in Brisbane, then goes out across Queensland.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #163340; color: #F4EFE9;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: clamp(56px, 7vw, 92px) clamp(20px, 4vw, 40px);">
+      <div data-reveal style="font-size: 11.5px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #FBCF00; margin-bottom: 16px;">The family of brands</div>
+      <h2 data-reveal style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(28px, 3.6vw, 48px); line-height: 1.1; margin: 0 0 clamp(32px, 4vw, 46px); max-width: 24ch;">Six brands, one house, one standard.</h2>
+      <div data-reveal style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: clamp(14px, 2vw, 22px);">
+        <sc-for list="{{ brands }}" as="b">
+          <div style="background: #EEE1D8; border-radius: 16px; height: 108px; display: flex; align-items: center; justify-content: center; padding: 18px;">
+            <div role="img" aria-label="{{ b.name }}" style="{{ b.logoStyle }}"></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+</div>
+</sc-if>
+
+<!-- ============ APPLY ============ -->
+<section id="apply" style="background: #CF322D; color: #FFFFFF; position: relative; overflow: hidden; scroll-margin-top: 130px;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 8vw, 108px) clamp(20px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: clamp(36px, 5vw, 72px); align-items: start;">
+    <div>
+      <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: #FDE9A0; margin-bottom: 16px;">Trade accounts</div>
+      <h2 style="font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(32px, 4.4vw, 58px); line-height: 1.08; margin: 0 0 22px; max-width: 18ch; text-wrap: pretty;">Come through the door.</h2>
+      <p style="font-size: clamp(16px, 1.4vw, 18px); line-height: 1.72; margin: 0 0 30px; max-width: 46ch; color: rgba(255,255,255,0.88);">Approved in one business day. No minimum first order. Wholesale pricing, the trade pack and the festival calendar unlock the moment you're in.</p>
+      <div style="display: grid; gap: 10px; font-size: 15.5px; line-height: 1.6;">
+        <span>Unit 3/32 Success St, Acacia Ridge QLD 4110</span>
+        <a href="tel:+61490729900" style="color: #FFFFFF; border-bottom: 1px solid rgba(255,255,255,0.4); width: fit-content;" style-hover="color: #fff;">0490 729 900</a>
+        <a href="mailto:info@shreeganesh.com.au" style="color: #FFFFFF; border-bottom: 1px solid rgba(255,255,255,0.4); width: fit-content;" style-hover="color: #fff;">info@shreeganesh.com.au</a>
+        <span style="color: rgba(255,255,255,0.7);">Mon–Fri 9:30am – 3:30pm</span>
+      </div>
+    </div>
+    <div style="background: #EEE1D8; border-radius: 24px; padding: clamp(26px, 3.2vw, 40px); color: #133E51;">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align: center; padding: clamp(30px, 4vw, 50px) 0;">
+          <div style="width: 62px; height: 62px; border-radius: 50%; background: #CF322D; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 22px;">✓</div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: 28px; margin-bottom: 12px;">Application received</div>
+          <p style="font-size: 15.5px; line-height: 1.7; color: #4A4038; margin: 0 auto; max-width: 34ch;">We'll come back within one business day with your pricing and the trade pack.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: clamp(22px, 2.2vw, 28px); margin-bottom: 22px;">Open a trade account</div>
+          <div style="display: grid; gap: 14px;">
+            <input type="text" placeholder="Business name" style="width: 100%; box-sizing: border-box; background: #FFFFFF; border: 1.5px solid #DCCCC0; border-radius: 12px; padding: 15px 17px; font-size: 15.5px; font-family: 'Archivo', sans-serif; color: #133E51;">
+            <input type="text" placeholder="ABN" style="width: 100%; box-sizing: border-box; background: #FFFFFF; border: 1.5px solid #DCCCC0; border-radius: 12px; padding: 15px 17px; font-size: 15.5px; font-family: 'Archivo', sans-serif; color: #133E51;">
+            <input type="text" placeholder="Contact name" style="width: 100%; box-sizing: border-box; background: #FFFFFF; border: 1.5px solid #DCCCC0; border-radius: 12px; padding: 15px 17px; font-size: 15.5px; font-family: 'Archivo', sans-serif; color: #133E51;">
+            <input type="email" placeholder="Email" style="width: 100%; box-sizing: border-box; background: #FFFFFF; border: 1.5px solid #DCCCC0; border-radius: 12px; padding: 15px 17px; font-size: 15.5px; font-family: 'Archivo', sans-serif; color: #133E51;">
+            <input type="tel" placeholder="Phone" style="width: 100%; box-sizing: border-box; background: #FFFFFF; border: 1.5px solid #DCCCC0; border-radius: 12px; padding: 15px 17px; font-size: 15.5px; font-family: 'Archivo', sans-serif; color: #133E51;">
+            <select style="width: 100%; box-sizing: border-box; background: #FFFFFF; border: 1.5px solid #DCCCC0; border-radius: 12px; padding: 15px 17px; font-size: 15.5px; font-family: 'Archivo', sans-serif; color: #133E51;">
+              <option>Business type — grocer</option>
+              <option>Business type — restaurant</option>
+              <option>Business type — caterer</option>
+              <option>Business type — other</option>
+            </select>
+            <textarea placeholder="What are you looking to stock?" rows="3" style="width: 100%; box-sizing: border-box; background: #FFFFFF; border: 1.5px solid #DCCCC0; border-radius: 12px; padding: 15px 17px; font-size: 15.5px; font-family: 'Archivo', sans-serif; color: #133E51; resize: vertical;"></textarea>
+            <button type="button" onClick="{{ submit }}" style="background: #CF322D; color: #fff; border: 0; border-radius: 999px; padding: 17px 28px; font-size: 15px; font-weight: 800; font-family: 'Archivo', sans-serif; cursor: pointer;" style-hover="background: #133E51;">Send application</button>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer style="background: #133E51; color: #A9BCC6;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: clamp(48px, 6vw, 72px) clamp(20px, 4vw, 40px) 36px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding-bottom: 42px; border-bottom: 1px solid rgba(244,239,233,0.14);">
+      <div>
+        <img src="uploads/pasted-1785505166571-0.png" alt="Shree Ganesh" style="height: 44px; background: #fff; border-radius: 10px; padding: 6px 12px; display: block; margin-bottom: 18px;">
+        <p style="font-size: 14px; line-height: 1.7; margin: 0; max-width: 300px;">A masala house since 1969. Made in Ahmedabad, delivered across Queensland. Makers of Shree Ganesh, Amdavadi, Herbs &amp; Spice, Dhiraj, Vipul Dudhiya Sweets and Henaa.</p>
+      </div>
+      <div>
+        <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #FBCF00; margin-bottom: 16px;">The story</div>
+        <div style="display: grid; gap: 10px; font-size: 14.5px;">
+          <a href="#about" onClick="{{ navAbout }}" style="color: #A9BCC6;" style-hover="color: #fff;">About us</a>
+          <a href="#ch-1" onClick="{{ navHouse }}" style="color: #A9BCC6;" style-hover="color: #fff;">The house</a>
+          <a href="#ch-2" onClick="{{ navDabba }}" style="color: #A9BCC6;" style-hover="color: #fff;">The dabba</a>
+          <a href="#ch-3" onClick="{{ navSchool }}" style="color: #A9BCC6;" style-hover="color: #fff;">Trade school</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #FBCF00; margin-bottom: 16px;">Trade</div>
+        <div style="display: grid; gap: 10px; font-size: 14.5px;">
+          <a href="#apply" style="color: #A9BCC6;" style-hover="color: #fff;">Open an account</a>
+          <a href="#apply" style="color: #A9BCC6;" style-hover="color: #fff;">Request the trade pack</a>
+          <a href="#" style="color: #A9BCC6;" style-hover="color: #fff;">Privacy policy</a>
+          <a href="#" style="color: #A9BCC6;" style-hover="color: #fff;">Terms of service</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size: 11.5px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #FBCF00; margin-bottom: 16px;">Contact</div>
+        <div style="display: grid; gap: 10px; font-size: 14.5px; line-height: 1.6;">
+          <span>Unit 3/32 Success St,<br>Acacia Ridge QLD 4110</span>
+          <a href="tel:+61490729900" style="color: #A9BCC6;" style-hover="color: #fff;">0490 729 900</a>
+          <a href="mailto:info@shreeganesh.com.au" style="color: #A9BCC6;" style-hover="color: #fff;">info@shreeganesh.com.au</a>
+          <span>Mon–Fri 9:30am – 3:30pm</span>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-top: 24px; font-size: 13px; flex-wrap: wrap;">
+      <span>© 2026 Shree Ganesh Australia. All rights reserved.</span>
+      <span>Trade enquiries only.</span>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280}}">
+class Component extends DCLogic {
+  state = { page: 'home', chapter: 1, well: 0, openFact: 0, sent: false };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.page !== this.state.page) this.revealAll();
+  }
+
+  revealAll() {
+    requestAnimationFrame(() => {
+      document.querySelectorAll('[data-reveal]').forEach((n) => {
+        n.style.opacity = '1';
+        n.style.transform = 'none';
+      });
+    });
+  }
+
+  toHome(hash) {
+    return (e) => {
+      if (e) e.preventDefault();
+      const jump = () => {
+        const el = hash && document.getElementById(hash);
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 124, behavior: 'smooth' });
+        else window.scrollTo(0, 0);
+      };
+      if (this.state.page !== 'home') { this.setState({ page: 'home' }); setTimeout(jump, 140); }
+      else jump();
+    };
+  }
+
+  componentDidMount() {
+    const nodes = Array.from(document.querySelectorAll('[data-reveal]'));
+    nodes.forEach((n) => {
+      n.style.opacity = '0';
+      n.style.transform = 'translateY(26px)';
+      n.style.transition = 'opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1)';
+    });
+    const show = (n) => { n.style.opacity = '1'; n.style.transform = 'none'; };
+    if ('IntersectionObserver' in window) {
+      this._io = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+          if (e.isIntersecting) {
+            setTimeout(() => show(e.target), i * 70);
+            this._io.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+      nodes.forEach((n) => this._io.observe(n));
+    }
+    this._fallback = setTimeout(() => nodes.forEach(show), 2500);
+
+    this._onScroll = () => {
+      if (this.state.page !== 'home' || this._tick) return;
+      this._tick = true;
+      requestAnimationFrame(() => {
+        this._tick = false;
+        let active = 1;
+        for (let i = 1; i <= 5; i++) {
+          const el = document.getElementById('ch-' + i);
+          if (el && el.getBoundingClientRect().top <= 200) active = i;
+        }
+        if (active !== this.state.chapter) this.setState({ chapter: active });
+      });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    if (this._io) this._io.disconnect();
+    clearTimeout(this._fallback);
+  }
+
+  renderVals() {
+    const chapterDefs = [
+      { num: '01', label: 'The house' },
+      { num: '02', label: 'The dabba' },
+      { num: '03', label: 'Trade school' },
+      { num: '04', label: 'The rhythm' },
+      { num: '05', label: 'The aisle' },
+    ];
+    const chapters = chapterDefs.map((c, i) => {
+      const active = this.state.chapter === i + 1;
+      return {
+        num: c.num,
+        label: c.label,
+        href: '#ch-' + (i + 1),
+        style: 'display:flex;align-items:center;gap:9px;white-space:nowrap;font-size:13.5px;font-weight:' + (active ? '700' : '600') +
+          ';color:' + (active ? '#CF322D' : '#6E6259') + ';border-bottom:2px solid ' + (active ? '#CF322D' : 'transparent') +
+          ';padding:6px 0;transition:color .2s ease',
+      };
+    });
+
+    const wellDefs = [
+      { name: 'Turmeric', hindi: 'Haldi · હળદર', color: '#E8A20C', product: 'Ganesh Turmeric Powder', brand: 'Herbs & Spice', note: 'The colour every curry is judged by. Ours is single-origin and ground fine enough to bloom in oil in seconds, not minutes.' },
+      { name: 'Red chilli', hindi: 'Lal mirch · લાલ મરચું', color: '#CF322D', product: 'Ganesh Chilli Powder', brand: 'Herbs & Spice', note: 'Heat is easy. Colour without bitterness is the hard part — which is why we blend two chilli varieties instead of one.' },
+      { name: 'Coriander-cumin', hindi: 'Dhana jeeru · ધાણાજીરું', color: '#8A6B3A', product: 'Ganesh Dhana Jeeru', brand: 'Shree Ganesh', note: 'The Gujarati household blend. Two parts coriander to one cumin, roasted separately then ground together — the order matters.' },
+      { name: 'Cumin seed', hindi: 'Jeeru · જીરું', color: '#7A5C34', product: 'Ganesh Whole Cumin', brand: 'Herbs & Spice', note: 'Sold whole because it should be. A cumin seed keeps its oil for months; cumin powder loses it in weeks.' },
+      { name: 'Mustard seed', hindi: 'Rai · રાઈ', color: '#5E5326', product: 'Ganesh Mustard Seed', brand: 'Herbs & Spice', note: 'The first thing into the pan and the sound a Gujarati kitchen starts with. Graded so the whole spoonful pops together.' },
+      { name: 'Asafoetida', hindi: 'Hing · હીંગ', color: '#D9B65C', product: 'Ganesh Compounded Hing', brand: 'Shree Ganesh', note: 'A pinch does the work of an onion. Compounded to a consistent strength so a recipe behaves the same in every kitchen.' },
+      { name: 'Garam masala', hindi: 'Garam masala · ગરમ મસાલો', color: '#4A2E1E', product: 'Ganesh Garam Masala', brand: 'Shree Ganesh', note: 'The 1969 recipe, unchanged. Whole spices roasted in small runs so the oils are still in the powder when the carton reaches your shelf.' },
+    ];
+    const wells = wellDefs.map((w, i) => {
+      const angle = (i / wellDefs.length) * Math.PI * 2 - Math.PI / 2;
+      const r = 31;
+      const left = 50 + Math.cos(angle) * r;
+      const top = 50 + Math.sin(angle) * r;
+      const active = this.state.well === i;
+      return {
+        name: w.name,
+        pick: () => this.setState({ well: i }),
+        style: 'position:absolute;left:' + left.toFixed(2) + '%;top:' + top.toFixed(2) + '%;transform:translate(-50%,-50%)' + (active ? ' scale(1.14)' : '') +
+          ';width:25%;aspect-ratio:1;border-radius:50%;background:' + w.color +
+          ';border:' + (active ? '4px solid #FBCF00' : '3px solid rgba(255,255,255,0.16)') +
+          ';box-shadow:' + (active ? '0 0 0 6px rgba(207,50,45,0.22), inset 0 4px 12px rgba(0,0,0,0.35)' : 'inset 0 4px 12px rgba(0,0,0,0.4)') +
+          ';cursor:pointer;padding:0;transition:transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s ease, border-color .25s ease',
+      };
+    });
+
+    const factDefs = [
+      { q: 'How do you tell a fresh grind from a stale one?', a: 'Rub a pinch between your palms. Fresh ground masala warms and releases oil you can smell on your skin; stale powder just smells dusty. It is the single fastest quality check you can do at a counter, and it works in front of a customer.' },
+      { q: 'Why does the same recipe taste different in two kitchens?', a: 'Almost always the tempering, not the masala. Spices need fat at the right heat to release their oils — too cool and the flavour stays locked in the powder, too hot and it burns bitter in seconds. Tell a customer to wait for the mustard seeds to pop and half their complaints disappear.' },
+      { q: 'Whole or ground — what should you actually stock?', a: 'Both, but rotate them differently. Whole spices hold their oils for months, ground loses aroma in weeks. Stock ground in the sizes that sell through fast and let the whole spices carry the long tail. Anything ground sitting past six months is costing you a repeat customer.' },
+      { q: 'When should festival stock actually land?', a: 'Six weeks before, not two. Ocean freight from Ahmedabad plus clearance means the order you place in September is the shelf you are selling from in November. Sweets and snack lines move first; masala and staples carry the fortnight after.' },
+    ];
+    const facts = factDefs.map((f, i) => {
+      const open = this.state.openFact === i;
+      return {
+        num: '0' + (i + 1),
+        q: f.q,
+        a: f.a,
+        open,
+        sign: open ? '−' : '+',
+        toggle: () => this.setState({ openFact: open ? -1 : i }),
+      };
+    });
+
+    const fmt = (d) => d.toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
+    const today = new Date();
+    const festivalDefs = [
+      { name: 'Ganesh Chaturthi', iso: '2026-09-14', stock: 'Modak, mithai, sweet trays' },
+      { name: 'Navratri begins', iso: '2026-10-11', stock: 'Farali snacks, fasting flours' },
+      { name: 'Diwali', iso: '2026-11-08', stock: 'Sweets, gift boxes, ghee' },
+      { name: 'Holi', iso: '2027-03-03', stock: 'Gulab jamun, thandai masala' },
+    ];
+    const festivals = festivalDefs.map((f) => {
+      const d = new Date(f.iso + 'T00:00:00');
+      const orderBy = new Date(d.getTime() - 42 * 864e5);
+      return {
+        name: f.name,
+        stock: f.stock,
+        date: fmt(d),
+        orderBy: orderBy.toLocaleDateString('en-AU', { day: 'numeric', month: 'short' }),
+        days: Math.max(0, Math.ceil((d - today) / 864e5)),
+      };
+    });
+
+    const brands = [
+      { name: 'Shree Ganesh', logo: 'uploads/pasted-1785528944691-0.png' },
+      { name: 'Amdavadi', logo: 'uploads/pasted-1785528953606-0.png' },
+      { name: 'Herbs & Spice', logo: 'uploads/pasted-1785528957810-0.png' },
+      { name: 'Dhiraj', logo: 'uploads/pasted-1785528939574-0.png' },
+      { name: 'Vipul Dudhiya Sweets', logo: 'uploads/pasted-1785528949200-0.png' },
+      { name: 'Henaa Inc', logo: 'uploads/pasted-1785528913296-0.png' },
+    ].map((b) => Object.assign({}, b, {
+      logoStyle: 'width:100%;height:100%;background-image:url("' + b.logo + '");background-size:contain;background-position:center;background-repeat:no-repeat',
+    }));
+
+    const isAbout = this.state.page === 'about';
+    const navBase = 'white-space:nowrap;transition:color .2s ease;padding-bottom:2px;border-bottom:2px solid transparent;';
+    return {
+      isHome: !isAbout,
+      isAbout,
+      navHomeStyle: navBase + 'color:#F4EFE9',
+      navAboutStyle: navBase + 'color:' + (isAbout ? '#FBCF00' : '#F4EFE9') + ';border-bottom-color:' + (isAbout ? '#FBCF00' : 'transparent'),
+      navHouse: this.toHome('ch-1'),
+      navDabba: this.toHome('ch-2'),
+      navSchool: this.toHome('ch-3'),
+      navAbout: (e) => { if (e) e.preventDefault(); this.setState({ page: 'about' }); window.scrollTo(0, 0); },
+      chapters,
+      wells,
+      activeWell: wellDefs[this.state.well],
+      facts,
+      festivals,
+      brands,
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      submit: () => this.setState({ sent: true }),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -44,7 +44,7 @@ export function SearchBox({
           setValue(e.target.value);
         }}
         placeholder={`Search ${total.toLocaleString("en-AU")} products`}
-        className="w-full rounded-full border-[1.5px] border-line-deep bg-white py-4 pr-12 pl-12 text-base text-ink outline-none focus:border-ink"
+        className="w-full rounded-full border-[1.5px] border-line-deep bg-white py-4 pr-12 pl-12 text-base text-teal outline-none focus:border-teal"
       />
       {value !== "" ? (
         <button
@@ -54,7 +54,7 @@ export function SearchBox({
             setValue("");
           }}
           aria-label="Clear search"
-          className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer text-faint hover:text-ink"
+          className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer text-faint hover:text-teal"
         >
           <X size={18} />
         </button>

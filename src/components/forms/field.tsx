@@ -21,8 +21,8 @@ export function Field({
     "w-full box-border rounded-xl border-[1.5px] px-[18px] py-[15px] text-[15.5px] outline-none transition-colors";
   const toneClasses =
     tone === "forest"
-      ? "bg-forest-light border-forest-line text-[#F2F7EF] placeholder:text-[#F2F7EF]/55 focus:border-gold"
-      : "bg-cream border-line-deep text-ink placeholder:text-faint focus:border-ink";
+      ? "bg-teal-light border-teal-line text-[#F2F7EF] placeholder:text-[#F2F7EF]/55 focus:border-gold"
+      : "bg-cream border-line-deep text-teal placeholder:text-faint focus:border-teal";
 
   const id = `field-${name}`;
 

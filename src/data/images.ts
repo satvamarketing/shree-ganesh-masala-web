@@ -49,13 +49,27 @@ export const images: Record<string, ImageSlot> = {
   hero: { src: "", alt: "Shree Ganesh pantry staples", needsReal: true },
   founder: {
     src: "",
-    alt: "Shri Vrajlal Manilal Shah, founder",
+    alt: "Shri Vrajlal Manilal Shah, or the original masala house",
     needsReal: true,
   },
-  warehouse: { src: "", alt: "The Acacia Ridge warehouse", needsReal: true },
+  warehouse: {
+    src: "",
+    alt: "Acacia Ridge racking, or the delivery van",
+    needsReal: true,
+  },
   archival1969: {
     src: "",
     alt: "The original Ahmedabad masala shop, 1969",
+    needsReal: true,
+  },
+  plantRoom: {
+    src: "",
+    alt: "The Ahmedabad blending and grinding room",
+    needsReal: true,
+  },
+  batchTesting: {
+    src: "",
+    alt: "Batch testing and lab measurement",
     needsReal: true,
   },
   qualityLine: { src: "", alt: "The Ahmedabad packing line", needsReal: true },

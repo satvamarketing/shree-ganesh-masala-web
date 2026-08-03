@@ -96,12 +96,12 @@ export default async function ProductPage({
           </div>
 
           <div>
-            <span className="inline-block rounded-full bg-ink px-[11px] py-[5px] text-[10.5px] font-bold tracking-[1px] text-[#FFF1DE] uppercase">
+            <span className="inline-block rounded-full bg-teal px-[11px] py-[5px] text-[10.5px] font-bold tracking-[1px] text-[#FFF1DE] uppercase">
               {product.brand}
             </span>
 
             <h1
-              className="mt-4 mb-5 font-serif text-[clamp(28px,3.2vw,42px)] leading-[1.1] font-normal text-ink"
+              className="mt-4 mb-5 font-serif text-[clamp(28px,3.2vw,42px)] leading-[1.1] font-normal text-teal"
               style={{ textWrap: "pretty" }}
             >
               {product.title}
@@ -113,7 +113,7 @@ export default async function ProductPage({
                   <dt className="w-[150px] shrink-0 font-bold text-muted">
                     {f.label}
                   </dt>
-                  <dd className="font-semibold text-ink">{f.value}</dd>
+                  <dd className="font-semibold text-teal">{f.value}</dd>
                 </div>
               ))}
               {product.departments.length > 0 ? (
@@ -146,7 +146,7 @@ export default async function ProductPage({
               </p>
             ) : null}
 
-            <Button href="/wholesale" variant="red">
+            <Button href="/#apply" variant="red">
               Log in for carton pricing
             </Button>
             <p className="mt-4 text-[13.5px] leading-[1.6] text-muted">
@@ -159,7 +159,7 @@ export default async function ProductPage({
 
       {related.length > 0 ? (
         <section className="shell pb-[clamp(64px,8vw,96px)]">
-          <h2 className="mb-8 font-serif text-[clamp(24px,2.6vw,34px)] font-normal text-ink">
+          <h2 className="mb-8 font-serif text-[clamp(24px,2.6vw,34px)] font-normal text-teal">
             More from {product.brand}
           </h2>
           <div className="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(230px,1fr))]">

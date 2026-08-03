@@ -49,6 +49,22 @@ describe("validate", () => {
     expect(validate([1, 2], spec).ok).toBe(false);
   });
 
+  it("accepts a value from a oneOf list", () => {
+    const r = validate(
+      { name: "Asha", email: "a@b.com", kind: "Grocer" },
+      [...spec, { key: "kind", label: "Business type", required: true, oneOf: ["Grocer", "Caterer"] }],
+    );
+    expect(r.ok && r.values.kind).toBe("Grocer");
+  });
+
+  it("rejects a value outside a oneOf list, so a tampered select cannot get through", () => {
+    const r = validate(
+      { name: "Asha", email: "a@b.com", kind: "Wholesaler" },
+      [...spec, { key: "kind", label: "Business type", required: true, oneOf: ["Grocer", "Caterer"] }],
+    );
+    expect(r).toEqual({ ok: false, error: "Business type is not a valid choice." });
+  });
+
   it("ignores unspecified fields rather than passing them through", () => {
     const r = validate({ name: "Asha", email: "a@b.com", admin: "true" }, spec);
     expect(r.ok && "admin" in r.values).toBe(false);

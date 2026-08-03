@@ -28,7 +28,7 @@ export default function DepartmentsPage() {
         <div className="shell py-[clamp(48px,6vw,80px)]">
           <Eyebrow className="mb-3.5">Departments</Eyebrow>
           <h1
-            className="mb-4.5 max-w-[720px] font-serif text-[clamp(38px,4.6vw,62px)] leading-[1.06] font-normal text-ink"
+            className="mb-4.5 max-w-[720px] font-serif text-[clamp(38px,4.6vw,62px)] leading-[1.06] font-normal text-teal"
             style={{ textWrap: "pretty" }}
           >
             Everything for the Indian kitchen
@@ -58,7 +58,7 @@ export default function DepartmentsPage() {
             <div className="flex flex-col justify-center p-[clamp(30px,4vw,52px)]">
               <Eyebrow className="mb-3.5">Biggest aisle</Eyebrow>
               <h2
-                className="mb-4 font-serif text-[clamp(28px,3.2vw,42px)] leading-[1.1] font-normal text-ink"
+                className="mb-4 font-serif text-[clamp(28px,3.2vw,42px)] leading-[1.1] font-normal text-teal"
                 style={{ textWrap: "pretty" }}
               >
                 {biggest.name}
@@ -87,12 +87,12 @@ export default function DepartmentsPage() {
         </div>
       </section>
 
-      <section className="bg-mint">
+      <section className="bg-teal">
         <div className="mx-auto max-w-[780px] px-[clamp(20px,4vw,40px)] py-[clamp(56px,7vw,88px)] text-center">
-          <h2 className="mb-3.5 font-serif text-[clamp(30px,3.4vw,44px)] leading-[1.1] font-normal text-forest">
+          <h2 className="mb-3.5 font-serif text-[clamp(30px,3.4vw,44px)] leading-[1.1] font-normal text-teal">
             Trade updates, once a fortnight
           </h2>
-          <p className="mb-7.5 text-[16.5px] leading-[1.65] text-mint-ink">
+          <p className="mb-7.5 text-[16.5px] leading-[1.65] text-cream/80">
             Festival ordering guides, new lines and price-list changes, straight
             to your inbox. No spam, unsubscribe any time.
           </p>
