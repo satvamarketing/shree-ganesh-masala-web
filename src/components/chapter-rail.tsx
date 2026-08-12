@@ -50,10 +50,10 @@ export function ChapterRail() {
   }, []);
 
   return (
-    <div className="sticky top-[74px] z-40 border-b border-line bg-white/94 backdrop-blur-[10px]">
+    <div className="sticky top-[66px] z-40 border-b border-line bg-white/94 backdrop-blur-[10px]">
       <nav
         aria-label="Chapters"
-        className="shell flex h-14 items-center gap-[clamp(14px,2.4vw,34px)] overflow-x-auto"
+        className="shell flex h-[52px] items-center gap-[clamp(14px,2.4vw,34px)] overflow-x-auto"
       >
         {CHAPTERS.map((c, i) => {
           const on = i === active;
@@ -66,7 +66,7 @@ export function ChapterRail() {
               className={`flex items-center gap-2.5 border-b-2 py-1.5 text-[13.5px] whitespace-nowrap transition-colors ${
                 on
                   ? "border-red font-bold text-red"
-                  : "border-transparent font-semibold text-muted hover:text-teal"
+                  : "border-transparent font-semibold text-muted hover:text-red"
               }`}
             >
               <span className="font-serif text-[15px]">{c.num}</span>

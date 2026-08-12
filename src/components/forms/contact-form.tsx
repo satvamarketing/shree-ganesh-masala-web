@@ -9,10 +9,10 @@ export function ContactForm() {
   if (state === "sent") {
     return (
       <div className="px-2.5 py-10 text-center">
-        <div className="mb-4 text-[46px] leading-none text-teal" aria-hidden="true">
+        <div className="mb-4 text-[46px] leading-none text-ink" aria-hidden="true">
           ✓
         </div>
-        <h2 className="mb-3 font-serif text-[30px] font-normal text-teal">
+        <h2 className="mb-3 font-serif text-[30px] font-normal text-ink">
           Message sent
         </h2>
         <p className="mb-6 text-base leading-[1.65] text-body">
@@ -31,7 +31,7 @@ export function ContactForm() {
 
   return (
     <div>
-      <h2 className="mb-5.5 font-serif text-[clamp(26px,3vw,34px)] font-normal text-teal">
+      <h2 className="mb-5.5 font-serif text-[clamp(26px,3vw,34px)] font-normal text-ink">
         Send us a message
       </h2>
 
@@ -44,10 +44,10 @@ export function ContactForm() {
         }}
         className="grid gap-3.5"
       >
-        <Field name="name" label="Your name" required tone="cream" />
-        <Field name="email" label="Email" type="email" required tone="cream" />
-        <Field name="subject" label="Subject" required tone="cream" />
-        <Field name="message" label="How can we help?" rows={6} required tone="cream" />
+        <Field name="name" label="Your name" required />
+        <Field name="email" label="Email" type="email" required />
+        <Field name="subject" label="Subject" required />
+        <Field name="message" label="How can we help?" rows={6} required />
         <Honeypot />
 
         {error ? (
@@ -59,7 +59,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={state === "sending"}
-          className="cursor-pointer rounded-full bg-red px-7 py-4.5 text-base font-bold text-white transition-colors hover:bg-teal disabled:cursor-wait disabled:opacity-70"
+          className="cursor-pointer rounded-full bg-red px-7 py-4.5 text-base font-bold text-white transition-colors hover:bg-ink disabled:cursor-wait disabled:opacity-70"
         >
           {state === "sending" ? "Sending…" : "Send message"}
         </button>

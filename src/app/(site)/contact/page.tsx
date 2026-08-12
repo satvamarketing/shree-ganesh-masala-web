@@ -22,7 +22,7 @@ function InfoCard({
       <div className="mb-2 text-[12px] font-extrabold tracking-[2px] text-red uppercase">
         {label}
       </div>
-      <div className="text-[17px] leading-[1.5] font-semibold text-teal">
+      <div className="text-[17px] leading-[1.5] font-semibold text-ink">
         {children}
       </div>
     </div>
@@ -33,20 +33,20 @@ export default function ContactPage() {
   return (
     <>
       <section className="border-b border-line bg-sand">
-        <div className="shell py-[clamp(48px,6vw,80px)]">
+        <div className="shell py-[clamp(40px,4.5vw,64px)]">
           <Eyebrow className="mb-3.5">Contact</Eyebrow>
-          <h1 className="mb-4.5 font-serif text-[clamp(38px,4.6vw,62px)] leading-[1.06] font-normal text-teal">
+          <h1 className="mb-4.5 font-serif text-[clamp(38px,4.6vw,62px)] leading-[1.06] font-normal text-ink">
             Talk to us
           </h1>
-          <p className="max-w-[520px] text-[clamp(16px,1.4vw,18px)] leading-[1.65] text-body">
+          <p className="max-w-[520px] text-[clamp(15.5px,1vw,17px)] leading-[1.65] text-body">
             New accounts, order questions, product enquiries: someone in the
             warehouse will answer.
           </p>
         </div>
       </section>
 
-      <section className="shell py-[clamp(48px,6vw,80px)]">
-        <div className="grid items-start gap-[clamp(32px,5vw,60px)] lg:grid-cols-2">
+      <section className="shell py-[clamp(40px,4.5vw,64px)]">
+        <div className="grid items-start gap-[clamp(28px,3.4vw,46px)] lg:grid-cols-2">
           <div className="grid gap-3.5">
             <InfoCard label="Warehouse">
               {site.address.street},
@@ -55,13 +55,13 @@ export default function ContactPage() {
             </InfoCard>
 
             <InfoCard label="Phone">
-              <a href={site.phoneHref} className="text-teal hover:text-red">
+              <a href={site.phoneHref} className="text-ink hover:text-red">
                 {site.phone}
               </a>
             </InfoCard>
 
             <InfoCard label="Email">
-              <a href={`mailto:${site.email}`} className="text-teal hover:text-red">
+              <a href={`mailto:${site.email}`} className="text-ink hover:text-red">
                 {site.email}
               </a>
             </InfoCard>

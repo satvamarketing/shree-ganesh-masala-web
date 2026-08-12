@@ -176,9 +176,6 @@ export const aboutFounder = [
 export const vision =
   'The vision set by our founder, Shri Parmanand Shah, is to provide quality products to end users and earn a well-deserved place in millions of hearts, establishing the huge brand value of "Shree Ganesh."';
 
-export const mission =
-  "In today's fiercely competitive market, our mission is to emerge as the market leader by consistently delivering high-quality products. We also aim to expand our reach into overseas markets in the coming years.";
-
 export const whyChooseUs = [
   "At Shree Ganesh, our sole objective is 100% customer satisfaction. Today, our entire range of products, whether regular masalas, premium masalas, or instant mixes, holds an indispensable position on kitchen shelves. The way to a person's heart is through their stomach, and our masalas are crafted to create delicious dishes that nurture one's emotions.",
   "Every product that reaches the end user passes through rigorous testing channels with state-of-the-art technology and measurements. This results in products that consistently meet the high standards we set. As time passes, we continue to grow stronger in our policies and persuasions, never compromising on quality and quantity.",

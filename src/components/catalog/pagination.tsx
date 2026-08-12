@@ -38,7 +38,7 @@ export function Pagination({
   return (
     <nav aria-label="Pagination" className="mt-12 flex flex-wrap items-center justify-center gap-2">
       {page > 1 ? (
-        <Link href={hrefFor(page - 1)} rel="prev" className={`${base} border-[1.5px] border-line-deep bg-white text-teal hover:border-teal`}>
+        <Link href={hrefFor(page - 1)} rel="prev" className={`${base} border-[1.5px] border-line-deep bg-white text-ink hover:border-ink`}>
           ← Prev
         </Link>
       ) : (
@@ -53,18 +53,18 @@ export function Pagination({
             …
           </span>
         ) : entry === page ? (
-          <span key={entry} aria-current="page" className={`${base} bg-teal text-cream`}>
+          <span key={entry} aria-current="page" className={`${base} bg-ink text-white`}>
             {entry}
           </span>
         ) : (
-          <Link key={entry} href={hrefFor(entry)} className={`${base} border-[1.5px] border-line-deep bg-white text-teal hover:border-teal`}>
+          <Link key={entry} href={hrefFor(entry)} className={`${base} border-[1.5px] border-line-deep bg-white text-ink hover:border-ink`}>
             {entry}
           </Link>
         ),
       )}
 
       {page < pageCount ? (
-        <Link href={hrefFor(page + 1)} rel="next" className={`${base} border-[1.5px] border-line-deep bg-white text-teal hover:border-teal`}>
+        <Link href={hrefFor(page + 1)} rel="next" className={`${base} border-[1.5px] border-line-deep bg-white text-ink hover:border-ink`}>
           Next →
         </Link>
       ) : (

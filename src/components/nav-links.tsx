@@ -58,7 +58,7 @@ export function NavLinks() {
 
       <Link
         href="/#apply"
-        className="rounded-full bg-red px-5 py-3 tracking-[1px] text-white transition-colors hover:bg-red-dark"
+        className="rounded-full bg-white px-5 py-2.5 tracking-[1px] text-red transition-colors hover:bg-gold hover:text-ink"
       >
         Open an account
       </Link>

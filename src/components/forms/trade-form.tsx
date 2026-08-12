@@ -5,7 +5,7 @@ import { useFormPost } from "@/lib/use-form-post";
 import { BUSINESS_TYPES } from "@/app/api/wholesale/route";
 
 const FIELD =
-  "w-full box-border rounded-xl border-[1.5px] border-field-line bg-white px-[17px] py-[15px] text-[15.5px] text-teal outline-none transition-colors placeholder:text-faint focus:border-red";
+  "w-full box-border rounded-xl border-[1.5px] border-field-line bg-white px-[17px] py-[15px] text-[15.5px] text-ink outline-none transition-colors placeholder:text-faint focus:border-red";
 
 const TEXT_FIELDS = [
   { name: "business", label: "Business name", type: "text" },
@@ -123,7 +123,7 @@ export function TradeForm() {
         <button
           type="submit"
           disabled={state === "sending"}
-          className="cursor-pointer rounded-full bg-red px-7 py-4.5 text-[15px] font-extrabold text-white transition-colors hover:bg-teal disabled:cursor-wait disabled:opacity-70"
+          className="cursor-pointer rounded-full bg-red px-7 py-4.5 text-[15px] font-extrabold text-white transition-colors hover:bg-ink disabled:cursor-wait disabled:opacity-70"
         >
           {state === "sending" ? "Sending…" : "Send application"}
         </button>

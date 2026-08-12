@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { AnnouncementBar } from "@/components/announcement-bar";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { NotFoundContent } from "@/components/not-found-content";
@@ -17,7 +16,6 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <>
-      <AnnouncementBar />
       <Header />
       <main className="flex-1">
         <NotFoundContent />

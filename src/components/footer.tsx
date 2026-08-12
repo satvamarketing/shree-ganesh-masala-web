@@ -40,7 +40,7 @@ export function Footer() {
     .replace(/, ([^,]*)$/, " and $1");
 
   return (
-    <footer className="bg-teal text-footer-text">
+    <footer className="bg-red-dark text-footer-text">
       <div className="shell pt-[clamp(48px,6vw,72px)] pb-9">
         <div className="grid gap-10 border-b border-cream/14 pb-10 [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))]">
           <div>

@@ -8,7 +8,7 @@ export function NewsletterForm() {
 
   if (state === "sent") {
     return (
-      <p className="font-serif text-xl text-teal">
+      <p className="font-serif text-xl text-ink">
         Thanks, you&apos;re on the list.
       </p>
     );
@@ -34,13 +34,13 @@ export function NewsletterForm() {
           type="email"
           required
           placeholder="your@email.com"
-          className="box-border min-w-[240px] flex-1 rounded-full border-[1.5px] border-[#CBDDC4] bg-white px-6 py-4 text-base text-teal outline-none focus:border-teal"
+          className="box-border min-w-[240px] flex-1 rounded-full border-[1.5px] border-[#CBDDC4] bg-white px-6 py-4 text-base text-ink outline-none focus:border-ink"
         />
         <Honeypot />
         <button
           type="submit"
           disabled={state === "sending"}
-          className="cursor-pointer rounded-full bg-teal px-8 py-4 text-[15.5px] font-bold text-white transition-colors hover:bg-teal disabled:cursor-wait disabled:opacity-70"
+          className="cursor-pointer rounded-full bg-red px-8 py-4 text-[15.5px] font-bold text-white transition-colors hover:bg-ink disabled:cursor-wait disabled:opacity-70"
         >
           {state === "sending" ? "Subscribing…" : "Subscribe"}
         </button>

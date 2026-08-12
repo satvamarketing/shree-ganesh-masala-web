@@ -9,6 +9,7 @@ import { FestivalCountdown } from "@/components/sections/festival-countdown";
 import { Hero } from "@/components/sections/hero";
 import { SpiceTin } from "@/components/sections/spice-tin";
 import { TradeSchool } from "@/components/sections/trade-school";
+import { Trending } from "@/components/sections/trending";
 import { Button, ChapterNumeral, Display, Eyebrow } from "@/components/ui";
 import { brands } from "@/data/brands";
 import { departments } from "@/data/departments";
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 };
 
 const CHAPTER = "relative overflow-hidden";
-const CHAPTER_INNER = "shell relative py-[clamp(64px,8vw,112px)]";
+const CHAPTER_INNER = "shell relative py-[clamp(48px,5vw,76px)]";
 
 export default function HomePage() {
   return (
@@ -45,16 +46,16 @@ export default function HomePage() {
             <Eyebrow className="mb-4">Chapter One · The House</Eyebrow>
           </Reveal>
           <Reveal delay={70}>
-            <Display className="mb-[clamp(22px,2.6vw,30px)] max-w-[20ch] text-teal">
+            <Display className="mb-[clamp(22px,2.6vw,30px)] max-w-[20ch] text-ink">
               Wholesale is a race to the cheapest carton. We&apos;re not in that
               race.
             </Display>
           </Reveal>
           <Reveal delay={140}>
-            <p className="mb-[clamp(40px,5vw,60px)] max-w-[62ch] text-[clamp(16px,1.4vw,18.5px)] leading-[1.75] text-body">
+            <p className="mb-[clamp(32px,3.6vw,48px)] max-w-[62ch] text-[clamp(15.5px,1vw,17px)] leading-[1.75] text-body">
               In 1969 our founder, Shri Vrajlal Manilal Shah, called his
               standard{" "}
-              <em className="font-serif text-teal italic">Quality Vision</em>. He
+              <em className="font-serif text-ink italic">Quality Vision</em>. He
               was the first in the market to see where ready masala was going,
               and he refused to let volume dictate the blend. Fifty-seven years
               on, that is still the only reason to choose us over a cheaper
@@ -85,7 +86,7 @@ export default function HomePage() {
       {/* ---------------------------- 02 The dabba --------------------------- */}
       <section
         id="ch-2"
-        className={`${CHAPTER} bg-teal text-cream`}
+        className={`${CHAPTER} bg-sand text-ink`}
        
       >
         <ChapterNumeral numeral="02" side="left" tone="dark" />
@@ -101,7 +102,7 @@ export default function HomePage() {
             </Display>
           </Reveal>
           <Reveal delay={140}>
-            <p className="mb-[clamp(44px,5.5vw,64px)] max-w-[60ch] text-[clamp(16px,1.4vw,18.5px)] leading-[1.75] text-cream/80">
+            <p className="mb-[clamp(36px,4vw,52px)] max-w-[60ch] text-[clamp(15.5px,1vw,17px)] leading-[1.75] text-cream/80">
               Seven wells, one lid, always within reach of the stove. Your
               customers don&apos;t need convincing that it matters, because they
               grew up with it. Our job is to be what&apos;s inside it. Tap a
@@ -124,12 +125,12 @@ export default function HomePage() {
             </Eyebrow>
           </Reveal>
           <Reveal delay={70}>
-            <Display className="mb-[clamp(20px,2.4vw,28px)] max-w-[22ch] text-teal">
+            <Display className="mb-[clamp(20px,2.4vw,28px)] max-w-[22ch] text-ink">
               What we know about spice, you can sell with.
             </Display>
           </Reveal>
           <Reveal delay={140}>
-            <p className="mb-[clamp(36px,4.5vw,52px)] max-w-[60ch] text-[clamp(16px,1.4vw,18.5px)] leading-[1.75] text-body">
+            <p className="mb-[clamp(30px,3.4vw,44px)] max-w-[60ch] text-[clamp(15.5px,1vw,17px)] leading-[1.75] text-body">
               Fifty-seven years of grinding teaches you things a distributor
               never learns. We hand them over, because a grocer who can answer
               these questions at the counter sells more than one who can&apos;t.
@@ -140,9 +141,9 @@ export default function HomePage() {
           </Reveal>
           <Reveal
             delay={280}
-            className="mt-[clamp(34px,4vw,46px)] flex flex-wrap items-center gap-4"
+            className="mt-[clamp(28px,3.2vw,38px)] flex flex-wrap items-center gap-4"
           >
-            <Button href="/#apply" variant="teal">
+            <Button href="/#apply" variant="ink">
               Get the trade pack
             </Button>
             <span className="text-[14.5px] text-muted">
@@ -156,7 +157,7 @@ export default function HomePage() {
       {/* ---------------------------- 04 The rhythm --------------------------- */}
       <section
         id="ch-4"
-        className={`${CHAPTER} bg-teal-soft text-cream`}
+        className={`${CHAPTER} bg-red text-white`}
        
       >
         <ChapterNumeral numeral="04" side="left" tone="dark" />
@@ -172,7 +173,7 @@ export default function HomePage() {
             </Display>
           </Reveal>
           <Reveal delay={140}>
-            <p className="mb-[clamp(44px,5.5vw,62px)] max-w-[58ch] text-[clamp(16px,1.4vw,18.5px)] leading-[1.75] text-cream/80">
+            <p className="mb-[clamp(44px,5.5vw,62px)] max-w-[58ch] text-[clamp(15.5px,1vw,17px)] leading-[1.75] text-cream/80">
               Restocking shouldn&apos;t be a phone call you dread. It should be a
               rhythm you stop thinking about: the same three days, the same
               driver, the same shelf full on Wednesday morning.
@@ -181,7 +182,7 @@ export default function HomePage() {
 
           <Reveal
             delay={210}
-            className="mb-[clamp(52px,6.5vw,78px)] grid gap-[clamp(14px,1.8vw,20px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))]"
+            className="mb-[clamp(40px,4.5vw,60px)] grid gap-[clamp(14px,1.8vw,20px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))]"
           >
             {rhythmDays.map((d) => (
               <div
@@ -208,7 +209,7 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <Reveal className="border-t border-red/25 pt-[clamp(34px,4vw,48px)]">
+          <Reveal className="border-t border-red/25 pt-[clamp(28px,3.2vw,40px)]">
             <div className="mb-[clamp(24px,3vw,34px)] flex flex-wrap items-end justify-between gap-6">
               <div>
                 <Eyebrow tone="gold" className="mb-3 tracking-[2.2px]">
@@ -236,12 +237,12 @@ export default function HomePage() {
             <Eyebrow className="mb-4">Chapter Five · The Aisle</Eyebrow>
           </Reveal>
           <Reveal delay={70}>
-            <Display className="mb-[clamp(20px,2.4vw,28px)] max-w-[20ch] text-teal">
+            <Display className="mb-[clamp(20px,2.4vw,28px)] max-w-[20ch] text-ink">
               Run an Indian aisle like a specialist.
             </Display>
           </Reveal>
           <Reveal delay={140}>
-            <p className="mb-[clamp(40px,5vw,58px)] max-w-[58ch] text-[clamp(16px,1.4vw,18.5px)] leading-[1.75] text-body">
+            <p className="mb-[clamp(32px,3.6vw,46px)] max-w-[58ch] text-[clamp(15.5px,1vw,17px)] leading-[1.75] text-body">
               Most independent grocers can&apos;t compete with a chain on an
               Indian aisle, because it takes five importers, five minimums and
               five invoices to fill one. One account here replaces all of that.
@@ -250,7 +251,7 @@ export default function HomePage() {
 
           <Reveal
             delay={210}
-            className="mb-[clamp(44px,5vw,60px)] grid gap-[clamp(16px,2vw,24px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))]"
+            className="mb-[clamp(34px,4vw,50px)] grid gap-[clamp(16px,2vw,24px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))]"
           >
             <div className="rounded-[20px] border border-line-deep bg-sand-deep p-[clamp(26px,3vw,36px)]">
               <Eyebrow tone="faint" className="mb-5 tracking-[2.2px]">
@@ -262,7 +263,7 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-            <div className="rounded-[20px] bg-teal p-[clamp(26px,3vw,36px)] text-cream">
+            <div className="rounded-[20px] bg-red p-[clamp(26px,3vw,36px)] text-white">
               <Eyebrow tone="gold" className="mb-5 tracking-[2.2px]">
                 With one account
               </Eyebrow>
@@ -285,7 +286,7 @@ export default function HomePage() {
             ))}
           </Reveal>
 
-          <Reveal delay={350} className="mt-[clamp(34px,4vw,46px)]">
+          <Reveal delay={350} className="mt-[clamp(28px,3.2vw,38px)]">
             <Button href="/range" variant="outlineDark">
               Browse the full range
             </Button>
@@ -293,6 +294,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      <Trending />
       <CertBadges />
       <Apply />
     </>

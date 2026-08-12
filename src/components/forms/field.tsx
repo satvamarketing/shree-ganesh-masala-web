@@ -8,21 +8,18 @@ export function Field({
   type = "text",
   rows,
   required = false,
-  tone,
 }: {
   name: string;
   label: string;
   type?: string;
   rows?: number;
   required?: boolean;
-  tone: "forest" | "cream";
 }) {
   const shared =
     "w-full box-border rounded-xl border-[1.5px] px-[18px] py-[15px] text-[15.5px] outline-none transition-colors";
+  // Only the light tone remains: every form now sits on a light panel.
   const toneClasses =
-    tone === "forest"
-      ? "bg-teal-light border-teal-line text-[#F2F7EF] placeholder:text-[#F2F7EF]/55 focus:border-gold"
-      : "bg-cream border-line-deep text-teal placeholder:text-faint focus:border-teal";
+    "bg-white border-field-line text-ink placeholder:text-faint focus:border-red";
 
   const id = `field-${name}`;
 

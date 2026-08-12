@@ -111,7 +111,7 @@ export function MobileNav() {
         aria-expanded={open}
         aria-controls="mobile-nav-drawer"
         aria-label={open ? "Close menu" : "Open menu"}
-        className="flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-cream/35 text-cream transition-colors hover:border-gold hover:text-gold"
+        className="flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-white/45 text-white transition-colors hover:border-gold hover:text-gold"
       >
         {open ? <X size={20} /> : <Menu size={20} />}
       </button>
@@ -131,25 +131,25 @@ export function MobileNav() {
                 type="button"
                 aria-label="Close menu"
                 onClick={close}
-                className="absolute inset-0 h-full w-full cursor-default bg-teal-deep/70 backdrop-blur-[2px]"
+                className="absolute inset-0 h-full w-full cursor-default bg-ink/70 backdrop-blur-[2px]"
               />
 
               <div
                 ref={panelRef}
                 tabIndex={-1}
-                className="absolute inset-y-0 right-0 flex outline-none w-[min(88vw,380px)] flex-col overflow-y-auto bg-teal shadow-[0_0_60px_rgba(0,0,0,0.5)]"
+                className="absolute inset-y-0 right-0 flex outline-none w-[min(88vw,380px)] flex-col overflow-y-auto bg-red shadow-[0_0_60px_rgba(0,0,0,0.5)]"
                 style={{
                   paddingTop: "max(env(safe-area-inset-top), 0px)",
                   paddingBottom: "max(env(safe-area-inset-bottom), 0px)",
                 }}
               >
-                <div className="flex items-center justify-between border-b border-cream/15 px-5 py-4">
+                <div className="flex items-center justify-between border-b border-white/20 px-5 py-4">
                   <Logo height={38} className="[&_img]:!h-[38px]" />
                   <button
                     type="button"
                     onClick={close}
                     aria-label="Close menu"
-                    className="flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-cream/35 text-cream"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-white/45 text-white"
                   >
                     <X size={20} />
                   </button>
@@ -166,8 +166,8 @@ export function MobileNav() {
                         href={item.href}
                         aria-current={active ? "page" : undefined}
                         onClick={close}
-                        className={`border-b border-cream/12 py-4 text-lg font-bold tracking-[0.6px] uppercase ${
-                          active ? "text-gold" : "text-cream"
+                        className={`border-b border-white/15 py-4 text-lg font-bold tracking-[0.6px] uppercase ${
+                          active ? "text-gold" : "text-white"
                         }`}
                       >
                         {item.label}
@@ -180,35 +180,35 @@ export function MobileNav() {
                   <Link
                     href="/#apply"
                     onClick={close}
-                    className="rounded-full bg-red px-7 py-4 text-center text-base font-bold text-white"
+                    className="rounded-full bg-white px-7 py-4 text-center text-base font-bold text-red"
                   >
                     Open an account
                   </Link>
                   <Link
                     href="/range"
                     onClick={close}
-                    className="rounded-full border-[1.5px] border-cream/35 px-7 py-4 text-center text-base font-bold text-cream"
+                    className="rounded-full border-[1.5px] border-white/45 px-7 py-4 text-center text-base font-bold text-white"
                   >
                     Our range
                   </Link>
                 </div>
 
-                <div className="mt-auto border-t border-cream/15 px-5 py-6 text-[15px]">
+                <div className="mt-auto border-t border-white/20 px-5 py-6 text-[15px]">
                   <a
                     href={site.phoneHref}
-                    className="flex items-center gap-2.5 py-1.5 font-semibold text-cream"
+                    className="flex items-center gap-2.5 py-1.5 font-semibold text-white"
                   >
                     <Phone size={16} className="text-gold" aria-hidden="true" />
                     {site.phone}
                   </a>
                   <a
                     href={`mailto:${site.email}`}
-                    className="flex items-center gap-2.5 py-1.5 font-semibold break-all text-cream"
+                    className="flex items-center gap-2.5 py-1.5 font-semibold break-all text-white"
                   >
                     <Mail size={16} className="text-gold" aria-hidden="true" />
                     {site.email}
                   </a>
-                  <p className="mt-2 text-[14px] text-footer-text">{site.hours}</p>
+                  <p className="mt-2 text-[14px] text-white/75">{site.hours}</p>
                 </div>
               </div>
             </div>,

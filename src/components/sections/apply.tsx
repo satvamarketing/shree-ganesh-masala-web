@@ -9,13 +9,13 @@ export function Apply() {
       id="apply"
       className="relative overflow-hidden bg-red text-white"
     >
-      <div className="shell grid items-start gap-[clamp(36px,5vw,72px)] py-[clamp(64px,8vw,108px)] lg:grid-cols-2">
+      <div className="shell grid items-start gap-[clamp(30px,3.6vw,56px)] py-[clamp(48px,5vw,76px)] lg:grid-cols-2">
         <div>
           <Eyebrow className="mb-4 text-gold-soft!">Trade accounts</Eyebrow>
           <Display as="h2" size="chapter" className="mb-5.5 max-w-[18ch]">
             Come through the door.
           </Display>
-          <p className="mb-7.5 max-w-[46ch] text-[clamp(16px,1.4vw,18px)] leading-[1.72] text-white/88">
+          <p className="mb-7.5 max-w-[46ch] text-[clamp(15.5px,1vw,17px)] leading-[1.72] text-white/88">
             Approved in one business day. No minimum first order. Wholesale
             pricing, the trade pack and the festival calendar unlock the moment
             you&apos;re in.
@@ -38,7 +38,7 @@ export function Apply() {
           </div>
         </div>
 
-        <div className="rounded-[24px] bg-sand p-[clamp(26px,3.2vw,40px)] text-teal">
+        <div className="rounded-[24px] bg-sand p-[clamp(26px,3.2vw,40px)] text-ink">
           <TradeForm />
         </div>
       </div>

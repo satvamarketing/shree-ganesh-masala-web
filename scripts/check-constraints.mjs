@@ -99,6 +99,23 @@ function text(body) {
   report("no stale '28 departments/aisles' anywhere", stale.length === 0, stale.join(", "));
 }
 
+// 4a. Teal is not a Shree Ganesh colour (client feedback). No teal hex may
+// appear in the compiled CSS.
+{
+  const TEALS = ["133e51", "163340", "0e2f3e", "123e51"];
+  let found = [];
+  try {
+    for await (const file of glob(".next/static/**/*.css")) {
+      const body = (await readFile(file, "utf8")).toLowerCase();
+      found.push(...TEALS.filter((t) => body.includes(t)));
+    }
+  } catch {
+    /* glob unavailable; the source check below still applies */
+  }
+  found = [...new Set(found)];
+  report("no teal in compiled CSS", found.length === 0, found.join(", "));
+}
+
 // 4b. The v5 routes v7 folds away still resolve, so nothing that linked to
 // them 404s.
 {

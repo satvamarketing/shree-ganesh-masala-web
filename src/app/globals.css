@@ -1,58 +1,58 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ *
- * Shree Ganesh — design tokens, from Shree Ganesh Trade v7.
- * Deep teal ground, brand red, gold accent, warm sand mid-tones.
+ * Shree Ganesh — design tokens.
+ *
+ * Built from Trade v7, then repaletted on client feedback: teal is not a
+ * Shree Ganesh colour. The site is now white-ground with brand red carrying
+ * the header, footer and feature blocks, gold as the accent, and near-black
+ * text. Reference: masterfoods.com.au, which is white + deep red with no teal.
+ *
  * Type: DM Serif Display (headings, incl. italic) · Archivo (body).
  * ------------------------------------------------------------------ */
 @theme {
-  /* teal ground */
-  --color-teal: #133e51;
-  --color-teal-soft: #163340;
-  --color-teal-deep: #0e2f3e;
-
   /* brand red */
   --color-red: #cf322d;
   --color-red-dark: #a8241f;
-  --color-red-deeper: #b4231e;
+  --color-red-deeper: #8f1c18;
 
   /* gold accent */
   --color-gold: #fbcf00;
   --color-gold-soft: #fde9a0;
 
   /* warm neutrals */
-  --color-cream: #f4efe9;
-  --color-sand: #eee1d8;
-  --color-sand-deep: #e5dad1;
+  --color-cream: #fdf9f4;
+  --color-sand: #f6efe8;
+  --color-sand-deep: #ece0d6;
   --color-sand-deeper: #e3d3c7;
-  --color-shell: #f0e7df;
+  --color-shell: #f4ece5;
 
-  /* text ramp */
-  --color-ink: #133e51;
-  --color-ink-deep: #2a2420;
+  /* text ramp: near-black on white, warm rather than pure grey */
+  --color-ink: #231f1d;
+  --color-ink-deep: #17130f;
   --color-body: #4a4038;
   --color-muted: #6e6259;
   --color-faint: #8a7f76;
-  --color-footer-text: #a9bcc6;
+  --color-footer-text: #f3ded9;
 
   /* lines */
-  --color-line: #e0d2c7;
-  --color-line-deep: #dbc9bc;
+  --color-line: #e6dcd3;
+  --color-line-deep: #d8cabd;
   --color-field-line: #dccbc0;
 
   --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-dm-serif), Georgia, "Times New Roman", serif;
 
-  --shadow-card: 0 2px 14px rgba(19, 62, 81, 0.08);
-  --shadow-card-lg: 0 18px 34px rgba(19, 62, 81, 0.14);
-  --shadow-float: 0 30px 60px rgba(0, 0, 0, 0.45);
+  --shadow-card: 0 2px 14px rgba(35, 31, 29, 0.07);
+  --shadow-card-lg: 0 16px 30px rgba(35, 31, 29, 0.12);
+  --shadow-float: 0 24px 48px rgba(35, 31, 29, 0.22);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* Header (74px) + sticky chapter rail (56px) clearance for anchors. */
-    scroll-padding-top: 8.5rem;
+    /* Header (66px) + sticky chapter rail (52px) clearance for anchors. */
+    scroll-padding-top: 7.5rem;
   }
 
   body {
@@ -78,7 +78,7 @@
 }
 
 @layer utilities {
-  /* Edge-to-edge ticker (reference lines 72-81). */
+  /* Edge-to-edge ticker. */
   @keyframes sg-marquee {
     from {
       transform: translateX(0);
@@ -92,7 +92,7 @@
     animation: sg-marquee 34s linear infinite;
   }
 
-  /* Slow breathing glow behind the dark sections (reference lines 47-50). */
+  /* Slow breathing glow behind the red feature sections. */
   @keyframes sg-pulse {
     0%,
     100% {
@@ -113,15 +113,14 @@
     animation: sg-pulse 12s ease-in-out 1.5s infinite;
   }
 
-  /* Scroll reveal. The visible state is a class rather than inline style so
-     it degrades to "always visible" when JavaScript is unavailable — see
-     components/reveal.tsx. */
+  /* Scroll reveal. The visible state is a class rather than an inline style so
+     it degrades to "always visible" without JavaScript — see reveal.tsx. */
   .reveal {
     opacity: 0;
-    transform: translateY(26px);
+    transform: translateY(20px);
     transition:
-      opacity 0.7s cubic-bezier(0.2, 0.7, 0.3, 1),
-      transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+      opacity 0.6s cubic-bezier(0.2, 0.7, 0.3, 1),
+      transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
   }
 
   .reveal-shown {
@@ -142,11 +141,17 @@
     }
   }
 
-  /* Shared page shell: max-width 1280 + the design's fluid gutter. */
+  /**
+   * Shared page shell.
+   *
+   * Capped at 1180px with a wider gutter than v7. The client reported the site
+   * reading as "designed for mobile" and too large on a laptop; the fix is a
+   * tighter measure and smaller desktop type, not a wider canvas.
+   */
   .shell {
-    max-width: 1280px;
+    max-width: 1180px;
     margin-inline: auto;
-    padding-inline: clamp(20px, 4vw, 40px);
+    padding-inline: clamp(20px, 3.5vw, 48px);
   }
 
   /* Screen-reader-only, for labels the design renders as placeholders. */

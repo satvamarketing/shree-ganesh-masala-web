@@ -26,7 +26,7 @@ export function CertBadges() {
       <div className="shell grid items-center gap-[clamp(24px,4vw,48px)] py-[clamp(44px,5.5vw,68px)] lg:grid-cols-2">
         <Reveal>
           <Eyebrow className="mb-4">Certified</Eyebrow>
-          <Display size="card" className="mb-3 text-teal">
+          <Display size="card" className="mb-3 text-ink">
             Australian owned. Food-safety certified.
           </Display>
           <p className="max-w-[440px] text-[15.5px] leading-[1.65] text-muted">

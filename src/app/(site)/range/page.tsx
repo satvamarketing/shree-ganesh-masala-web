@@ -84,15 +84,15 @@ export default async function RangePage({
   return (
     <>
       <section className="border-b border-line bg-sand">
-        <div className="shell py-[clamp(48px,6vw,80px)]">
+        <div className="shell py-[clamp(40px,4.5vw,64px)]">
           <Eyebrow className="mb-3.5">Our Range</Eyebrow>
           <h1
-            className="mb-4.5 max-w-[720px] font-serif text-[clamp(38px,4.6vw,62px)] leading-[1.06] font-normal text-teal"
+            className="mb-4.5 max-w-[720px] font-serif text-[clamp(38px,4.6vw,62px)] leading-[1.06] font-normal text-ink"
             style={{ textWrap: "pretty" }}
           >
             {brands.length} house brands, one pantry
           </h1>
-          <p className="max-w-[560px] text-[clamp(16px,1.4vw,18px)] leading-[1.65] text-body">
+          <p className="max-w-[560px] text-[clamp(15.5px,1vw,17px)] leading-[1.65] text-body">
             Every house line is manufactured by us in Ahmedabad and distributed
             from our Brisbane warehouse, alongside imported staples across{" "}
             {departments.length} departments. Carton and pallet quantities,
@@ -101,8 +101,8 @@ export default async function RangePage({
         </div>
       </section>
 
-      <section className="shell py-[clamp(40px,5vw,64px)]">
-        <div className="mb-[clamp(40px,5vw,64px)] grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="shell py-[clamp(34px,4vw,52px)]">
+        <div className="mb-[clamp(34px,4vw,52px)] grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {brands.map((b) => (
             <BrandCard key={b.slug} brand={b} withBlurb />
           ))}
@@ -146,7 +146,7 @@ export default async function RangePage({
 
         {result.total === 0 ? (
           <div className="rounded-[24px] border border-line bg-sand px-8 py-14 text-center">
-            <p className="mb-1.5 font-serif text-2xl text-teal">
+            <p className="mb-1.5 font-serif text-2xl text-ink">
               No products match those filters.
             </p>
             <p className="mb-7 text-[15.5px] text-muted">
@@ -171,19 +171,19 @@ export default async function RangePage({
         />
       </section>
 
-      <section className="shell pb-[clamp(64px,8vw,96px)]">
-        <div className="grid items-center gap-8 rounded-[26px] bg-teal p-[clamp(32px,4vw,52px)] [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
+      <section className="shell pb-[clamp(44px,5vw,70px)]">
+        <div className="grid items-center gap-8 rounded-[26px] bg-red p-[clamp(32px,4vw,52px)] [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
           <div>
-            <h2 className="mb-3 font-serif text-[clamp(26px,2.8vw,36px)] leading-[1.15] font-normal text-teal">
+            <h2 className="mb-3 font-serif text-[clamp(26px,2.8vw,36px)] leading-[1.15] font-normal text-white">
               Buying for a shop or kitchen?
             </h2>
-            <p className="text-base leading-[1.65] text-cream/80">
+            <p className="text-base leading-[1.65] text-white/85">
               Wholesale accounts get carton pricing across this range plus{" "}
               {departments.length} departments of imported staples.
             </p>
           </div>
           <div className="justify-self-start">
-            <Button href="/#apply" variant="teal">
+            <Button href="/#apply" variant="gold">
               Open a wholesale account
             </Button>
           </div>

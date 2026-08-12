@@ -32,8 +32,8 @@ export function FilterChips({
             onClick={() => navigate(param, option.value)}
             className={`cursor-pointer rounded-full border-[1.5px] px-5 py-[11px] text-sm font-bold transition-all duration-[180ms] ${
               on
-                ? "border-teal bg-teal text-cream"
-                : "border-line-deep bg-white text-teal hover:border-teal"
+                ? "border-ink bg-ink text-white"
+                : "border-line-deep bg-white text-ink hover:border-ink"
             }`}
           >
             {option.label}

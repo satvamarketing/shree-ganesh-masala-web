@@ -34,7 +34,7 @@ export function TradeSchool() {
                 <span className="shrink-0 font-serif text-[19px] text-red">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="flex-1 text-[clamp(16px,1.5vw,19px)] font-bold text-teal">
+                <span className="flex-1 text-[clamp(16px,1.5vw,19px)] font-bold text-ink">
                   {fact.q}
                 </span>
                 <span

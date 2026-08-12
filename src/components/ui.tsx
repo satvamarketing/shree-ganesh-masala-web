@@ -8,12 +8,12 @@ import type { ReactNode } from "react";
 
 const BUTTON_VARIANTS = {
   red: "bg-red text-white hover:bg-red-dark",
-  gold: "bg-gold text-teal hover:bg-gold-soft",
-  teal: "bg-teal text-sand hover:bg-red hover:text-white",
+  gold: "bg-gold text-ink hover:bg-gold-soft",
+  ink: "bg-ink text-white hover:bg-red",
   outlineLight:
-    "border-b-2 border-gold text-cream hover:text-gold rounded-none px-1.5",
+    "border-b-2 border-gold text-white hover:text-gold rounded-none px-1.5",
   outlineDark:
-    "border-[1.5px] border-line-deep bg-white text-teal hover:border-teal",
+    "border-[1.5px] border-line-deep bg-white text-ink hover:border-ink",
 } as const;
 
 export type ButtonVariant = keyof typeof BUTTON_VARIANTS;
@@ -29,11 +29,11 @@ export function Button({
   children: ReactNode;
   className?: string;
 }) {
-  const pill = variant === "outlineLight" ? "" : "rounded-full px-8 py-4.5";
+  const pill = variant === "outlineLight" ? "" : "rounded-full px-7 py-3.5";
   return (
     <Link
       href={href}
-      className={`inline-block text-[15px] font-extrabold tracking-[0.4px] transition-colors ${pill} ${BUTTON_VARIANTS[variant]} ${className}`}
+      className={`inline-block text-[14.5px] font-extrabold tracking-[0.4px] transition-colors ${pill} ${BUTTON_VARIANTS[variant]} ${className}`}
     >
       {children}
     </Link>
@@ -68,8 +68,8 @@ export function Eyebrow({
 /** The pill badge used at the top of the dark heroes. */
 export function HeroBadge({ children }: { children: ReactNode }) {
   return (
-    <div className="inline-flex items-center gap-2.5 rounded-full border border-red/45 px-4.5 py-2.5 text-[11.5px] font-extrabold tracking-[2.2px] text-gold uppercase">
-      <span className="h-1.5 w-1.5 rounded-full bg-gold" aria-hidden="true" />
+    <div className="inline-flex items-center gap-2.5 rounded-full border border-red/35 px-4.5 py-2.5 text-[11.5px] font-extrabold tracking-[2.2px] text-red uppercase">
+      <span className="h-1.5 w-1.5 rounded-full bg-red" aria-hidden="true" />
       {children}
     </div>
   );
@@ -88,10 +88,10 @@ export function Display({
   className?: string;
 }) {
   const scale = {
-    hero: "text-[clamp(40px,6.4vw,92px)] leading-[1.02]",
-    chapter: "text-[clamp(32px,4.6vw,62px)] leading-[1.08]",
-    section: "text-[clamp(28px,3.6vw,48px)] leading-[1.1]",
-    card: "text-[clamp(22px,2.2vw,28px)] leading-[1.15]",
+    hero: "text-[clamp(34px,4.4vw,60px)] leading-[1.05]",
+    chapter: "text-[clamp(27px,3vw,42px)] leading-[1.1]",
+    section: "text-[clamp(24px,2.4vw,34px)] leading-[1.15]",
+    card: "text-[clamp(20px,1.7vw,25px)] leading-[1.2]",
   }[size];
   return (
     <Tag
@@ -113,7 +113,7 @@ export function PullLine({
 }) {
   return (
     <p
-      className={`font-serif text-[clamp(22px,2.9vw,38px)] leading-[1.32] text-gold italic ${className}`}
+      className={`font-serif text-[clamp(20px,2.1vw,30px)] leading-[1.34] text-red italic ${className}`}
     >
       {children}
     </p>
@@ -121,13 +121,29 @@ export function PullLine({
 }
 
 /** Hero statistic: big serif figure over an uppercase caption. */
-export function Stat({ value, label }: { value: string; label: string }) {
+export function Stat({
+  value,
+  label,
+  onDark = false,
+}: {
+  value: string;
+  label: string;
+  onDark?: boolean;
+}) {
   return (
     <div>
-      <div className="font-serif text-[clamp(30px,3.4vw,44px)] leading-none text-gold">
+      <div
+        className={`font-serif text-[clamp(26px,2.4vw,36px)] leading-none ${
+          onDark ? "text-gold" : "text-red"
+        }`}
+      >
         {value}
       </div>
-      <div className="mt-2 text-[12px] tracking-[1.4px] text-cream/60 uppercase">
+      <div
+        className={`mt-2 text-[12px] tracking-[1.4px] uppercase ${
+          onDark ? "text-white/65" : "text-muted"
+        }`}
+      >
         {label}
       </div>
     </div>
@@ -147,7 +163,7 @@ export function ChapterNumeral({
   const colour = {
     light: "text-shell",
     sand: "text-sand-deeper",
-    dark: "text-cream/[0.055]",
+    dark: "text-white/[0.10]",
   }[tone];
   return (
     <div
@@ -171,20 +187,20 @@ export function DesignedPanel({
   className = "",
 }: {
   label: string;
-  tone?: "sand" | "teal";
+  tone?: "sand" | "dark";
   className?: string;
 }) {
-  const dark = tone === "teal";
+  const dark = tone === "dark";
   return (
     <div
       className={`relative flex h-full w-full items-center justify-center overflow-hidden ${
-        dark ? "bg-teal-soft" : "bg-sand-deep"
+        dark ? "bg-red-dark" : "bg-sand-deep"
       } ${className}`}
     >
       <div
         className={`absolute inset-0 ${
           dark
-            ? "bg-gradient-to-br from-teal via-teal-soft to-teal-deep"
+            ? "bg-gradient-to-br from-red via-red-dark to-red-deeper"
             : "bg-gradient-to-br from-sand via-sand-deep to-sand-deeper"
         }`}
       />
@@ -192,14 +208,14 @@ export function DesignedPanel({
         className="absolute inset-0 opacity-[0.08]"
         style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, ${
-            dark ? "#F4EFE9" : "#133E51"
+            dark ? "#FFFFFF" : "#231F1D"
           } 1px, transparent 0)`,
           backgroundSize: "14px 14px",
         }}
       />
       <span
         className={`relative max-w-[24ch] px-6 text-center font-serif text-lg leading-snug ${
-          dark ? "text-cream/45" : "text-faint"
+          dark ? "text-white/55" : "text-faint"
         }`}
       >
         {label}
@@ -250,7 +266,7 @@ export function SectionHeading({
     >
       <div className={centered ? "mx-auto" : ""}>
         {eyebrow ? <Eyebrow className="mb-3">{eyebrow}</Eyebrow> : null}
-        <Display size="section" className="text-teal">
+        <Display size="section" className="text-ink">
           {title}
         </Display>
       </div>

@@ -21,7 +21,7 @@ export function SpiceTin() {
   }
 
   return (
-    <div className="grid items-center gap-[clamp(32px,5vw,72px)] lg:grid-cols-2">
+    <div className="grid items-center gap-[clamp(28px,3.6vw,56px)] lg:grid-cols-2">
       <div className="flex justify-center">
         <div
           role="radiogroup"
@@ -80,16 +80,16 @@ export function SpiceTin() {
 
       {/* aria-live so keyboard and screen-reader users hear the panel change. */}
       <div aria-live="polite">
-        <div className="mb-3.5 text-[11.5px] font-extrabold tracking-[2.2px] text-gold uppercase">
+        <div className="mb-3.5 text-[11.5px] font-extrabold tracking-[2.2px] text-red uppercase">
           {active.hindi}
         </div>
         <h3 className="mb-4.5 font-serif text-[clamp(28px,3.4vw,46px)] leading-[1.1] font-normal">
           {active.name}
         </h3>
-        <p className="mb-6.5 text-[16.5px] leading-[1.75] text-cream/82">
+        <p className="mb-6.5 text-[16.5px] leading-[1.75] text-body">
           {active.note}
         </p>
-        <div className="inline-flex items-center gap-3.5 rounded-2xl border border-red/30 bg-cream/7 px-5.5 py-4">
+        <div className="inline-flex items-center gap-3.5 rounded-2xl border border-line bg-white px-5.5 py-4">
           <span
             className="h-10 w-10 shrink-0 rounded-full"
             style={{ background: active.colour }}
@@ -99,7 +99,7 @@ export function SpiceTin() {
             <span className="block text-[15.5px] font-bold">
               {active.product}
             </span>
-            <span className="mt-0.5 block text-[13px] tracking-[1px] text-cream/55 uppercase">
+            <span className="mt-0.5 block text-[13px] tracking-[1px] text-muted uppercase">
               {active.brand}
             </span>
           </span>

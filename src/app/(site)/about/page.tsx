@@ -18,7 +18,6 @@ import { site } from "@/data/site";
 import {
   aboutFounder,
   aboutPhotos,
-  mission,
   vision,
   whyChooseUs,
 } from "@/data/story";
@@ -35,9 +34,9 @@ export default function AboutPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-teal text-cream">
+      <section className="relative overflow-hidden bg-white text-ink">
         <Glow opacity={0.38} />
-        <div className="shell relative grid items-center gap-[clamp(36px,5vw,72px)] py-[clamp(64px,8vw,116px)] lg:grid-cols-2">
+        <div className="shell relative grid items-center gap-[clamp(30px,3.6vw,56px)] py-[clamp(48px,5vw,80px)] lg:grid-cols-2">
           <div>
             <Reveal className="mb-7.5">
               <HeroBadge>About us</HeroBadge>
@@ -60,7 +59,7 @@ export default function AboutPage() {
           </div>
 
           <Reveal delay={210} className="flex min-w-0 justify-center">
-            <div className="h-[clamp(340px,42vw,480px)] w-full max-w-[400px] overflow-hidden rounded-[24px] border border-red/30 bg-cream/5">
+            <div className="h-[clamp(340px,42vw,480px)] w-full max-w-[400px] overflow-hidden rounded-[24px] border border-line bg-sand">
               {founder.src ? (
                 <Image
                   src={founder.src}
@@ -71,7 +70,7 @@ export default function AboutPage() {
                   className="h-full w-full object-cover"
                 />
               ) : (
-                <DesignedPanel tone="teal" label={founder.alt} />
+                <DesignedPanel label={founder.alt} />
               )}
             </div>
           </Reveal>
@@ -79,20 +78,20 @@ export default function AboutPage() {
       </section>
 
       <section className="relative overflow-hidden bg-white">
-        <div className="mx-auto max-w-[820px] px-[clamp(20px,4vw,40px)] py-[clamp(64px,8vw,108px)]">
+        <div className="mx-auto max-w-[820px] px-[clamp(20px,4vw,40px)] py-[clamp(48px,5vw,76px)]">
           <Reveal>
             <Eyebrow className="mb-7">The founder</Eyebrow>
           </Reveal>
 
           <Reveal delay={70}>
-            <p className="mb-7.5 text-[clamp(17px,1.6vw,20px)] leading-[1.8] text-ink-deep">
+            <p className="mb-7.5 text-[clamp(16px,1.1vw,17.5px)] leading-[1.8] text-ink-deep">
               {aboutFounder[0]}
             </p>
           </Reveal>
 
           <Reveal delay={140}>
-            <blockquote className="my-[clamp(34px,4vw,48px)] border-l-[3px] border-gold pl-[clamp(22px,3vw,34px)]">
-              <p className="font-serif text-[clamp(26px,3.4vw,42px)] leading-[1.25] text-teal">
+            <blockquote className="my-[clamp(28px,3.2vw,40px)] border-l-[3px] border-gold pl-[clamp(22px,3vw,34px)]">
+              <p className="font-serif text-[clamp(26px,3.4vw,42px)] leading-[1.25] text-ink">
                 Health Is Wealth.
               </p>
               <cite className="mt-3.5 block text-[13px] font-bold tracking-[1.6px] text-faint uppercase not-italic">
@@ -104,7 +103,7 @@ export default function AboutPage() {
           {aboutFounder.slice(1).map((para, i) => (
             <Reveal key={i} delay={210 + i * 70}>
               <p
-                className={`text-[clamp(17px,1.6vw,20px)] leading-[1.8] text-ink-deep ${
+                className={`text-[clamp(16px,1.1vw,17.5px)] leading-[1.8] text-ink-deep ${
                   i === aboutFounder.length - 2 ? "" : "mb-7.5"
                 }`}
               >
@@ -115,21 +114,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-teal text-cream">
-        <div className="shell grid gap-[clamp(20px,2.5vw,32px)] py-[clamp(56px,7vw,96px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))]">
-          {[
-            { label: "Our Vision", body: vision },
-            { label: "Our Mission", body: mission },
-          ].map((block, i) => (
+      <section className="bg-sand text-ink">
+        <div className="shell max-w-[860px] py-[clamp(44px,5vw,70px)]">
+          {/* "Our Mission" removed on client feedback; Vision stands alone. */}
+          {[{ label: "Our Vision", body: vision }].map((block, i) => (
             <Reveal
               key={block.label}
               delay={i * 70}
-              className="rounded-[22px] border border-red/28 bg-cream/6 p-[clamp(28px,3.4vw,44px)]"
+              className="rounded-[22px] border border-line bg-white p-[clamp(28px,3.4vw,44px)]"
             >
-              <Eyebrow tone="gold" className="mb-4.5">
+              <Eyebrow className="mb-4.5">
                 {block.label}
               </Eyebrow>
-              <p className="text-[clamp(16px,1.45vw,18.5px)] leading-[1.78] text-cream/86">
+              <p className="text-[clamp(15.5px,1vw,17px)] leading-[1.78] text-body">
                 {block.body}
               </p>
             </Reveal>
@@ -138,14 +135,14 @@ export default function AboutPage() {
       </section>
 
       <section className="relative overflow-hidden bg-sand">
-        <div className="shell py-[clamp(64px,8vw,108px)]">
+        <div className="shell py-[clamp(48px,5vw,76px)]">
           <Reveal>
             <Eyebrow className="mb-4">Why choose us</Eyebrow>
           </Reveal>
           <Reveal delay={70}>
             <Display
               size="section"
-              className="mb-[clamp(36px,4.5vw,52px)] max-w-[22ch] text-[clamp(30px,4.2vw,56px)]! text-teal"
+              className="mb-[clamp(30px,3.4vw,44px)] max-w-[22ch] text-[clamp(30px,4.2vw,56px)]! text-ink"
             >
               100% customer satisfaction is the whole objective.
             </Display>
@@ -153,7 +150,7 @@ export default function AboutPage() {
 
           <Reveal
             delay={140}
-            className="mb-[clamp(44px,5vw,64px)] grid gap-[clamp(20px,2.5vw,30px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))]"
+            className="mb-[clamp(36px,4vw,52px)] grid gap-[clamp(20px,2.5vw,30px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))]"
           >
             {whyChooseUs.map((para) => (
               <p
@@ -186,7 +183,7 @@ export default function AboutPage() {
                       <DesignedPanel label={slot.alt} />
                     )}
                   </div>
-                  <div className="mt-3.5 text-[15.5px] font-bold text-teal">
+                  <div className="mt-3.5 text-[15.5px] font-bold text-ink">
                     {photo.title}
                   </div>
                   <div className="mt-1 text-[14px] leading-[1.6] text-muted">
@@ -199,10 +196,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-teal-soft text-cream">
-        <div className="shell py-[clamp(56px,7vw,92px)]">
+      <section className="bg-white text-ink">
+        <div className="shell py-[clamp(44px,5vw,68px)]">
           <Reveal>
-            <Eyebrow tone="gold" className="mb-4">
+            <Eyebrow className="mb-4">
               The family of brands
             </Eyebrow>
           </Reveal>

@@ -61,7 +61,7 @@ export default async function ProductPage({
   return (
     <>
       <ProductJsonLd product={product} />
-      <section className="shell py-[clamp(32px,5vw,64px)]">
+      <section className="shell py-[clamp(28px,3.4vw,48px)]">
         <nav aria-label="Breadcrumb" className="mb-8 text-[13.5px] text-muted">
           <Link href="/range" className="font-semibold text-red hover:text-red-dark">
             Our Range
@@ -79,7 +79,7 @@ export default async function ProductPage({
           ) : null}
         </nav>
 
-        <div className="grid items-start gap-[clamp(28px,5vw,64px)] lg:grid-cols-2">
+        <div className="grid items-start gap-[clamp(24px,3.4vw,48px)] lg:grid-cols-2">
           <div className="relative aspect-square overflow-hidden rounded-[24px] border border-line bg-sand">
             {product.image ? (
               <Image
@@ -96,12 +96,12 @@ export default async function ProductPage({
           </div>
 
           <div>
-            <span className="inline-block rounded-full bg-teal px-[11px] py-[5px] text-[10.5px] font-bold tracking-[1px] text-[#FFF1DE] uppercase">
+            <span className="inline-block rounded-full bg-ink px-[11px] py-[5px] text-[10.5px] font-bold tracking-[1px] text-white uppercase">
               {product.brand}
             </span>
 
             <h1
-              className="mt-4 mb-5 font-serif text-[clamp(28px,3.2vw,42px)] leading-[1.1] font-normal text-teal"
+              className="mt-4 mb-5 font-serif text-[clamp(28px,3.2vw,42px)] leading-[1.1] font-normal text-ink"
               style={{ textWrap: "pretty" }}
             >
               {product.title}
@@ -113,7 +113,7 @@ export default async function ProductPage({
                   <dt className="w-[150px] shrink-0 font-bold text-muted">
                     {f.label}
                   </dt>
-                  <dd className="font-semibold text-teal">{f.value}</dd>
+                  <dd className="font-semibold text-ink">{f.value}</dd>
                 </div>
               ))}
               {product.departments.length > 0 ? (
@@ -158,8 +158,8 @@ export default async function ProductPage({
       </section>
 
       {related.length > 0 ? (
-        <section className="shell pb-[clamp(64px,8vw,96px)]">
-          <h2 className="mb-8 font-serif text-[clamp(24px,2.6vw,34px)] font-normal text-teal">
+        <section className="shell pb-[clamp(44px,5vw,70px)]">
+          <h2 className="mb-8 font-serif text-[clamp(24px,2.6vw,34px)] font-normal text-ink">
             More from {product.brand}
           </h2>
           <div className="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(230px,1fr))]">

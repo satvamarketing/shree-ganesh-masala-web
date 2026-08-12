@@ -10,9 +10,15 @@ mirrors how the business already works: every variant price on the live Shopify
 store is `0.00`, so pricing is held outside the website and sent with account
 approval.
 
-Built from the approved `Shree Ganesh Retail v5` design
-(`design/shree-ganesh-retail-v5.reference.html`), with the catalog and imagery
+Built from `Shree Ganesh Trade v7`
+(`design/shree-ganesh-trade-v7.reference.html`), with the catalog and imagery
 grounded in real data pulled from shreeganesh.com.au.
+
+**Palette note.** v7 was designed on a deep teal ground. The client has since
+confirmed teal is not a Shree Ganesh colour, so the site is white-ground with
+brand red carrying the header, footer and feature blocks, gold as the accent,
+and near-black text. `npm run check:constraints` fails if any teal hex reappears
+in the compiled CSS.
 
 ## Stack
 
