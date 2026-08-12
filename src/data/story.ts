@@ -30,6 +30,7 @@ export const wells = [
     product: "Ganesh Turmeric Powder",
     brand: "Herbs & Spice",
     note: "The colour every curry is judged by. Ours is single-origin and ground fine enough to bloom in oil in seconds, not minutes.",
+    image: "/dabba/spice-turmeric.webp",
   },
   {
     name: "Red chilli",
@@ -38,6 +39,7 @@ export const wells = [
     product: "Ganesh Chilli Powder",
     brand: "Herbs & Spice",
     note: "Heat is easy. Colour without bitterness is the hard part, which is why we blend two chilli varieties instead of one.",
+    image: "/dabba/spice-red-chilli.webp",
   },
   {
     name: "Coriander-cumin",
@@ -46,6 +48,7 @@ export const wells = [
     product: "Ganesh Dhana Jeeru",
     brand: "Shree Ganesh",
     note: "The Gujarati household blend. Two parts coriander to one cumin, roasted separately then ground together, and the order matters.",
+    image: "/dabba/spice-dhana-jeeru.webp",
   },
   {
     name: "Cumin seed",
@@ -54,6 +57,7 @@ export const wells = [
     product: "Ganesh Whole Cumin",
     brand: "Herbs & Spice",
     note: "Sold whole because it should be. A cumin seed keeps its oil for months; cumin powder loses it in weeks.",
+    image: "/dabba/spice-cumin.webp",
   },
   {
     name: "Mustard seed",
@@ -62,6 +66,7 @@ export const wells = [
     product: "Ganesh Mustard Seed",
     brand: "Herbs & Spice",
     note: "The first thing into the pan and the sound a Gujarati kitchen starts with. Graded so the whole spoonful pops together.",
+    image: "/dabba/spice-mustard.webp",
   },
   {
     name: "Asafoetida",
@@ -70,6 +75,7 @@ export const wells = [
     product: "Ganesh Compounded Hing",
     brand: "Shree Ganesh",
     note: "A pinch does the work of an onion. Compounded to a consistent strength so a recipe behaves the same in every kitchen.",
+    image: "/dabba/spice-hing.webp",
   },
   {
     name: "Garam masala",
@@ -78,6 +84,7 @@ export const wells = [
     product: "Ganesh Garam Masala",
     brand: "Shree Ganesh",
     note: "The 1969 recipe, unchanged. Whole spices roasted in small runs so the oils are still in the powder when the carton reaches your shelf.",
+    image: "/dabba/spice-garam-masala.webp",
   },
 ];
 

@@ -1,16 +1,21 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
+import { DABBA_IMAGE, wellHotspots } from "@/data/dabba";
 import { wells } from "@/data/story";
 
 /**
- * The dabba: a spice tin whose seven wells select the masala described beside
- * it (reference lines 126-146, 557-581).
+ * The dabba: a photograph of a real masala tin whose seven wells select the
+ * spice described beside it.
  *
- * v7 renders the wells as bare <button> elements with no accessible text and
- * no keyboard affordance beyond focus. Here they are a radiogroup, so the tin
- * is operable with arrow keys and each well announces which spice it is and
- * whether it is selected.
+ * The hotspots are positioned from measurements of the photograph, in
+ * src/data/dabba.ts. They are transparent buttons, so the tin reads as a plain
+ * photo until a well is selected, hovered or focused.
+ *
+ * It is a radiogroup rather than seven loose buttons, so the tin is operable
+ * with arrow keys and each well announces which spice it is and whether it is
+ * selected. v7's own markup used bare buttons with no accessible name.
  */
 export function SpiceTin() {
   const [index, setIndex] = useState(0);
@@ -35,21 +40,26 @@ export function SpiceTin() {
               move(-1);
             }
           }}
-          className="relative aspect-square w-[min(100%,440px)] rounded-full border-[10px] border-[#5A6A71] shadow-float"
-          style={{
-            background: "linear-gradient(145deg, #4C5C63, #22333B)",
-            boxShadow:
-              "0 30px 60px rgba(0,0,0,0.45), inset 0 2px 12px rgba(255,255,255,0.12)",
-          }}
+          className="relative aspect-square w-[min(100%,460px)]"
         >
-          {wells.map((well, i) => {
-            // Seven wells evenly spaced on a circle, first one at the top.
-            const angle = (i / wells.length) * Math.PI * 2 - Math.PI / 2;
-            const radius = 31;
-            const left = 50 + Math.cos(angle) * radius;
-            const top = 50 + Math.sin(angle) * radius;
-            const on = i === index;
+          {/* A neutral disc sits behind the photograph so the layout and the
+              hotspots still make sense if the image ever fails to load. */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-[1%] rounded-full bg-sand-deep"
+          />
+          <Image
+            src={DABBA_IMAGE}
+            alt="A masala dabba holding turmeric, red chilli, coriander-cumin, cumin seed, mustard seed, asafoetida and garam masala"
+            fill
+            sizes="(max-width: 1024px) 90vw, 460px"
+            priority
+            className="object-contain"
+          />
 
+          {wells.map((well, i) => {
+            const spot = wellHotspots[i];
+            const on = i === index;
             return (
               <button
                 key={well.name}
@@ -59,18 +69,19 @@ export function SpiceTin() {
                 aria-label={well.name}
                 tabIndex={on ? 0 : -1}
                 onClick={() => setIndex(i)}
-                className="absolute aspect-square w-[25%] cursor-pointer rounded-full p-0 transition-[transform,box-shadow,border-color] duration-[250ms]"
+                title={well.name}
+                className="absolute cursor-pointer rounded-full transition-[box-shadow,transform] duration-200 hover:scale-[1.04]"
                 style={{
-                  left: `${left.toFixed(2)}%`,
-                  top: `${top.toFixed(2)}%`,
-                  transform: `translate(-50%, -50%)${on ? " scale(1.14)" : ""}`,
-                  background: well.colour,
-                  border: on
-                    ? "4px solid #FBCF00"
-                    : "3px solid rgba(255,255,255,0.16)",
+                  left: `${spot.left}%`,
+                  top: `${spot.top}%`,
+                  width: `${spot.radius * 2}%`,
+                  aspectRatio: "1",
+                  transform: "translate(-50%, -50%)",
+                  // Only the selected well is ringed, so the tin still reads as
+                  // a photograph rather than a diagram.
                   boxShadow: on
-                    ? "0 0 0 6px rgba(207,50,45,0.22), inset 0 4px 12px rgba(0,0,0,0.35)"
-                    : "inset 0 4px 12px rgba(0,0,0,0.4)",
+                    ? "0 0 0 4px #CF322D, 0 0 0 11px rgba(207,50,45,0.20)"
+                    : "none",
                 }}
               />
             );
@@ -83,20 +94,25 @@ export function SpiceTin() {
         <div className="mb-3.5 text-[11.5px] font-extrabold tracking-[2.2px] text-red uppercase">
           {active.hindi}
         </div>
-        <h3 className="mb-4.5 font-serif text-[clamp(28px,3.4vw,46px)] leading-[1.1] font-normal">
+        <h3 className="mb-4 font-serif text-[clamp(24px,2.6vw,38px)] leading-[1.1] font-normal text-ink">
           {active.name}
         </h3>
-        <p className="mb-6.5 text-[16.5px] leading-[1.75] text-body">
+        <p className="mb-6 max-w-[46ch] text-[16px] leading-[1.75] text-body">
           {active.note}
         </p>
-        <div className="inline-flex items-center gap-3.5 rounded-2xl border border-line bg-white px-5.5 py-4">
-          <span
-            className="h-10 w-10 shrink-0 rounded-full"
-            style={{ background: active.colour }}
-            aria-hidden="true"
-          />
+
+        <div className="inline-flex items-center gap-4 rounded-2xl border border-line bg-white px-4 py-3.5">
+          <span className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full">
+            <Image
+              src={active.image}
+              alt=""
+              fill
+              sizes="56px"
+              className="object-cover"
+            />
+          </span>
           <span>
-            <span className="block text-[15.5px] font-bold">
+            <span className="block text-[15.5px] font-bold text-ink">
               {active.product}
             </span>
             <span className="mt-0.5 block text-[13px] tracking-[1px] text-muted uppercase">

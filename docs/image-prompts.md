@@ -159,16 +159,22 @@ props, garnish, whole spices mixed into powders unless specified
 
 ---
 
-## What happens when you send them
+## Status: delivered and wired in
 
-1. Drop the files anywhere and tell me the path.
-2. I measure the real well centres in the dabba photo and calibrate the seven
-   hotspots to it, so tapping a well still selects the right spice.
-3. The seven close-ups get wired into the panel, so selecting a well shows both
-   the description and that spice.
-4. I keep the current CSS-drawn tin in the codebase as the fallback, so if a
-   photo ever fails to load the section still works.
+All eight images came back usable on the first pass, with the clockwise spice
+order matching the site copy exactly.
 
-If the dabba comes back tilted or with the wrong number of wells, send it anyway
-and say so. I can either use it as a static image and move the interaction to
-swatch buttons underneath, or you regenerate. Either way nothing is wasted.
+Assets live in `public/dabba/`: `dabba.webp` plus `spice-*.webp`. The tin is
+masked to a transparent circle so it sits on the section's sand ground with no
+visible background box.
+
+**Calibration.** The hotspots in `src/data/dabba.ts` are measured, not assumed.
+Five of the seven wells flood-filled cleanly; a symmetric seven-fold ring was
+fitted to those five and used for all seven. Per-well centroids were rejected
+because the loose spilled grains the prompt asks for pull a centroid outward by
+a few percent. RMS fit error is 1.0% of frame width, and all seven wells were
+verified to select the right spice.
+
+**If you ever regenerate the tin**, re-measure rather than hand-editing the
+numbers: the fit is sensitive to how the tin is cropped. The measurement
+approach that worked was flood-fill per well, then fit a symmetric ring.
