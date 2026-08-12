@@ -87,14 +87,11 @@ export default function HomePage() {
       <section
         id="ch-2"
         className={`${CHAPTER} bg-sand text-ink`}
-       
       >
-        <ChapterNumeral numeral="02" side="left" tone="dark" />
+        <ChapterNumeral numeral="02" side="left" tone="sand" />
         <div className={CHAPTER_INNER}>
           <Reveal>
-            <Eyebrow tone="gold" className="mb-4">
-              Chapter Two · The Dabba
-            </Eyebrow>
+            <Eyebrow className="mb-4">Chapter Two · The Dabba</Eyebrow>
           </Reveal>
           <Reveal delay={70}>
             <Display className="mb-[clamp(20px,2.4vw,28px)] max-w-[22ch]">
@@ -102,7 +99,7 @@ export default function HomePage() {
             </Display>
           </Reveal>
           <Reveal delay={140}>
-            <p className="mb-[clamp(36px,4vw,52px)] max-w-[60ch] text-[clamp(15.5px,1vw,17px)] leading-[1.75] text-cream/80">
+            <p className="mb-[clamp(36px,4vw,52px)] max-w-[60ch] text-[clamp(15.5px,1vw,17px)] leading-[1.75] text-body">
               Seven wells, one lid, always within reach of the stove. Your
               customers don&apos;t need convincing that it matters, because they
               grew up with it. Our job is to be what&apos;s inside it. Tap a
