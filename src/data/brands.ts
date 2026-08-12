@@ -30,8 +30,7 @@ export const brands: Brand[] = [
   {
     name: "Herbs & Spices",
     slug: "herbs-and-spices",
-    // The source logo could not be retrieved intact — see ASSETS-NEEDED.md.
-    logo: null,
+    logo: "/brands/herbs-and-spices.webp",
     bg: "#FFF8EE",
     blurb: "Whole and ground spices, herbs and seasonings for everyday cooking.",
   },

@@ -12,22 +12,23 @@ every path resolves.
 
 ---
 
-## 1. Blocked by a tooling limit — you already own this one
+## 1. Resolved: the Herbs & Spice logo
 
-This exists at full quality in the Claude Design project, but the design MCP
-caps a single file read at 256 KiB and it exceeds that, so it arrived truncated
-(cut off mid-wordmark). Copy it out of the design project manually and it is
-done.
-
-| Design project path | Save as | Then set |
-| --- | --- | --- |
-| `uploads/pasted-1785528957810-0.png` | `public/brands/herbs-and-spices.webp` | `brands.ts` → Herbs & Spices `logo` |
-
-Until then the Herbs & Spices brand tile renders its name as a typographic
-wordmark, which reads as intentional.
+The design MCP caps a single file read at 256 KiB, so
+`uploads/pasted-1785528957810-0.png` arrived truncated mid-wordmark and the brand
+tile fell back to a typographic wordmark. The client supplied the file directly
+on 13 Aug 2026; it is in as `public/brands/herbs-and-spices.webp`, with a
+transparent background, and all six brand tiles now carry a real logo.
 
 The same cap also truncated `uploads/badge-australian-owned.png` and all four
 `Screenshot 2026-08-01 …png` files. The badge was re-sourced instead — see §4.
+
+**Two logos still carry a white box.** `amdavadi.webp` and `vipul-dudhiya.webp`
+came from the client with an opaque white rectangle behind the mark, which shows
+against the cream brand tile. They can be cut out the same way the dabba was
+(`scripts/build-dabba.mjs` has the technique), but it needs a decision first:
+Amdavadi's white may be part of the mark rather than a background, and that is the
+client's call, not ours.
 
 ## 2. Photography
 

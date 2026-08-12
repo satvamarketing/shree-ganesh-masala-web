@@ -8,7 +8,14 @@
 //   - no element overflows the viewport horizontally (names the culprits)
 // With --shots, also writes PNGs to .verify/ for eyeballing.
 import { chromium } from "playwright";
-import { mkdir } from "node:fs/promises";
+import { mkdir, rm } from "node:fs/promises";
+
+// Drop the image optimizer's cache first. It is keyed by request URL, and files
+// in public/ keep the same URL when their contents change, so replacing an asset
+// in place leaves the old rendering being served — including its old alpha
+// channel. That once made a fixed image look unfixed for several rounds of
+// checking. `next build` does not clear it.
+await rm(".next/cache/images", { recursive: true, force: true });
 
 const BASE = process.env.VERIFY_BASE ?? "http://localhost:3000";
 const WIDTHS = [375, 768, 1280, 1600];

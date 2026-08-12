@@ -54,7 +54,11 @@ export function SpiceTin() {
             fill
             sizes="(max-width: 1024px) 90vw, 460px"
             priority
-            className="object-contain"
+            // The photograph's own background and drop shadow are cut away in
+            // scripts/build-dabba.mjs, so the tin is grounded here instead. Its
+            // baked shadow was a warm off-white a few units lighter than this
+            // section, which read as a pale box behind the tin.
+            className="object-contain drop-shadow-[0_16px_26px_rgba(35,31,29,0.16)]"
           />
 
           {wells.map((well, i) => {

@@ -164,17 +164,51 @@ props, garnish, whole spices mixed into powders unless specified
 All eight images came back usable on the first pass, with the clockwise spice
 order matching the site copy exactly.
 
-Assets live in `public/dabba/`: `dabba.webp` plus `spice-*.webp`. The tin is
-masked to a transparent circle so it sits on the section's sand ground with no
-visible background box.
+The delivered tin photograph is kept at `assets-src/dabba-source.webp`. It is the
+input to **`npm run build:dabba`**, which writes both the asset
+(`public/dabba/dabba.<hash>.webp`) and the hotspot geometry (`src/data/dabba.ts`). Run
+that after replacing the photograph; never hand-edit the generated numbers. The
+seven spice close-ups need no processing and sit in `public/dabba/spice-*.webp`.
 
-**Calibration.** The hotspots in `src/data/dabba.ts` are measured, not assumed.
-Five of the seven wells flood-filled cleanly; a symmetric seven-fold ring was
-fitted to those five and used for all seven. Per-well centroids were rejected
-because the loose spilled grains the prompt asks for pull a centroid outward by
-a few percent. RMS fit error is 1.0% of frame width, and all seven wells were
-verified to select the right spice.
+### What the script does, and the three things that went wrong first
 
-**If you ever regenerate the tin**, re-measure rather than hand-editing the
-numbers: the fit is sensitive to how the tin is cropped. The measurement
-approach that worked was flood-fill per well, then fit a symmetric ring.
+**Background removal is a flood fill, not a circular mask.** The tin fills only
+about 85% of the source frame, so masking to the frame's inscribed circle leaves
+a ring of the photo's own off-white ground. At `#EFE9E2` against the section's
+`#F6EFE8` that is a difference of about 7 RGB units across a large area, which
+reads as a pale box behind the tin: the exact complaint the mask was meant to
+fix. The fill instead starts at the four corners and steps only where luminance
+changes by less than 5, so it walks down the soft drop shadow (a smooth gradient)
+and stops dead at the tin's silhouette. The tin's shadow goes with the
+background, so the tin is grounded with a CSS `drop-shadow` instead.
+
+**Well centres come from a distance transform, not a centroid.** The prompt asks
+for a few loose grains around each well because it looks real, and those spills
+drag a centroid outward by a few percent. The centre of the largest disc that
+fits inside a well ignores thin spills completely.
+
+**Two sharp edges do not make a fit.** The wells sit almost tangent to the tin
+wall, so an edge-detection fit for the tin's rim mixes well rims with the wall
+and lands 6% out. Segmenting the background and taking its complement has no such
+ambiguity.
+
+The script prints each well's mean colour beside the colour the copy claims, so a
+photograph whose spices are in a different order fails visibly rather than
+silently mislabelling seven products. It also fits a symmetric seven-fold ring as
+a **cross-check** and aborts if the measured wells disagree with it by more than
+2% of frame width, which is what would happen if the tin were shot at an angle.
+For the delivered photo the two agree to 1.28%, and the measured centres are used
+because a generated tin is not perfectly evenly spaced.
+
+### Verified
+
+All seven wells select the right spice by click, by arrow key and by touch at a
+390px viewport, where the tap targets come out 81px. The ground at the four
+corners of the image box matches the surrounding section exactly (delta 0) at
+1280, 1600 and 2000px wide.
+
+One trap worth knowing: Next's image optimizer caches by request URL, and a file
+in `public/` keeps its URL when its contents change. Replacing an asset in place
+therefore leaves the **old** rendering being served, alpha channel included, and
+`next build` does not clear it. `scripts/verify-pages.mjs` now removes
+`.next/cache/images` before it checks anything.

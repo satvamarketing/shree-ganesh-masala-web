@@ -11,7 +11,8 @@
     "import:catalog": "node scripts/import-shopify.mjs",
     "check:assets": "node scripts/check-assets.mjs",
     "check:constraints": "node scripts/check-constraints.mjs",
-    "build:covers": "node scripts/build-department-covers.mjs"
+    "build:covers": "node scripts/build-department-covers.mjs",
+    "build:dabba": "node scripts/build-dabba.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.28.0",
