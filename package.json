@@ -12,7 +12,8 @@
     "check:assets": "node scripts/check-assets.mjs",
     "check:constraints": "node scripts/check-constraints.mjs",
     "build:covers": "node scripts/build-department-covers.mjs",
-    "build:dabba": "node scripts/build-dabba.mjs"
+    "build:dabba": "node scripts/build-dabba.mjs",
+    "build:logos": "node scripts/build-brand-logos.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.28.0",

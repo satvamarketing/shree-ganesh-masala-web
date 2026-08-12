@@ -23,12 +23,19 @@ transparent background, and all six brand tiles now carry a real logo.
 The same cap also truncated `uploads/badge-australian-owned.png` and all four
 `Screenshot 2026-08-01 …png` files. The badge was re-sourced instead — see §4.
 
-**Two logos still carry a white box.** `amdavadi.webp` and `vipul-dudhiya.webp`
-came from the client with an opaque white rectangle behind the mark, which shows
-against the cream brand tile. They can be cut out the same way the dabba was
-(`scripts/build-dabba.mjs` has the technique), but it needs a decision first:
-Amdavadi's white may be part of the mark rather than a background, and that is the
-client's call, not ours.
+**Backgrounds cut out of three more logos.** Amdavadi, Vipul Dudhiya and Henaa
+arrived with an opaque panel behind the mark, which showed as a box against the
+cream brand tile. All three are now cut out by `npm run build:logos`, which reads
+the client's originals from `assets-src/brands/`. Every detail survives: Amdavadi's
+white wordmark and monument (they are knocked out of the red shield, so a plain
+colour key would have deleted them), its ™, Vipul's arched tagline, tick, swoosh
+and both lines of small copy, and Henaa's motif.
+
+**Dhiraj is the exception, and it needs the brand owner.** Its dark olive panel is
+load-bearing: the wordmark is knocked out of it in white, so removing the panel
+would leave white type on a cream tile, i.e. nothing visible. Putting Dhiraj on a
+light ground needs a different artwork from the brand owner. As it stands the dark
+panel reads as a deliberate lockup, so this is a nice-to-have.
 
 ## 2. Photography
 

@@ -22,7 +22,7 @@ export const brands: Brand[] = [
   {
     name: "Amdavadi",
     slug: "amdavadi",
-    logo: "/brands/amdavadi.webp",
+    logo: "/brands/amdavadi.25ab697e.webp",
     bg: "#FFF8EE",
     blurb:
       "Gujarati snacks: khakhra, chevda and farsan the way Ahmedabad's old city makes them.",
@@ -47,14 +47,14 @@ export const brands: Brand[] = [
   {
     name: "Vipul Dudhiya",
     slug: "vipul-dudhiya",
-    logo: "/brands/vipul-dudhiya.webp",
+    logo: "/brands/vipul-dudhiya.636be747.webp",
     bg: "#FFF8EE",
     blurb: "Traditional mithai, made to the same recipes for decades.",
   },
   {
     name: "Henaa",
     slug: "henaa",
-    logo: "/brands/henaa.webp",
+    logo: "/brands/henaa.6b2b9239.webp",
     bg: "#FBF3E4",
     blurb: "Henna and personal-care lines, stocked alongside the pantry range.",
   },
