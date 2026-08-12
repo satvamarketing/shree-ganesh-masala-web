@@ -43,6 +43,7 @@ npm run dev          # http://localhost:3000
 | `npm run check:assets` | Asserts every image path in data resolves on disk |
 | `npm run check:constraints` | Asserts the project-wide rules against a running server |
 | `npm run import:catalog` | Re-imports the catalog from Shopify |
+| `npm run build:covers` | Rebuilds the overridden department cover images |
 
 ### Environment
 
@@ -59,13 +60,15 @@ development:
 
 | Route | Rendering | Notes |
 | --- | --- | --- |
-| `/` | Static | |
+| `/` | Static | The five-chapter narrative, plus Trending and the inline apply band |
+| `/about` | Static | Founder story, vision, why choose us |
 | `/range` | Dynamic | Full 1174-product catalog, filtered from `searchParams` |
 | `/range/[handle]` | SSG | One page per product, 1174 of them |
-| `/departments` | Static | Replaces the design's Recipes page — see below |
-| `/story` | Static | Scroll-spy chapter rail |
-| `/wholesale` | Static | Account application form |
+| `/departments` | Static | Index of all 30 stocked departments |
 | `/contact` | Static | Enquiry form + map |
+
+`/story` and `/wholesale` are 308 redirects to `/about` and `/#apply`: v7 folds
+both into the home page and About, and the old URLs were already linked.
 
 `/range` is dynamic on purpose. Filtering happens on the server so the catalog
 never reaches the browser — a check in `check:constraints` fails the build
@@ -119,17 +122,22 @@ The two worth flagging here:
   International's mark requires written consent. Both licences must be current
   and in Shree Ganesh's name before this goes live; see `ASSETS-NEEDED.md` §4.
   Removing a badge is one line in `src/components/sections/cert-badges.tsx`.
-- **Recipes became Departments.** The Recipes page had no real content behind
-  it: no blog, no recipes and no food photography exist. Rather than invent a
-  content section for the client, that slot became a department index backed
-  entirely by imported data.
+- **The catalog was kept.** v7 drops the product range entirely, but 1174
+  indexable product pages are the site's strongest search surface for a
+  distributor, so `/range`, `/departments` and the product pages stay, in the
+  same palette and linked from the nav.
+- **Two department covers are overridden.** `src/data/department-overrides.ts`
+  replaces the imported Shopify stock photos for Instant Food and Health &
+  Hygiene with composites of real packshots from those departments, built by
+  `npm run build:covers`.
 
 ## Outstanding client content
 
-`ASSETS-NEEDED.md` lists everything still needed — five photographs, two brand
-assets blocked by a tooling file-size cap, the Story chapter-4 history, the
-Henaa blurb, the ABN, and real social handles. Every one ships with a
-deliberate placeholder, so the site is complete and shippable as-is.
+`ASSETS-NEEDED.md` lists everything still needed — four photographs, the Herbs &
+Spices logo blocked by a tooling file-size cap, the festival dates to confirm,
+the Henaa blurb, the ABN, real social handles, and the two certification
+licences. Every one ships with a deliberate placeholder, so the site is complete
+and shippable as-is.
 
 ## Verification
 
@@ -137,7 +145,7 @@ deliberate placeholder, so the site is complete and shippable as-is.
 npx tsc --noEmit && npm test && npm run lint && npm run check:assets && npm run build
 npm start &                                   # or: npm run dev
 npm run check:constraints
-node scripts/verify-pages.mjs / /range /departments /story /wholesale /contact
+node scripts/verify-pages.mjs / /about /range /departments /contact
 ```
 
 `verify-pages.mjs` drives the system Chrome via Playwright and checks each page
