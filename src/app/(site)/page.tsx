@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { BrandTile } from "@/components/brand-tile";
 import { ChapterRail } from "@/components/chapter-rail";
 import { Reveal } from "@/components/reveal";
-import { Ticker } from "@/components/ticker";
 import { Apply } from "@/components/sections/apply";
 import { CertBadges } from "@/components/sections/cert-badges";
 import { FestivalCountdown } from "@/components/sections/festival-countdown";
@@ -35,7 +34,11 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Ticker />
+      {/* Trending sits between the hero and the chapters, so the running order
+          is hook, then product, then story. The hero is sized to stop short of
+          the fold, which leaves the top of this section showing. The chapter rail
+          stays below it, with the chapters it actually navigates. */}
+      <Trending />
       <ChapterRail />
 
       {/* ---------------------------- 01 The house --------------------------- */}
@@ -291,7 +294,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Trending />
       <CertBadges />
       <Apply />
     </>

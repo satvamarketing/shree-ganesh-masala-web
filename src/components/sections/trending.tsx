@@ -16,6 +16,11 @@ import { products } from "@/data/catalog";
  *
  * Selection is one product per title and per department, so the row reads as a
  * spread of the range rather than the same line in four sizes.
+ *
+ * It sits directly under the hero and is deliberately cut by the fold, so the
+ * ground is sand rather than white: against the hero's white the join would be
+ * invisible and the peek would read as the hero simply continuing, instead of as
+ * another section worth scrolling to.
  */
 const TRENDING = (() => {
   const seenTitle = new Set<string>();
@@ -38,7 +43,7 @@ export function Trending() {
   if (TRENDING.length === 0) return null;
 
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-sand">
       <div className="shell py-[clamp(44px,5vw,70px)]">
         <Reveal className="mb-9 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>

@@ -51,8 +51,17 @@ export function Reveal({
 
     el.classList.add("reveal");
 
-    // Already in view on load (above the fold): reveal without waiting.
-    if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
+    // Already in view on load: reveal without waiting.
+    //
+    // The test is the whole viewport, not a fraction of it. Anything whose top
+    // edge is on screen when the page settles is something the visitor can see
+    // at rest, so hiding it means shipping invisible content. This used to be
+    // innerHeight * 0.9, which stranded the deliberately peeking Trending
+    // section at opacity 0 on tall displays: its top lands just past the 90%
+    // line, and the observer's -12% bottom margin excludes it too, so nothing
+    // was painted until the first scroll. Popping in without the fade is the
+    // right trade for a block that is already visible.
+    if (el.getBoundingClientRect().top < window.innerHeight) {
       show();
       return () => clearTimeout(timer);
     }

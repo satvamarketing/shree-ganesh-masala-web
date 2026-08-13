@@ -49,9 +49,34 @@
 }
 
 @layer base {
+  :root {
+    /**
+     * The first screen, above the fold.
+     *
+     * --sg-fold-chrome is what the marquee and the header take off the top of
+     * the first viewport: the marquee's 48px (py-3.5 either side of a 13px line)
+     * plus the header's 66px. Neither is sticky-above-the-other, so they simply
+     * stack. If either changes height, change this with it.
+     *
+     * --sg-peek is how much of the Trending section is left showing below the
+     * hero, so a visitor can see there is more without seeing the products. It
+     * is measured from Trending's own geometry: 64-70px of top padding, ~26px of
+     * eyebrow and margin, and a ~40-44px heading put the card grid at about
+     * 166-176px, so 200px shows the label and the heading and clips the cards.
+     *
+     * It also has to clear Reveal's threshold. Reveal shows an element straight
+     * away only if its top is within 90% of the viewport; a much smaller peek
+     * would fall through to its IntersectionObserver, whose 0.08 threshold a
+     * thin sliver of a tall section may never meet, leaving the peek blank.
+     */
+    --sg-fold-chrome: 114px;
+    --sg-peek: 200px;
+  }
+
   html {
     scroll-behavior: smooth;
-    /* Header (66px) + sticky chapter rail (52px) clearance for anchors. */
+    /* Header (66px) + sticky chapter rail (52px) clearance for anchors. The
+       marquee is static and above both, so it is not part of this. */
     scroll-padding-top: 7.5rem;
   }
 

@@ -13,13 +13,23 @@ import { site } from "@/data/site";
  * on white left the right half of a laptop fold empty. The client reported the
  * site reading as "designed for mobile" on a larger screen, so from lg the
  * headline and the supporting copy sit side by side and the fold fills.
+ *
+ * From lg the section is also sized so that it stops short of the fold by
+ * --sg-peek, leaving the top of the Trending section showing. The height is a
+ * floor, not a fixed height: where the hero's own content is taller than the
+ * target -- a short laptop, or any phone -- it simply keeps its natural height
+ * and the peek shrinks to nothing. Content is never clipped to manufacture one.
+ *
+ * The content is centred within that height rather than left at the top, so the
+ * extra room on a tall display is shared above and below instead of dumped
+ * underneath the stats row.
  */
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-white text-ink">
       <Glow />
 
-      <div className="shell relative pt-[clamp(40px,4.5vw,64px)] pb-[clamp(44px,5vw,70px)]">
+      <div className="shell relative flex flex-col justify-center pt-[clamp(40px,4.5vw,64px)] pb-[clamp(44px,5vw,70px)] lg:min-h-[calc(100svh-var(--sg-fold-chrome)-var(--sg-peek))]">
         <div className="grid items-end gap-x-[clamp(32px,4vw,64px)] gap-y-[clamp(28px,3vw,36px)] lg:grid-cols-[1.1fr_1fr]">
           <div>
             <Reveal className="mb-[clamp(22px,2.6vw,32px)]">
