@@ -1,6 +1,6 @@
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Reveal } from "@/components/reveal";
-import { Button, Display, Eyebrow } from "@/components/ui";
+import { Button, Display } from "@/components/ui";
 import { enquireHref, formattedAddress, site } from "@/data/site";
 
 /**
@@ -22,11 +22,11 @@ export function ContactBlock() {
       value: site.email,
       href: `mailto:${site.email}`,
     },
-    { Icon: MapPin, label: "Warehouse", value: formattedAddress() },
+    { Icon: MapPin, label: "Address", value: formattedAddress() },
     {
       Icon: Clock,
       label: "Trading hours",
-      value: `${site.hours}. ${site.hoursNote}.`,
+      value: "Monday to Friday: 9:30am to 3:30pm. Saturday and Sunday: Closed.",
     },
   ];
 
@@ -35,12 +35,7 @@ export function ContactBlock() {
       <div className="shell py-[clamp(48px,5vw,76px)]">
         <div className="mb-[clamp(30px,3.4vw,44px)] flex flex-wrap items-end justify-between gap-6">
           <Reveal>
-            <Eyebrow tone="gold" className="mb-4">
-              Get in touch
-            </Eyebrow>
-            <Display className="max-w-[20ch]">
-              Talk to us about our products.
-            </Display>
+            <Display>Contact Us</Display>
           </Reveal>
           <Reveal delay={70}>
             <Button href={enquireHref} variant="gold">

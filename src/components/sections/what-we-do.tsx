@@ -1,24 +1,21 @@
-import { BadgeCheck, Factory, Truck } from "lucide-react";
+import { BadgeCheck, Factory, Timer } from "lucide-react";
 import { Reveal } from "@/components/reveal";
-import { Display, Eyebrow } from "@/components/ui";
+import { Display } from "@/components/ui";
 import { whatWeDo } from "@/data/story";
 
-const ICONS = [Factory, Truck, BadgeCheck] as const;
+const ICONS = [Factory, Timer, BadgeCheck] as const;
 
 /**
- * "What we do", after Sagoon Group's About page: three short pillars that say
- * plainly what the business is. Shared by the home and About pages.
+ * "What We Do", after Sagoon Group's About page: three short pillars, each one
+ * fact from the original About Us page. Shared by the home and About pages.
  */
 export function WhatWeDo() {
   return (
     <section className="bg-sand">
       <div className="shell py-[clamp(48px,5vw,76px)]">
         <Reveal>
-          <Eyebrow className="mb-4">What we do</Eyebrow>
-        </Reveal>
-        <Reveal delay={70}>
-          <Display className="mb-[clamp(30px,3.4vw,44px)] max-w-[24ch] text-ink">
-            From our kitchens in Ahmedabad to shelves across Queensland.
+          <Display className="mb-[clamp(30px,3.4vw,44px)] text-ink">
+            What We Do
           </Display>
         </Reveal>
         <Reveal

@@ -2,7 +2,7 @@ export const site = {
   name: "Shree Ganesh",
   legalName: "Shree Ganesh Australia",
   description:
-    "Shree Ganesh Australia, a masala house since 1969. We make spices, snacks, pickles, sweets and instant mixes in Ahmedabad and distribute them from Brisbane across Queensland.",
+    "Shree Ganesh: masalas, spices, pickles, sweets and instant mixes since 1969. Wholesale pricing for everyone, with fast, free local delivery on orders over $500. Acacia Ridge, Brisbane.",
   foundedYear: 1969,
   address: {
     street: "Unit 3/32 Success St",
@@ -18,8 +18,6 @@ export const site = {
   hoursNote: "Closed weekends",
   freeDeliveryThreshold: 500,
   deliveryArea: "Brisbane metro",
-  manufacturing: "Ahmedabad, India",
-  distribution: "Acacia Ridge, Brisbane",
   // Empty until the client supplies real handles. The live Shopify site links
   // to facebook.com/shopify, an unreplaced default — see spec §8.4.
   social: { facebook: "", instagram: "" },

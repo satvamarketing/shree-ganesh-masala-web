@@ -8,13 +8,12 @@ import { WhatWeDo } from "@/components/sections/what-we-do";
 import { Display, Eyebrow } from "@/components/ui";
 import { brands } from "@/data/brands";
 import { images } from "@/data/images";
-import { site } from "@/data/site";
 import { aboutFounder, vision, whyChooseUs } from "@/data/story";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Shree Ganesh began in Ahmedabad in 1969 with Shree Ganesh Masala. Today we make and distribute spices, snacks, pickles, sweets and instant mixes across Queensland.",
+    'Founded by Shri Vrajlal Manilal Shah, who introduced "Shree Ganesh Masala" in 1969. Quality has been our guiding force ever since.',
   alternates: { canonical: "/about" },
 };
 
@@ -53,15 +52,6 @@ export default function AboutPage() {
           </Reveal>
 
           <div>
-            <Reveal>
-              <Eyebrow className="mb-4">Since {site.foundedYear}</Eyebrow>
-            </Reveal>
-            <Reveal delay={70}>
-              <Display className="mb-[clamp(22px,2.6vw,30px)] max-w-[20ch] text-ink">
-                One standard, set in {site.foundedYear}.
-              </Display>
-            </Reveal>
-
             <Reveal delay={140}>
               <p className="text-[clamp(16px,1.1vw,17.5px)] leading-[1.8] text-ink-deep">
                 {aboutFounder[0]}
@@ -74,7 +64,7 @@ export default function AboutPage() {
                   Health Is Wealth.
                 </p>
                 <cite className="mt-3 block text-[13px] font-bold tracking-[1.6px] text-faint uppercase not-italic">
-                  The golden words we still cook by
+                  Our golden words
                 </cite>
               </blockquote>
             </Reveal>
@@ -91,7 +81,7 @@ export default function AboutPage() {
               delay={420}
               className="mt-[clamp(28px,3.2vw,40px)] rounded-[22px] border border-line bg-sand p-[clamp(24px,3vw,36px)]"
             >
-              <Eyebrow className="mb-3.5">Our vision</Eyebrow>
+              <Eyebrow className="mb-3.5">Our Vision</Eyebrow>
               <p className="text-[clamp(15.5px,1vw,17px)] leading-[1.78] text-body">
                 {vision}
               </p>
@@ -105,11 +95,8 @@ export default function AboutPage() {
       <section className="bg-white">
         <div className="shell py-[clamp(48px,5vw,76px)]">
           <Reveal>
-            <Eyebrow className="mb-4">Why choose us</Eyebrow>
-          </Reveal>
-          <Reveal delay={70}>
-            <Display className="mb-[clamp(24px,3vw,36px)] max-w-[22ch] text-ink">
-              100% customer satisfaction is the whole objective.
+            <Display className="mb-[clamp(24px,3vw,36px)] text-ink">
+              Why Choose Us
             </Display>
           </Reveal>
           <Reveal
@@ -131,11 +118,8 @@ export default function AboutPage() {
       <section className="bg-sand">
         <div className="shell py-[clamp(44px,5vw,68px)]">
           <Reveal>
-            <Eyebrow className="mb-4">Our brands</Eyebrow>
-          </Reveal>
-          <Reveal delay={70}>
-            <Display className="mb-[clamp(28px,3.2vw,40px)] max-w-[24ch] text-ink">
-              {brands.length} brands, one house, one standard.
+            <Display className="mb-[clamp(28px,3.2vw,40px)] text-ink">
+              Our Brands
             </Display>
           </Reveal>
           <Reveal

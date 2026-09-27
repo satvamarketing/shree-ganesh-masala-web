@@ -10,3 +10,4 @@ node_modules/
 # site's runtime dependency on Shopify. See the spec, §4.1.
 
 .verify/
+.vercel

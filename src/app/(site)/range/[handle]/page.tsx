@@ -27,7 +27,7 @@ export async function generateMetadata({
     title: product.title,
     description:
       `${product.title}${pack ? `, ${pack}` : ""}. ${product.brand}, ` +
-      `wholesale from our Brisbane warehouse to grocers, restaurants and caterers.`,
+      `from Shree Ganesh, Acacia Ridge, Brisbane. Wholesale pricing for everyone.`,
     alternates: { canonical: `/range/${product.handle}` },
   };
 }

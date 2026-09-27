@@ -48,8 +48,8 @@ export function Footer() {
               <Logo height={44} />
             </div>
             <p className="max-w-[300px] text-sm leading-relaxed">
-              A masala house since {site.foundedYear}. Made in Ahmedabad,
-              distributed across Queensland. Makers of {brandList}.
+              Shree Ganesh Masala since {site.foundedYear}. Our brands:{" "}
+              {brandList}.
             </p>
           </div>
 

@@ -24,7 +24,7 @@ const dmSerif = DM_Serif_Display({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${site.name} · Wholesale Indian Pantry Staples, Brisbane`,
+    default: `${site.name} · Masalas, Spices & Instant Mixes Since 1969`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     locale: "en_AU",
     url: SITE_URL,
-    title: `${site.name} · Wholesale Indian Pantry Staples`,
+    title: `${site.name} · Masalas, Spices & Instant Mixes Since 1969`,
     description: site.description,
   },
   twitter: { card: "summary_large_image" },

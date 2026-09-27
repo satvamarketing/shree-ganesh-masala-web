@@ -40,11 +40,10 @@ export default function ContactPage() {
         <div className="shell py-[clamp(40px,4.5vw,64px)]">
           <Eyebrow className="mb-3.5">Contact</Eyebrow>
           <h1 className="mb-4.5 font-serif text-[clamp(38px,4.6vw,62px)] leading-[1.06] font-normal text-ink">
-            Talk to us
+            Customer Support
           </h1>
           <p className="max-w-[520px] text-[clamp(15.5px,1vw,17px)] leading-[1.65] text-body">
-            Product enquiries, orders and anything else: someone in the
-            warehouse will answer.
+            Call, email or send us a message.
           </p>
         </div>
       </section>
@@ -52,7 +51,7 @@ export default function ContactPage() {
       <section className="shell py-[clamp(40px,4.5vw,64px)]">
         <div className="grid items-start gap-[clamp(28px,3.4vw,46px)] lg:grid-cols-2">
           <div className="grid gap-3.5">
-            <InfoCard label="Warehouse">
+            <InfoCard label="Address">
               {site.address.street},
               <br />
               {site.address.suburb} {site.address.state} {site.address.postcode}

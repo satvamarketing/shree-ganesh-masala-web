@@ -14,9 +14,9 @@ import { enquireHref } from "@/data/site";
 import { brandFilterOptions, IMPORTED, queryProducts } from "@/lib/catalog-query";
 
 export const metadata: Metadata = {
-  title: "Our Range",
+  title: "Our Products",
   description:
-    `Every line we stock: six house brands manufactured in Ahmedabad plus imported staples across ${departments.length} departments. Search the full catalog and enquire about any product.`,
+    `Every product we stock across ${departments.length} departments: Shree Ganesh masalas, spices, pickles, sweets and instant mixes, and more. Wholesale pricing for everyone.`,
   // Filtered views canonicalise to the base page so they do not compete in the
   // index with one another.
   alternates: { canonical: "/range" },
@@ -86,17 +86,16 @@ export default async function RangePage({
     <>
       <section className="border-b border-line bg-sand">
         <div className="shell py-[clamp(40px,4.5vw,64px)]">
-          <Eyebrow className="mb-3.5">Our Range</Eyebrow>
+          <Eyebrow className="mb-3.5">{products.length.toLocaleString("en-AU")} products</Eyebrow>
           <h1
             className="mb-4.5 max-w-[720px] font-serif text-[clamp(38px,4.6vw,62px)] leading-[1.06] font-normal text-ink"
             style={{ textWrap: "pretty" }}
           >
-            {brands.length} house brands, one pantry
+            Our Products
           </h1>
           <p className="max-w-[560px] text-[clamp(15.5px,1vw,17px)] leading-[1.65] text-body">
-            Every house line is manufactured by us in Ahmedabad and distributed
-            from our Brisbane warehouse, alongside imported staples across{" "}
-            {departments.length} departments, in carton and pallet quantities.
+            Our brands and more, across {departments.length} departments.
+            Wholesale pricing for everyone.
           </p>
         </div>
       </section>
@@ -175,11 +174,10 @@ export default async function RangePage({
         <div className="grid items-center gap-8 rounded-[26px] bg-red p-[clamp(32px,4vw,52px)] [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
           <div>
             <h2 className="mb-3 font-serif text-[clamp(26px,2.8vw,36px)] leading-[1.15] font-normal text-white">
-              Buying for a shop or kitchen?
+              Wholesale pricing for everyone
             </h2>
             <p className="text-base leading-[1.65] text-white/85">
-              Ask us about pricing and availability across this range and{" "}
-              {departments.length} departments of imported staples.
+              Fast, free local delivery on all orders over $500.
             </p>
           </div>
           <div className="justify-self-start">

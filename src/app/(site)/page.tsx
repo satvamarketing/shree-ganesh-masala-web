@@ -10,17 +10,17 @@ import { BannerSlider } from "@/components/sections/banner-slider";
 import { CertBadges } from "@/components/sections/cert-badges";
 import { ContactBlock } from "@/components/sections/contact-block";
 import { WhatWeDo } from "@/components/sections/what-we-do";
-import { Button, Display, Eyebrow } from "@/components/ui";
+import { Button, Display } from "@/components/ui";
 import { brands } from "@/data/brands";
 import { products } from "@/data/catalog";
 import { departments } from "@/data/departments";
 import { images } from "@/data/images";
 import { site } from "@/data/site";
-import { benefits, showcase, whoWeAre, whyChooseUs } from "@/data/story";
+import { benefits, showcase, welcome, whyChooseUs } from "@/data/story";
 import { pickShowcase } from "@/lib/showcase";
 
 export const metadata: Metadata = {
-  title: "Authentic Indian Food, Made Since 1969",
+  title: "Shree Ganesh Masala Since 1969",
   description: site.description,
   alternates: { canonical: "/" },
 };
@@ -49,7 +49,7 @@ export default function HomePage() {
   return (
     <>
       <h1 className="sr-only-label">
-        {site.name}: authentic Indian food, made in Ahmedabad since{" "}
+        {site.name}: masalas, spices and instant mixes since{" "}
         {site.foundedYear}
       </h1>
 
@@ -91,14 +91,11 @@ export default function HomePage() {
           </Reveal>
           <div>
             <Reveal>
-              <Eyebrow className="mb-4">Who we are</Eyebrow>
-            </Reveal>
-            <Reveal delay={70}>
               <Display className="mb-[clamp(20px,2.4vw,28px)] max-w-[18ch] text-ink">
-                {whoWeAre.heading}
+                Welcome to Shree Ganesh
               </Display>
             </Reveal>
-            {whoWeAre.body.map((para, i) => (
+            {welcome.map((para, i) => (
               <Reveal key={i} delay={140 + i * 70}>
                 <p className="mb-5 max-w-[58ch] text-[clamp(15.5px,1vw,17px)] leading-[1.75] text-body">
                   {para}
@@ -107,7 +104,7 @@ export default function HomePage() {
             ))}
             <Reveal delay={280} className="mt-3">
               <Button href="/about" variant="outlineDark">
-                Our story
+                About us
               </Button>
             </Reveal>
           </div>
@@ -120,11 +117,8 @@ export default function HomePage() {
       <section className="bg-white">
         <div className="shell py-[clamp(48px,5vw,80px)]">
           <Reveal>
-            <Eyebrow className="mb-4">Our products</Eyebrow>
-          </Reveal>
-          <Reveal delay={70}>
-            <Display className="mb-[clamp(36px,4vw,56px)] max-w-[22ch] text-ink">
-              Authentic Indian food, made by us.
+            <Display className="mb-[clamp(36px,4vw,56px)] text-ink">
+              Our Products
             </Display>
           </Reveal>
 
@@ -161,10 +155,7 @@ export default function HomePage() {
         <div className="shell py-[clamp(48px,5vw,76px)]">
           <div className="mb-[clamp(28px,3.2vw,40px)] flex flex-wrap items-end justify-between gap-6">
             <Reveal>
-              <Eyebrow className="mb-4">Shop by department</Eyebrow>
-              <Display className="max-w-[22ch] text-ink">
-                Everything for the Indian kitchen.
-              </Display>
+              <Display className="text-ink">All Departments</Display>
             </Reveal>
             <Reveal delay={70}>
               <Button href="/departments" variant="outlineDark">
@@ -187,11 +178,8 @@ export default function HomePage() {
       <section className="bg-white">
         <div className="shell py-[clamp(48px,5vw,76px)]">
           <Reveal>
-            <Eyebrow className="mb-4">Our brands</Eyebrow>
-          </Reveal>
-          <Reveal delay={70}>
-            <Display className="mb-[clamp(28px,3.2vw,40px)] max-w-[24ch] text-ink">
-              {brands.length} brands, one standard.
+            <Display className="mb-[clamp(28px,3.2vw,40px)] text-ink">
+              Our Brands
             </Display>
           </Reveal>
           <Reveal
@@ -216,11 +204,8 @@ export default function HomePage() {
       <section className="bg-sand">
         <div className="shell py-[clamp(48px,5vw,76px)]">
           <Reveal>
-            <Eyebrow className="mb-4">Why choose us</Eyebrow>
-          </Reveal>
-          <Reveal delay={70}>
-            <Display className="mb-[clamp(24px,3vw,36px)] max-w-[22ch] text-ink">
-              100% customer satisfaction is the whole objective.
+            <Display className="mb-[clamp(24px,3vw,36px)] text-ink">
+              Why Choose Us
             </Display>
           </Reveal>
           <Reveal

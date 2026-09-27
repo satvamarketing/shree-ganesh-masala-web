@@ -7,7 +7,7 @@ import { departments } from "@/data/departments";
 import { products } from "@/data/catalog";
 
 export const metadata: Metadata = {
-  title: "Departments",
+  title: "All Departments",
   description: `Browse all ${departments.length} departments we stock, from spices and frozen to kitchenware and puja.`,
   alternates: { canonical: "/departments" },
 };
@@ -31,12 +31,12 @@ export default function DepartmentsPage() {
             className="mb-4.5 max-w-[720px] font-serif text-[clamp(38px,4.6vw,62px)] leading-[1.06] font-normal text-ink"
             style={{ textWrap: "pretty" }}
           >
-            Everything for the Indian kitchen
+            All Departments
           </h1>
           <p className="max-w-[600px] text-[clamp(15.5px,1vw,17px)] leading-[1.65] text-body">
-            One supplier for the whole shop: {departments.length} departments and{" "}
-            {products.length.toLocaleString("en-AU")} lines, from spices and
-            frozen to kitchenware and puja.
+            {departments.length} departments and{" "}
+            {products.length.toLocaleString("en-AU")} products, from spices and
+            frozen to kitchenware and religious items.
           </p>
         </div>
       </section>
@@ -55,7 +55,7 @@ export default function DepartmentsPage() {
               />
             </div>
             <div className="flex flex-col justify-center p-[clamp(30px,4vw,52px)]">
-              <Eyebrow className="mb-3.5">Biggest aisle</Eyebrow>
+              <Eyebrow className="mb-3.5">Largest department</Eyebrow>
               <h2
                 className="mb-4 font-serif text-[clamp(28px,3.2vw,42px)] leading-[1.1] font-normal text-ink"
                 style={{ textWrap: "pretty" }}
@@ -63,8 +63,7 @@ export default function DepartmentsPage() {
                 {biggest.name}
               </h2>
               <p className="mb-6 text-base leading-[1.7] text-body">
-                {biggest.count} lines in stock, from everyday staples to the
-                blends your kitchen goes through by the carton.
+                {biggest.count} products.
               </p>
               <Button
                 href={`/range?department=${biggest.slug}`}
@@ -89,11 +88,10 @@ export default function DepartmentsPage() {
       <section className="bg-sand">
         <div className="mx-auto max-w-[780px] px-[clamp(20px,4vw,40px)] py-[clamp(44px,5vw,68px)] text-center">
           <h2 className="mb-3.5 font-serif text-[clamp(30px,3.4vw,44px)] leading-[1.1] font-normal text-ink">
-            News and new lines, once a fortnight
+            Newsletter
           </h2>
           <p className="mb-7.5 text-[16px] leading-[1.65] text-body">
-            New products, festival specials and range updates, straight
-            to your inbox. No spam, unsubscribe any time.
+            Subscribe to hear about new products. Unsubscribe any time.
           </p>
           <NewsletterForm />
         </div>

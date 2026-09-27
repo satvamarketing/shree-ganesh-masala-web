@@ -1,102 +1,99 @@
 /**
  * Site copy for the home and About pages.
  *
- * Client round 2: every word here comes from the original shreeganesh.com.au
- * (home page and About Us), tightened, with the focus on who Shree Ganesh is,
- * what it does, and what it makes. House style: no em dashes in rendered copy.
+ * Client round 2: all content comes from the original shreeganesh.com.au (its
+ * home and About Us pages), made more precise. Nothing here is a new claim:
+ * where a line is shortened, the fact is still the original's. Headings are the
+ * original's own section names. House style: no em dashes in rendered copy.
  */
 
-/** The original home page's three benefit tiles, verbatim headings. */
+/** The original home page's three benefit tiles, verbatim. */
 export const benefits = [
-  {
-    title: "Fast, Free Local Delivery",
-    body: "On all orders over $500 across Brisbane metro.",
-  },
-  {
-    title: "Top Quality Products",
-    body: "Hand-selected, customer approved.",
-  },
-  {
-    title: "Unbeatable Prices",
-    body: "Wholesale pricing for everyone.",
-  },
+  { title: "Fast, Free Local Delivery", body: "On all orders over $500." },
+  { title: "Top Quality Products", body: "Hand-selected, customer approved." },
+  { title: "Unbeatable Prices", body: "Wholesale pricing for everyone." },
 ] as const;
 
-export const whoWeAre = {
-  heading: "A masala house since 1969",
-  body: [
-    'Shree Ganesh began in Ahmedabad in 1969, when our founder, Shri Vrajlal Manilal Shah, launched "Shree Ganesh Masala." He was among the first to see how fast the ready masala market would grow.',
-    "Today we make spices, snacks, pickles, sweets and instant mixes under our own brands, and distribute them across Queensland from our warehouse in Acacia Ridge, Brisbane.",
-  ],
-} as const;
+/** From the About Us page's opening, shortened. */
+export const welcome = [
+  'Shree Ganesh was founded by Shri Vrajlal Manilal Shah, the first to see the potential of the ready masala market. In 1969 he introduced "Shree Ganesh Masala."',
+  'Quality has guided us ever since, by our golden words "Health Is Wealth": healthy cooking without compromising on taste and aroma.',
+] as const;
 
-/** Sagoon-style pillars: what the business actually does, in three parts. */
+/**
+ * "What we do", in Sagoon's three-pillar form, with each pillar one fact from
+ * the original About Us page.
+ */
 export const whatWeDo = [
   {
-    title: "Manufacturing",
-    body: "Our own brands are made in Ahmedabad to the original family recipes. Every product passes rigorous testing before it leaves the plant.",
+    title: "Masalas since 1969",
+    body: "Regular and premium masalas, from the range our founder introduced as Shree Ganesh Masala.",
   },
   {
-    title: "Import & Distribution",
-    body: "Stock is shipped to our Acacia Ridge warehouse and delivered to grocers, restaurants and caterers. Free Brisbane metro delivery over $500, with freight across Queensland on request.",
+    title: "Instant Mixes",
+    body: 'For changing times and busy lifestyles, we launched "Shree Ganesh Instant Mix."',
   },
   {
-    title: "Quality",
-    body: 'We cook by the golden words "Health Is Wealth." Healthy cooking without compromising taste or aroma, and never trading quality for quantity.',
+    title: "Tested for Quality",
+    body: "Every product is tested with state-of-the-art technology and measurement before it reaches you.",
   },
 ] as const;
 
 /**
- * The original home page's five product rows, under its own headings. Each maps
- * to the catalogue department the products are drawn from; `prefer` picks the
- * lines that lead it (see pickShowcase for why every row sets one).
+ * The original home page's five product rows: its headings, its subtitles, and
+ * the products it featured in each (matched by `prefer`, in catalogue order).
  */
 export const showcase = [
   {
     title: "Premium Snacks",
-    blurb: "Khakhra, chevda, sev and farsan the Amdavadi way.",
+    blurb: "Amdavadi, Shree Ganesh, Lays, MoM, Sikandar and more.",
     department: "snacks",
-    prefer: /khakhra|fafda|chevda|gathia/i,
+    prefer: /^Khakhra (Chilli Coriander|Bajri|Chapat|Mathia|Chorafali|Methi|Jeera)$/,
   },
   {
     title: "Indian Sweets",
-    blurb: "Laddu, katli, halwa and barfi for every occasion.",
+    blurb: "Ladoo, gajar halwa, kaju katli, barfi, peda and more.",
     department: "sweets-and-desserts",
-    prefer: /^Ganesh .*(laddu|katli|halva|roll)/i,
+    prefer:
+      /^(Ganesh +Moongdal Halva|Frozen Ganesh Kesar Katli|Ganesh Motichur Laddu|Ganesh Besan Laddu|Ganesh Kaju Katli|Ganesh Kaju Roll)$/,
   },
   {
     title: "Herbs & Spices",
-    blurb: "Whole and ground spices, and the masalas we started with.",
+    blurb: "Chilli powder, salt, turmeric, cloves, cardamom and more.",
     department: "herbs-and-spices",
     prefer:
-      /^(Chilli Powder Kashmiri|Coriander Cumin Powder|Turmeric Powder|Garam Masala)$/,
+      /^Ganesh (Tea|Dabeli|Jaljeera|Biryani Pulav|Pavbhaji|Sambhar|Chat) Masala$/,
   },
   {
     title: "Authentic Pickles",
-    blurb: "Mango, chilli, lime and gorkeri, made to home recipes.",
+    blurb: "Mango pickle, chilli pickle, aamla pickle, garlic pickle and more.",
     department: "pickles",
-    prefer: /mango|gorkeri|chilli|lime/i,
+    prefer:
+      /^Ganesh (Mango|Gunda|Garlic|Dabla|Green Chilli|Mix|Amba Halder) Pickle$/,
   },
   {
     title: "Instant Mixes",
-    blurb: "Dhokla, khaman, handva and dosa mixes, ready in minutes.",
+    blurb: "Dosa mix, gulab jamun mix, dhokla mix, juice mix and more.",
     department: "instant-food",
-    prefer: /dhokla|khaman|handva|dosa/i,
+    prefer:
+      /^Ganesh (Khaman|Idli|Rava idli|Rava Dosa|Dakor Gota|Dahiwada) Mix$/,
   },
 ] as const;
 
+/** Why Choose Us, from the home and About Us pages, shortened. */
 export const whyChooseUs = [
-  "At Shree Ganesh our only objective is 100% customer satisfaction. Our regular masalas, premium masalas and instant mixes hold a place on kitchen shelves because they are made to cook food people love.",
-  "Every product that reaches you passes rigorous testing with modern technology and measurement, so it meets the same high standard every time. As we grow, we grow stronger in that policy, never compromising on quality or quantity.",
+  "At Shree Ganesh, our sole objective is 100% customer satisfaction. Our regular masalas, premium masalas and instant mixes hold an indispensable place on kitchen shelves.",
+  "Every product that reaches the end user passes consistent testing with state-of-the-art technology and measurement, so it never falls short of the mark we set. We never compromise on quality or quantity.",
 ] as const;
 
 /* ---------------------------------- About --------------------------------- */
 
+/** The About Us page's three paragraphs, shortened. */
 export const aboutFounder = [
-  'Our founder, Shri Vrajlal Manilal Shah, had a vision he called "Quality Vision." With rare foresight, he was among the first to see the potential of the ready masala market, and in 1969 he introduced "Shree Ganesh Masala."',
-  'Quality has guided us ever since. We believe healthy cooking is the foundation of a healthy life, so every masala carries our assurance of healthy cooking without compromising taste or aroma.',
-  'As lifestyles grew busier, customers asked for food that keeps pace. So alongside our spices and premium masalas we launched "Shree Ganesh Instant Mix": the same standard, ready in minutes.',
+  'The founder of Shree Ganesh, Shri Vrajlal Manilal Shah, had a vision he called "Quality Vision." Gifted with foresight and sharp business acumen, he was the first to identify the potential of the fast-growing ready masala market. In 1969, he introduced "Shree Ganesh Masala."',
+  "Since the company began, quality has been our guiding force. We believe healthy cooking is the foundation of a healthy life, and our masalas carry a Quality Assurance for healthy cooking without compromising on taste and aroma.",
+  'Spices, premium masalas and instant mixes hold a special place in our customers\' hearts because we understand their needs. Recognising the demand for products that keep up with changing times and busier lifestyles, we launched "Shree Ganesh Instant Mix."',
 ] as const;
 
 export const vision =
-  'The vision set by Shri Parmanand Shah is to provide quality products to every customer and earn a place in millions of hearts, building the lasting brand value of "Shree Ganesh."';
+  'The vision set by our founder, Shri Parmanand Shah, is to provide quality products to end users and earn a well-deserved place in millions of hearts, establishing the brand value of "Shree Ganesh."';
