@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { ContactForm } from "@/components/forms/contact-form";
+import { Suspense } from "react";
+import {
+  ContactForm,
+  PrefilledContactForm,
+} from "@/components/forms/contact-form";
 import { StaticMap } from "@/components/static-map";
 import { Eyebrow } from "@/components/ui";
 import { site } from "@/data/site";
@@ -39,7 +43,7 @@ export default function ContactPage() {
             Talk to us
           </h1>
           <p className="max-w-[520px] text-[clamp(15.5px,1vw,17px)] leading-[1.65] text-body">
-            New accounts, order questions, product enquiries: someone in the
+            Product enquiries, orders and anything else: someone in the
             warehouse will answer.
           </p>
         </div>
@@ -78,7 +82,9 @@ export default function ContactPage() {
           </div>
 
           <div className="rounded-[26px] border border-line bg-white p-[clamp(28px,3.5vw,44px)]">
-            <ContactForm />
+            <Suspense fallback={<ContactForm />}>
+              <PrefilledContactForm />
+            </Suspense>
           </div>
         </div>
       </section>

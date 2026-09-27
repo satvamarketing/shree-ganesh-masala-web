@@ -6,7 +6,7 @@ import { Menu, X, Phone, Mail } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Logo } from "@/components/logo";
-import { nav, site } from "@/data/site";
+import { enquireHref, nav, site } from "@/data/site";
 
 /**
  * Mobile navigation drawer. An addition to the source design, which has no
@@ -178,18 +178,11 @@ export function MobileNav() {
 
                 <div className="flex flex-col gap-3 px-5 pt-6">
                   <Link
-                    href="/#apply"
+                    href={enquireHref}
                     onClick={close}
                     className="rounded-full bg-white px-7 py-4 text-center text-base font-bold text-red"
                   >
-                    Open an account
-                  </Link>
-                  <Link
-                    href="/range"
-                    onClick={close}
-                    className="rounded-full border-[1.5px] border-white/45 px-7 py-4 text-center text-base font-bold text-white"
-                  >
-                    Our range
+                    Enquire now
                   </Link>
                 </div>
 

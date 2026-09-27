@@ -8,12 +8,14 @@ export function Field({
   type = "text",
   rows,
   required = false,
+  defaultValue,
 }: {
   name: string;
   label: string;
   type?: string;
   rows?: number;
   required?: boolean;
+  defaultValue?: string;
 }) {
   const shared =
     "w-full box-border rounded-xl border-[1.5px] px-[18px] py-[15px] text-[15.5px] outline-none transition-colors";
@@ -36,6 +38,7 @@ export function Field({
           required={required}
           aria-required={required || undefined}
           placeholder={label}
+          defaultValue={defaultValue}
           className={`${shared} ${toneClasses} resize-y`}
         />
       ) : (
@@ -46,6 +49,7 @@ export function Field({
           required={required}
           aria-required={required || undefined}
           placeholder={label}
+          defaultValue={defaultValue}
           className={`${shared} ${toneClasses}`}
         />
       )}

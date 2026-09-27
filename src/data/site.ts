@@ -1,10 +1,8 @@
 export const site = {
   name: "Shree Ganesh",
   legalName: "Shree Ganesh Australia",
-  tagline: "Anyone can sell you a carton.",
-  pullLine: "We grind what's in it.",
   description:
-    "Shree Ganesh Australia, a masala house since 1969. Wholesale trade accounts for grocers, restaurants and caterers across Queensland.",
+    "Shree Ganesh Australia, a masala house since 1969. We make spices, snacks, pickles, sweets and instant mixes in Ahmedabad and distribute them from Brisbane across Queensland.",
   foundedYear: 1969,
   address: {
     street: "Unit 3/32 Success St",
@@ -30,26 +28,24 @@ export const site = {
 } as const;
 
 /**
- * v7's nav is the five story chapters plus About. The catalogue links are ours:
- * v7 drops the range entirely, but the 1174-product catalogue is the site's
- * strongest indexable surface, so it stays reachable.
+ * The header nav. Round 2 of client feedback dropped the story chapters and the
+ * trade account, so this is a plain distributor site: who we are, what we make,
+ * how to reach us. "Enquire now" sits beside it as the one call to action.
  */
-export const storyNav = [
-  { label: "The house", href: "/#ch-1" },
-  { label: "The dabba", href: "/#ch-2" },
-  { label: "Trade school", href: "/#ch-3" },
-] as const;
-
-export const catalogNav = [
-  { label: "Our range", href: "/range" },
-  { label: "Departments", href: "/departments" },
-] as const;
-
 export const nav = [
-  ...storyNav,
-  ...catalogNav,
+  { label: "Home", href: "/" },
+  { label: "Our products", href: "/range" },
+  { label: "Departments", href: "/departments" },
   { label: "About us", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ] as const;
+
+export const enquireHref = "/contact";
+
+/** The contact form, with its subject already filled in for this product. */
+export function productEnquiryHref(title: string): string {
+  return `/contact?subject=${encodeURIComponent(`Product enquiry: ${title}`)}`;
+}
 
 export function formattedAddress(): string {
   const a = site.address;

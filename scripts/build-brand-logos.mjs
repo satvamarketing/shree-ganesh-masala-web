@@ -25,7 +25,7 @@
  *   These logos have elements floating clear of the main shape. Amdavadi has a
  *   superscript TM; Vipul has an arched tagline above the oval and two lines of
  *   copy plus a swoosh below it; Henaa's motif sits clear of its wordmark. Taking
- *   the largest connected region, as the dabba script does, would silently delete
+ *   the largest connected region, as the old dabba script did, would silently delete
  *   all of them.
  *
  * The 1px erosion before feathering matters: the originals are anti-aliased

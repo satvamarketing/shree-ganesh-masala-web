@@ -7,6 +7,7 @@ import { ProductCard, packLine } from "@/components/product-card";
 import { Button, WordmarkFallback } from "@/components/ui";
 import { products, productByHandle } from "@/data/catalog";
 import { departments } from "@/data/departments";
+import { productEnquiryHref, site } from "@/data/site";
 
 export function generateStaticParams() {
   return products.map((p) => ({ handle: p.handle }));
@@ -146,12 +147,11 @@ export default async function ProductPage({
               </p>
             ) : null}
 
-            <Button href="/#apply" variant="red">
-              Log in for carton pricing
+            <Button href={productEnquiryHref(product.title)} variant="red">
+              Enquire about this product
             </Button>
             <p className="mt-4 text-[13.5px] leading-[1.6] text-muted">
-              Wholesale accounts only. Carton pricing is sent with your account
-              approval.
+              Call {site.phone} or send an enquiry for pricing and availability.
             </p>
           </div>
         </div>

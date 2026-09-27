@@ -5,10 +5,17 @@ goods, manufacturing six house brands in Ahmedabad and distributing from a
 warehouse in Acacia Ridge, Brisbane.
 
 **This is deliberately not e-commerce.** There is no cart, no checkout and no
-prices. Every buying intent routes to a wholesale account application. That
-mirrors how the business already works: every variant price on the live Shopify
-store is `0.00`, so pricing is held outside the website and sent with account
-approval.
+prices. Every buying intent routes to an enquiry on the contact page ("Enquire
+now", and "Enquire" on each product, which prefills the subject). Trade accounts
+were dropped in client round 2: Shree Ganesh does not offer them, so there is no
+account application anywhere on the site.
+
+**Client round 2 (Sep 2026)** restructured the site after
+[Sagoon Group](https://sagoongroup.com.au/about-us/): a plain distributor site
+focused on who Shree Ganesh is, what it does and what it makes, with all copy
+taken from the original shreeganesh.com.au and tightened. The top strip and the
+home page's banner slider are the original site's, and v7's chapters (the
+house, the dabba, trade school, the rhythm, the aisle) are gone.
 
 Built from `Shree Ganesh Trade v7`
 (`design/shree-ganesh-trade-v7.reference.html`), with the catalog and imagery
@@ -38,7 +45,7 @@ npm run dev          # http://localhost:3000
 | --- | --- |
 | `npm run dev` | Development server |
 | `npm run build` / `npm start` | Production build and serve |
-| `npm test` | Unit tests (pack parser, catalog query, form validation) |
+| `npm test` | Unit tests (pack parser, catalog query, showcase picker, form validation) |
 | `npm run lint` | ESLint |
 | `npm run check:assets` | Asserts every image path in data resolves on disk |
 | `npm run check:constraints` | Asserts the project-wide rules against a running server |
@@ -60,15 +67,15 @@ development:
 
 | Route | Rendering | Notes |
 | --- | --- | --- |
-| `/` | Static | The five-chapter narrative, plus Trending and the inline apply band |
-| `/about` | Static | Founder story, vision, why choose us |
+| `/` | Static | Banner slider, benefits, who we are, what we do, five product rows, departments, brands, why choose us, contact block |
+| `/about` | Static | Welcome and founder story, vision, what we do, why choose us, brands |
 | `/range` | Dynamic | Full 1174-product catalog, filtered from `searchParams` |
 | `/range/[handle]` | SSG | One page per product, 1174 of them |
 | `/departments` | Static | Index of all 30 stocked departments |
-| `/contact` | Static | Enquiry form + map |
+| `/contact` | Static | Enquiry form + map; `?subject=` prefills a product enquiry |
 
-`/story` and `/wholesale` are 308 redirects to `/about` and `/#apply`: v7 folds
-both into the home page and About, and the old URLs were already linked.
+`/story` and `/wholesale` are 308 redirects to `/about` and `/contact`, so old
+links keep working.
 
 `/range` is dynamic on purpose. Filtering happens on the server so the catalog
 never reaches the browser — a check in `check:constraints` fails the build
@@ -122,6 +129,10 @@ The two worth flagging here:
   International's mark requires written consent. Both licences must be current
   and in Shree Ganesh's name before this goes live; see `ASSETS-NEEDED.md` §4.
   Removing a badge is one line in `src/components/sections/cert-badges.tsx`.
+- **Showcase rows pick their products explicitly.** The importer marks some
+  third-party lines as house brand (Century masalas, Aji No Moto, Tata Salt), so
+  each home-page row in `src/data/story.ts` sets a `prefer` pattern naming the
+  genuine lines it leads with. See `src/lib/showcase.ts`.
 - **The catalog was kept.** v7 drops the product range entirely, but 1174
   indexable product pages are the site's strongest search surface for a
   distributor, so `/range`, `/departments` and the product pages stay, in the

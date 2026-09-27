@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { MobileNav } from "@/components/mobile-nav";
 import { NavLinks } from "@/components/nav-links";
+import { enquireHref } from "@/data/site";
 
 /**
  * Header: brand red, sticky, 66px. Teal was removed on client feedback.
@@ -16,10 +17,10 @@ export function Header() {
 
         <div className="ml-auto flex shrink-0 items-center gap-3.5 lg:hidden">
           <Link
-            href="/#apply"
+            href={enquireHref}
             className="hidden rounded-full bg-white px-5 py-2.5 text-[12px] font-extrabold tracking-[1px] whitespace-nowrap text-red uppercase transition-colors hover:bg-gold hover:text-ink sm:inline-block"
           >
-            Open an account
+            Enquire now
           </Link>
           <MobileNav />
         </div>

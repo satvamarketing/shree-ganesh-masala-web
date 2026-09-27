@@ -15,9 +15,8 @@ export type ImageSlot = {
 export const images: Record<string, ImageSlot> = {
   logo: { src: "/logo/shree-ganesh.webp", alt: "Shree Ganesh" },
 
-  // Real photography from the live site. v7's home page is typographic and has
-  // no photographic feature panel, so these are currently unplaced; they are
-  // kept because they are genuine assets and the checker validates them.
+  // Real banners from the live site. The home page's banner slider shows these
+  // two plus the snack and sweets banners; see banner-slider.tsx.
   masalaFeature: {
     src: "/banners/masala-lineup.webp",
     alt: "Shree Ganesh masala packets with whole spices and ground spice bowls",
@@ -47,26 +46,20 @@ export const images: Record<string, ImageSlot> = {
     alt: "HACCP International food safety certification",
   },
 
-  // Awaiting client photography. Until then these render as designed panels,
-  // never as stock photography that would misrepresent the business.
+  /**
+   * The original site's spice flat-lay, used beside "Who we are" and on the
+   * About page until the founder photograph below arrives.
+   */
+  spiceSpoons: {
+    src: "/photos/spice-spoons.webp",
+    alt: "Whole and ground spices on silver spoons: turmeric, chilli, cumin, coriander, mustard seed, cardamom and star anise",
+  },
+
+  // Awaiting client photography. Until it arrives, the About page shows the
+  // spice photograph above instead.
   founder: {
     src: "",
-    alt: "Shri Vrajlal Manilal Shah, or the original masala house",
-    needsReal: true,
-  },
-  warehouse: {
-    src: "",
-    alt: "Acacia Ridge racking, or the delivery van",
-    needsReal: true,
-  },
-  plantRoom: {
-    src: "",
-    alt: "The Ahmedabad blending and grinding room",
-    needsReal: true,
-  },
-  batchTesting: {
-    src: "",
-    alt: "Batch testing and lab measurement",
+    alt: "Shri Vrajlal Manilal Shah, founder of Shree Ganesh",
     needsReal: true,
   },
 };

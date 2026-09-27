@@ -4,18 +4,18 @@ import { Logo } from "@/components/logo";
 import { brands } from "@/data/brands";
 import { site } from "@/data/site";
 
-const STORY = [
+const COMPANY = [
+  { label: "Home", href: "/" },
   { label: "About us", href: "/about" },
-  { label: "The house", href: "/#ch-1" },
-  { label: "The dabba", href: "/#ch-2" },
-  { label: "Trade school", href: "/#ch-3" },
+  { label: "Contact", href: "/contact" },
 ];
 
-const TRADE = [
-  { label: "Open an account", href: "/#apply" },
-  { label: "Our range", href: "/range" },
+const PRODUCTS = [
+  { label: "All products", href: "/range" },
   { label: "Departments", href: "/departments" },
-  { label: "Contact", href: "/contact" },
+  { label: "Herbs & Spices", href: "/range?department=herbs-and-spices" },
+  { label: "Snacks", href: "/range?department=snacks" },
+  { label: "Pickles", href: "/range?department=pickles" },
 ];
 
 function ColumnHeading({ children }: { children: React.ReactNode }) {
@@ -49,14 +49,14 @@ export function Footer() {
             </div>
             <p className="max-w-[300px] text-sm leading-relaxed">
               A masala house since {site.foundedYear}. Made in Ahmedabad,
-              delivered across Queensland. Makers of {brandList}.
+              distributed across Queensland. Makers of {brandList}.
             </p>
           </div>
 
           <div>
-            <ColumnHeading>The story</ColumnHeading>
+            <ColumnHeading>Company</ColumnHeading>
             <div className="grid gap-2.5 text-[14.5px]">
-              {STORY.map((l) => (
+              {COMPANY.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
@@ -69,9 +69,9 @@ export function Footer() {
           </div>
 
           <div>
-            <ColumnHeading>Trade</ColumnHeading>
+            <ColumnHeading>Products</ColumnHeading>
             <div className="grid gap-2.5 text-[14.5px]">
-              {TRADE.map((l) => (
+              {PRODUCTS.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
@@ -115,7 +115,6 @@ export function Footer() {
             {site.abn ? ` ABN ${site.abn}.` : ""}
           </span>
           <div className="flex items-center gap-4">
-            <span>Trade enquiries only.</span>
             {socials.map(({ href, label, Icon }) => (
               <a
                 key={label}

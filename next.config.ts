@@ -8,11 +8,12 @@ const nextConfig: NextConfig = {
     formats: ["image/webp"],
   },
   async redirects() {
-    // Trade v7 folds these into the narrative home page and About, so the v5
-    // routes 308 rather than 404 for anything already linking to them.
+    // Old routes 308 rather than 404 for anything already linking to them.
+    // Trade accounts were dropped in client round 2, so /wholesale now lands
+    // on the contact page.
     return [
       { source: "/story", destination: "/about", permanent: true },
-      { source: "/wholesale", destination: "/#apply", permanent: true },
+      { source: "/wholesale", destination: "/contact", permanent: true },
     ];
   },
 };

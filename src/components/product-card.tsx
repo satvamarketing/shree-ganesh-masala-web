@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/data/catalog";
 import { WordmarkFallback } from "@/components/ui";
+import { productEnquiryHref } from "@/data/site";
 
 /** "100g · carton of 10", or whichever half exists, or "" for neither. */
 export function packLine(product: Product): string {
@@ -60,10 +61,10 @@ export function ProductCard({
         </Link>
         {pack ? <div className="text-[13px] text-muted">{pack}</div> : null}
         <Link
-          href="/#apply"
+          href={productEnquiryHref(product.title)}
           className="mt-auto pt-3 text-[13.5px] font-bold text-red hover:text-red-dark"
         >
-          Log in for carton pricing →
+          Enquire →
         </Link>
       </div>
     </div>

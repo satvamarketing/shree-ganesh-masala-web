@@ -119,7 +119,7 @@ function text(body) {
 // 4b. The v5 routes v7 folds away still resolve, so nothing that linked to
 // them 404s.
 {
-  for (const [from, to] of [["/story", "/about"], ["/wholesale", "/#apply"]]) {
+  for (const [from, to] of [["/story", "/about"], ["/wholesale", "/contact"]]) {
     const res = await fetch(`${BASE}${from}`, { redirect: "manual" });
     const location = res.headers.get("location") ?? "";
     report(
@@ -156,7 +156,7 @@ function text(body) {
   const body = await res.text();
   report(
     "branded 404 with chrome",
-    res.status === 404 && body.includes("Browse the range") && body.includes("Open an account"),
+    res.status === 404 && body.includes("Browse the range") && body.includes("Enquire now"),
     `status ${res.status}`,
   );
 }

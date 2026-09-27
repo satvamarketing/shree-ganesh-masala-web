@@ -8,7 +8,7 @@ import { products } from "@/data/catalog";
 
 export const metadata: Metadata = {
   title: "Departments",
-  description: `Browse all ${departments.length} departments we stock, from spices and frozen to kitchenware and puja, and open a wholesale account for carton pricing.`,
+  description: `Browse all ${departments.length} departments we stock, from spices and frozen to kitchenware and puja.`,
   alternates: { canonical: "/departments" },
 };
 
@@ -36,8 +36,7 @@ export default function DepartmentsPage() {
           <p className="max-w-[600px] text-[clamp(15.5px,1vw,17px)] leading-[1.65] text-body">
             One supplier for the whole shop: {departments.length} departments and{" "}
             {products.length.toLocaleString("en-AU")} lines, from spices and
-            frozen to kitchenware and puja. Browse the aisles, then open a
-            wholesale account for carton pricing.
+            frozen to kitchenware and puja.
           </p>
         </div>
       </section>
@@ -90,10 +89,10 @@ export default function DepartmentsPage() {
       <section className="bg-sand">
         <div className="mx-auto max-w-[780px] px-[clamp(20px,4vw,40px)] py-[clamp(44px,5vw,68px)] text-center">
           <h2 className="mb-3.5 font-serif text-[clamp(30px,3.4vw,44px)] leading-[1.1] font-normal text-ink">
-            Trade updates, once a fortnight
+            News and new lines, once a fortnight
           </h2>
           <p className="mb-7.5 text-[16px] leading-[1.65] text-body">
-            Festival ordering guides, new lines and price-list changes, straight
+            New products, festival specials and range updates, straight
             to your inbox. No spam, unsubscribe any time.
           </p>
           <NewsletterForm />

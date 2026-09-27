@@ -39,33 +39,21 @@ panel reads as a deliberate lockup, so this is a nice-to-have.
 
 ## 2. Photography
 
-None of these exist anywhere on the current site.
-
 | Slot (`src/data/images.ts`) | Where it appears | Subject | Target ratio |
 | --- | --- | --- | --- |
-| `founder` | About hero | Shri Vrajlal Manilal Shah, or the original masala house | 3:4 |
-| `plantRoom` | About, why choose us | Ahmedabad blending / grinding room | 4:3 |
-| `batchTesting` | About, why choose us | Batch testing, lab measurement | 4:3 |
-| `warehouse` | About, why choose us | Acacia Ridge racking, or the delivery van | 4:3 |
+| `founder` | About, beside the founder story | Shri Vrajlal Manilal Shah, or the original masala house | 4:5 |
 
-Two real banners pulled from the live site (`masalaFeature`, `pickleFeature`)
-are in `public/banners/` but currently unplaced: Trade v7's home page is
-typographic and has no photographic feature panel. They are kept for reuse.
+Until it arrives, the About page shows the original site's spice photograph
+(`spiceSpoons`), never an empty panel. The four product banners in the home
+page slider are the original site's own artwork, including the Vipul Dudhiya
+Sweets banner, which carries that brand's logo.
 
-## 3. Festival dates
-
-Chapter Four counts down to four festivals from `src/data/story.ts`. The design
-carried the note "Confirm festival dates against your 2026-27 calendar before
-publishing" and these are the dates as drawn, unverified against an almanac.
-Please confirm, and note the list needs a yearly top-up: a festival whose date
-has passed drops off the countdown rather than sitting at zero.
-
-## 4. Copy
+## 3. Copy
 
 - **Henaa** — what the range actually covers, to firm up the brand blurb.
 - **ABN** — for the footer (`site.abn` in `src/data/site.ts`).
 
-## 5. Certification badges — licences to confirm
+## 4. Certification badges — licences to confirm
 
 All three trust marks render in the certification strip on the home and About
 pages (`src/components/sections/cert-badges.tsx`), sourced as:
@@ -93,10 +81,16 @@ Please confirm before this goes live:
 Removing either badge is a one-line change — delete its entry from `BADGES` in
 `cert-badges.tsx`.
 
-Trade v7 also states the claim in copy, and that wording is now live: the ticker
-reads "HACCP certified" and the About page's plant caption reads "Ground,
-blended and packed at our HACCP-certified facility." If the certificate is not
-current, both need pulling along with the badge.
+The certification strip's heading also says "Food-safety certified." If the
+HACCP certificate is not current, that line comes out along with the badge.
+
+## 5. Catalogue brand labels
+
+The Shopify store tags some third-party lines as Shree Ganesh, so the site does
+too: Century Meat and Momo Masala, Aji No Moto, Tata Salt and Tata Cooking Soda
+among them. The home page's product rows avoid them, but they still show a
+"Shree Ganesh" tag in the range. Worth correcting at the source before the next
+catalogue import.
 
 ## 6. Social
 

@@ -10,12 +10,13 @@ import { Button, Eyebrow } from "@/components/ui";
 import { brands } from "@/data/brands";
 import { products } from "@/data/catalog";
 import { departments } from "@/data/departments";
+import { enquireHref } from "@/data/site";
 import { brandFilterOptions, IMPORTED, queryProducts } from "@/lib/catalog-query";
 
 export const metadata: Metadata = {
   title: "Our Range",
   description:
-    `Every line we stock: six house brands manufactured in Ahmedabad plus imported staples across ${departments.length} departments. Search the full catalog and open a wholesale account for carton pricing.`,
+    `Every line we stock: six house brands manufactured in Ahmedabad plus imported staples across ${departments.length} departments. Search the full catalog and enquire about any product.`,
   // Filtered views canonicalise to the base page so they do not compete in the
   // index with one another.
   alternates: { canonical: "/range" },
@@ -95,8 +96,7 @@ export default async function RangePage({
           <p className="max-w-[560px] text-[clamp(15.5px,1vw,17px)] leading-[1.65] text-body">
             Every house line is manufactured by us in Ahmedabad and distributed
             from our Brisbane warehouse, alongside imported staples across{" "}
-            {departments.length} departments. Carton and pallet quantities,
-            priced on a wholesale account.
+            {departments.length} departments, in carton and pallet quantities.
           </p>
         </div>
       </section>
@@ -178,13 +178,13 @@ export default async function RangePage({
               Buying for a shop or kitchen?
             </h2>
             <p className="text-base leading-[1.65] text-white/85">
-              Wholesale accounts get carton pricing across this range plus{" "}
+              Ask us about pricing and availability across this range and{" "}
               {departments.length} departments of imported staples.
             </p>
           </div>
           <div className="justify-self-start">
-            <Button href="/#apply" variant="gold">
-              Open a wholesale account
+            <Button href={enquireHref} variant="gold">
+              Enquire now
             </Button>
           </div>
         </div>

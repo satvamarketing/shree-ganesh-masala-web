@@ -1,301 +1,246 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { BadgeCheck, Tag, Truck } from "lucide-react";
 import { BrandTile } from "@/components/brand-tile";
-import { ChapterRail } from "@/components/chapter-rail";
+import { DepartmentCard } from "@/components/department-card";
+import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
-import { Apply } from "@/components/sections/apply";
+import { BannerSlider } from "@/components/sections/banner-slider";
 import { CertBadges } from "@/components/sections/cert-badges";
-import { FestivalCountdown } from "@/components/sections/festival-countdown";
-import { Hero } from "@/components/sections/hero";
-import { SpiceTin } from "@/components/sections/spice-tin";
-import { TradeSchool } from "@/components/sections/trade-school";
-import { Trending } from "@/components/sections/trending";
-import { Button, ChapterNumeral, Display, Eyebrow } from "@/components/ui";
+import { ContactBlock } from "@/components/sections/contact-block";
+import { WhatWeDo } from "@/components/sections/what-we-do";
+import { Button, Display, Eyebrow } from "@/components/ui";
 import { brands } from "@/data/brands";
+import { products } from "@/data/catalog";
 import { departments } from "@/data/departments";
+import { images } from "@/data/images";
 import { site } from "@/data/site";
-import {
-  houseCards,
-  rhythmDays,
-  sampleTin,
-  withOneAccount,
-  withoutUs,
-} from "@/data/story";
+import { benefits, showcase, whoWeAre, whyChooseUs } from "@/data/story";
+import { pickShowcase } from "@/lib/showcase";
 
 export const metadata: Metadata = {
-  title: "A Masala House Since 1969",
+  title: "Authentic Indian Food, Made Since 1969",
   description: site.description,
   alternates: { canonical: "/" },
 };
 
-const CHAPTER = "relative overflow-hidden";
-const CHAPTER_INNER = "shell relative py-[clamp(48px,5vw,76px)]";
+const BENEFIT_ICONS = [Truck, BadgeCheck, Tag] as const;
 
+/** The eight biggest aisles, for the "shop by department" grid. */
+const TOP_DEPARTMENTS = [...departments]
+  .sort((a, b) => b.count - a.count)
+  .slice(0, 8);
+
+const SHOWCASE_ROWS = showcase.map((row) => ({
+  ...row,
+  items: pickShowcase(products, row.department, row.prefer),
+}));
+
+/**
+ * The home page, restructured in client round 2 after Sagoon Group: banner
+ * slider, who we are, what we do, then the products, which are the main focus.
+ * v7's five-chapter narrative, the trade-account band and everything built
+ * around trade accounts are gone.
+ */
 export default function HomePage() {
+  const photo = images.spiceSpoons;
+
   return (
     <>
-      <Hero />
-      {/* Trending sits between the hero and the chapters, so the running order
-          is hook, then product, then story. The hero is sized to stop short of
-          the fold, which leaves the top of this section showing. The chapter rail
-          stays below it, with the chapters it actually navigates. */}
-      <Trending />
-      <ChapterRail />
+      <h1 className="sr-only-label">
+        {site.name}: authentic Indian food, made in Ahmedabad since{" "}
+        {site.foundedYear}
+      </h1>
 
-      {/* ---------------------------- 01 The house --------------------------- */}
-      <section id="ch-1" className={`${CHAPTER} bg-white`}>
-        <ChapterNumeral numeral="01" side="right" tone="light" />
-        <div className={CHAPTER_INNER}>
+      <BannerSlider />
+
+      {/* ------------------------------ Benefits ----------------------------- */}
+      <section className="border-b border-line bg-white">
+        <ul className="shell grid gap-x-8 gap-y-5 py-[clamp(24px,3vw,34px)] sm:grid-cols-3">
+          {benefits.map((b, i) => {
+            const Icon = BENEFIT_ICONS[i];
+            return (
+              <li key={b.title} className="flex items-center gap-4">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sand text-red">
+                  <Icon size={22} aria-hidden="true" />
+                </span>
+                <span>
+                  <span className="block text-[15.5px] font-bold text-ink">
+                    {b.title}
+                  </span>
+                  <span className="block text-[14px] text-muted">{b.body}</span>
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      {/* ----------------------------- Who we are ---------------------------- */}
+      <section className="bg-white">
+        <div className="shell grid items-center gap-[clamp(30px,4vw,64px)] py-[clamp(48px,5vw,80px)] md:grid-cols-[1fr_1.15fr]">
+          <Reveal className="relative aspect-[4/5] max-h-[520px] w-full overflow-hidden rounded-[24px] bg-sand-deep">
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              fill
+              sizes="(max-width: 768px) 100vw, 520px"
+              className="object-cover"
+            />
+          </Reveal>
+          <div>
+            <Reveal>
+              <Eyebrow className="mb-4">Who we are</Eyebrow>
+            </Reveal>
+            <Reveal delay={70}>
+              <Display className="mb-[clamp(20px,2.4vw,28px)] max-w-[18ch] text-ink">
+                {whoWeAre.heading}
+              </Display>
+            </Reveal>
+            {whoWeAre.body.map((para, i) => (
+              <Reveal key={i} delay={140 + i * 70}>
+                <p className="mb-5 max-w-[58ch] text-[clamp(15.5px,1vw,17px)] leading-[1.75] text-body">
+                  {para}
+                </p>
+              </Reveal>
+            ))}
+            <Reveal delay={280} className="mt-3">
+              <Button href="/about" variant="outlineDark">
+                Our story
+              </Button>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <WhatWeDo />
+
+      {/* ------------------------------ Products ----------------------------- */}
+      <section className="bg-white">
+        <div className="shell py-[clamp(48px,5vw,80px)]">
           <Reveal>
-            <Eyebrow className="mb-4">Chapter One · The House</Eyebrow>
+            <Eyebrow className="mb-4">Our products</Eyebrow>
           </Reveal>
           <Reveal delay={70}>
-            <Display className="mb-[clamp(22px,2.6vw,30px)] max-w-[20ch] text-ink">
-              Wholesale is a race to the cheapest carton. We&apos;re not in that
-              race.
+            <Display className="mb-[clamp(36px,4vw,56px)] max-w-[22ch] text-ink">
+              Authentic Indian food, made by us.
             </Display>
           </Reveal>
-          <Reveal delay={140}>
-            <p className="mb-[clamp(32px,3.6vw,48px)] max-w-[62ch] text-[clamp(15.5px,1vw,17px)] leading-[1.75] text-body">
-              In 1969 our founder, Shri Vrajlal Manilal Shah, called his
-              standard{" "}
-              <em className="font-serif text-ink italic">Quality Vision</em>. He
-              was the first in the market to see where ready masala was going,
-              and he refused to let volume dictate the blend. Fifty-seven years
-              on, that is still the only reason to choose us over a cheaper
-              pallet: what&apos;s actually in the packet.
-            </p>
-          </Reveal>
-          <Reveal
-            delay={210}
-            className="grid gap-[clamp(16px,2vw,24px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))]"
-          >
-            {houseCards.map((card) => (
-              <div
-                key={card.title}
-                className="rounded-[20px] border border-line bg-sand p-[clamp(26px,3vw,36px)]"
-              >
-                <div className="mb-3 font-serif text-[26px] text-red">
-                  {card.title}
+
+          <div className="grid gap-[clamp(44px,5vw,68px)]">
+            {SHOWCASE_ROWS.filter((row) => row.items.length > 0).map((row) => (
+              <Reveal key={row.department}>
+                <div className="mb-[clamp(18px,2vw,24px)] flex flex-wrap items-end justify-between gap-x-6 gap-y-2 border-b border-line pb-4">
+                  <div>
+                    <h3 className="font-serif text-[clamp(24px,2.4vw,32px)] leading-[1.15] font-normal text-ink">
+                      {row.title}
+                    </h3>
+                    <p className="mt-1.5 text-[15px] text-muted">{row.blurb}</p>
+                  </div>
+                  <Link
+                    href={`/range?department=${row.department}`}
+                    className="text-[14.5px] font-bold whitespace-nowrap text-red hover:text-red-dark"
+                  >
+                    View all {row.title.toLowerCase()} →
+                  </Link>
                 </div>
-                <p className="text-[15.5px] leading-[1.7] text-body">
-                  {card.body}
-                </p>
-              </div>
+                <div className="grid gap-5 [grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))]">
+                  {row.items.map((product) => (
+                    <ProductCard key={product.handle} product={product} />
+                  ))}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ----------------------------- Departments --------------------------- */}
+      <section className="bg-sand">
+        <div className="shell py-[clamp(48px,5vw,76px)]">
+          <div className="mb-[clamp(28px,3.2vw,40px)] flex flex-wrap items-end justify-between gap-6">
+            <Reveal>
+              <Eyebrow className="mb-4">Shop by department</Eyebrow>
+              <Display className="max-w-[22ch] text-ink">
+                Everything for the Indian kitchen.
+              </Display>
+            </Reveal>
+            <Reveal delay={70}>
+              <Button href="/departments" variant="outlineDark">
+                All {departments.length} departments
+              </Button>
+            </Reveal>
+          </div>
+          <Reveal
+            delay={140}
+            className="grid gap-5 [grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))]"
+          >
+            {TOP_DEPARTMENTS.map((department) => (
+              <DepartmentCard key={department.slug} department={department} />
             ))}
           </Reveal>
         </div>
       </section>
 
-      {/* ---------------------------- 02 The dabba --------------------------- */}
-      <section
-        id="ch-2"
-        className={`${CHAPTER} bg-sand text-ink`}
-      >
-        <ChapterNumeral numeral="02" side="left" tone="sand" />
-        <div className={CHAPTER_INNER}>
+      {/* ------------------------------- Brands ------------------------------ */}
+      <section className="bg-white">
+        <div className="shell py-[clamp(48px,5vw,76px)]">
           <Reveal>
-            <Eyebrow className="mb-4">Chapter Two · The Dabba</Eyebrow>
+            <Eyebrow className="mb-4">Our brands</Eyebrow>
           </Reveal>
           <Reveal delay={70}>
-            <Display className="mb-[clamp(20px,2.4vw,28px)] max-w-[22ch]">
-              Every Indian kitchen already has a spice tin.
+            <Display className="mb-[clamp(28px,3.2vw,40px)] max-w-[24ch] text-ink">
+              {brands.length} brands, one standard.
             </Display>
           </Reveal>
-          <Reveal delay={140}>
-            <p className="mb-[clamp(36px,4vw,52px)] max-w-[60ch] text-[clamp(15.5px,1vw,17px)] leading-[1.75] text-body">
-              Seven wells, one lid, always within reach of the stove. Your
-              customers don&apos;t need convincing that it matters, because they
-              grew up with it. Our job is to be what&apos;s inside it. Tap a
-              well.
-            </p>
-          </Reveal>
-          <Reveal delay={210}>
-            <SpiceTin />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* --------------------------- 03 Trade school -------------------------- */}
-      <section id="ch-3" className={`${CHAPTER} bg-sand`}>
-        <ChapterNumeral numeral="03" side="right" tone="sand" />
-        <div className={CHAPTER_INNER}>
-          <Reveal>
-            <Eyebrow tone="redDeep" className="mb-4">
-              Chapter Three · Trade School
-            </Eyebrow>
-          </Reveal>
-          <Reveal delay={70}>
-            <Display className="mb-[clamp(20px,2.4vw,28px)] max-w-[22ch] text-ink">
-              What we know about spice, you can sell with.
-            </Display>
-          </Reveal>
-          <Reveal delay={140}>
-            <p className="mb-[clamp(30px,3.4vw,44px)] max-w-[60ch] text-[clamp(15.5px,1vw,17px)] leading-[1.75] text-body">
-              Fifty-seven years of grinding teaches you things a distributor
-              never learns. We hand them over, because a grocer who can answer
-              these questions at the counter sells more than one who can&apos;t.
-            </p>
-          </Reveal>
-          <Reveal delay={210}>
-            <TradeSchool />
-          </Reveal>
           <Reveal
-            delay={280}
-            className="mt-[clamp(28px,3.2vw,38px)] flex flex-wrap items-center gap-4"
-          >
-            <Button href="/#apply" variant="ink">
-              Get the trade pack
-            </Button>
-            <span className="text-[14.5px] text-muted">
-              Blend sheets, shelf-life guides and counter cards, free with every
-              account.
-            </span>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ---------------------------- 04 The rhythm --------------------------- */}
-      <section
-        id="ch-4"
-        className={`${CHAPTER} bg-red text-white`}
-       
-      >
-        <ChapterNumeral numeral="04" side="left" tone="dark" />
-        <div className={CHAPTER_INNER}>
-          <Reveal>
-            <Eyebrow tone="gold" className="mb-4">
-              Chapter Four · The Rhythm
-            </Eyebrow>
-          </Reveal>
-          <Reveal delay={70}>
-            <Display className="mb-[clamp(20px,2.4vw,28px)] max-w-[20ch]">
-              Order Monday. Shelved Wednesday. Every week.
-            </Display>
-          </Reveal>
-          <Reveal delay={140}>
-            <p className="mb-[clamp(44px,5.5vw,62px)] max-w-[58ch] text-[clamp(15.5px,1vw,17px)] leading-[1.75] text-cream/80">
-              Restocking shouldn&apos;t be a phone call you dread. It should be a
-              rhythm you stop thinking about: the same three days, the same
-              driver, the same shelf full on Wednesday morning.
-            </p>
-          </Reveal>
-
-          <Reveal
-            delay={210}
-            className="mb-[clamp(40px,4.5vw,60px)] grid gap-[clamp(14px,1.8vw,20px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))]"
-          >
-            {rhythmDays.map((d) => (
-              <div
-                key={d.day}
-                className="rounded-[18px] border border-red/25 bg-cream/7 p-[clamp(22px,2.6vw,30px)]"
-              >
-                <div className="mb-3 text-[11.5px] font-extrabold tracking-[1.8px] text-gold uppercase">
-                  {d.day}
-                </div>
-                <div className="mb-2 font-serif text-[23px]">{d.title}</div>
-                <p className="text-[14.5px] leading-[1.65] text-cream/72">
-                  {d.body}
-                </p>
-              </div>
-            ))}
-            <div className="rounded-[18px] bg-red p-[clamp(22px,2.6vw,30px)] text-white">
-              <div className="mb-3 text-[11.5px] font-extrabold tracking-[1.8px] uppercase">
-                {sampleTin.day}
-              </div>
-              <div className="mb-2 font-serif text-[23px]">
-                {sampleTin.title}
-              </div>
-              <p className="text-[14.5px] leading-[1.65]">{sampleTin.body}</p>
-            </div>
-          </Reveal>
-
-          <Reveal className="border-t border-red/25 pt-[clamp(28px,3.2vw,40px)]">
-            <div className="mb-[clamp(24px,3vw,34px)] flex flex-wrap items-end justify-between gap-6">
-              <div>
-                <Eyebrow tone="gold" className="mb-3 tracking-[2.2px]">
-                  The other rhythm
-                </Eyebrow>
-                <h3 className="max-w-[24ch] font-serif text-[clamp(24px,2.8vw,36px)] font-normal">
-                  The festival calendar decides your best months.
-                </h3>
-              </div>
-              <p className="max-w-[40ch] text-[15px] leading-[1.7] text-cream/72">
-                Stock lands from Ahmedabad in about six weeks. These are the
-                dates that should already be in your order book.
-              </p>
-            </div>
-            <FestivalCountdown />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ----------------------------- 05 The aisle --------------------------- */}
-      <section id="ch-5" className={`${CHAPTER} bg-white`}>
-        <ChapterNumeral numeral="05" side="right" tone="light" />
-        <div className={CHAPTER_INNER}>
-          <Reveal>
-            <Eyebrow className="mb-4">Chapter Five · The Aisle</Eyebrow>
-          </Reveal>
-          <Reveal delay={70}>
-            <Display className="mb-[clamp(20px,2.4vw,28px)] max-w-[20ch] text-ink">
-              Run an Indian aisle like a specialist.
-            </Display>
-          </Reveal>
-          <Reveal delay={140}>
-            <p className="mb-[clamp(32px,3.6vw,46px)] max-w-[58ch] text-[clamp(15.5px,1vw,17px)] leading-[1.75] text-body">
-              Most independent grocers can&apos;t compete with a chain on an
-              Indian aisle, because it takes five importers, five minimums and
-              five invoices to fill one. One account here replaces all of that.
-            </p>
-          </Reveal>
-
-          <Reveal
-            delay={210}
-            className="mb-[clamp(34px,4vw,50px)] grid gap-[clamp(16px,2vw,24px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))]"
-          >
-            <div className="rounded-[20px] border border-line-deep bg-sand-deep p-[clamp(26px,3vw,36px)]">
-              <Eyebrow tone="faint" className="mb-5 tracking-[2.2px]">
-                Without us
-              </Eyebrow>
-              <div className="grid gap-3.5 text-[15.5px] leading-[1.6] text-muted">
-                {withoutUs.map((line) => (
-                  <span key={line}>{line}</span>
-                ))}
-              </div>
-            </div>
-            <div className="rounded-[20px] bg-red p-[clamp(26px,3vw,36px)] text-white">
-              <Eyebrow tone="gold" className="mb-5 tracking-[2.2px]">
-                With one account
-              </Eyebrow>
-              <div className="grid gap-3.5 text-[15.5px] leading-[1.6]">
-                {withOneAccount(departments.length, brands.length).map(
-                  (line) => (
-                    <span key={line}>{line}</span>
-                  ),
-                )}
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal
-            delay={280}
+            delay={140}
             className="grid gap-[clamp(14px,2vw,22px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))]"
           >
             {brands.map((b) => (
-              <BrandTile key={b.slug} brand={b} />
+              <Link
+                key={b.slug}
+                href={`/range?brand=${encodeURIComponent(b.name)}`}
+                aria-label={`Browse ${b.name}`}
+                className="block rounded-2xl transition-transform hover:-translate-y-1"
+              >
+                <BrandTile brand={b} />
+              </Link>
             ))}
           </Reveal>
+        </div>
+      </section>
 
-          <Reveal delay={350} className="mt-[clamp(28px,3.2vw,38px)]">
-            <Button href="/range" variant="outlineDark">
-              Browse the full range
-            </Button>
+      {/* ---------------------------- Why choose us -------------------------- */}
+      <section className="bg-sand">
+        <div className="shell py-[clamp(48px,5vw,76px)]">
+          <Reveal>
+            <Eyebrow className="mb-4">Why choose us</Eyebrow>
+          </Reveal>
+          <Reveal delay={70}>
+            <Display className="mb-[clamp(24px,3vw,36px)] max-w-[22ch] text-ink">
+              100% customer satisfaction is the whole objective.
+            </Display>
+          </Reveal>
+          <Reveal
+            delay={140}
+            className="grid gap-[clamp(20px,2.5vw,30px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))]"
+          >
+            {whyChooseUs.map((para) => (
+              <p
+                key={para.slice(0, 24)}
+                className="text-[16.5px] leading-[1.8] text-ink-deep"
+              >
+                {para}
+              </p>
+            ))}
           </Reveal>
         </div>
       </section>
 
       <CertBadges />
-      <Apply />
+      <ContactBlock />
     </>
   );
 }

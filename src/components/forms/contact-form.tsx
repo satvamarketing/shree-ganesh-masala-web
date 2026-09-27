@@ -1,9 +1,22 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { Field, Honeypot } from "@/components/forms/field";
 import { useFormPost } from "@/lib/use-form-post";
 
-export function ContactForm() {
+/**
+ * The contact form with its subject taken from `?subject=`, which the product
+ * pages' "Enquire" links set. Reading search params opts out of static
+ * rendering, so the page wraps this in Suspense with the plain form as the
+ * fallback: the static HTML still carries a working form.
+ */
+export function PrefilledContactForm() {
+  const subject = useSearchParams().get("subject")?.slice(0, 200) ?? "";
+  // Keyed so a new product enquiry remounts with its own subject.
+  return <ContactForm key={subject} subject={subject} />;
+}
+
+export function ContactForm({ subject = "" }: { subject?: string }) {
   const { state, error, submit, reset } = useFormPost("/api/contact");
 
   if (state === "sent") {
@@ -46,7 +59,7 @@ export function ContactForm() {
       >
         <Field name="name" label="Your name" required />
         <Field name="email" label="Email" type="email" required />
-        <Field name="subject" label="Subject" required />
+        <Field name="subject" label="Subject" required defaultValue={subject} />
         <Field name="message" label="How can we help?" rows={6} required />
         <Honeypot />
 
