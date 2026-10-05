@@ -65,7 +65,7 @@ export default async function ProductPage({
       <section className="shell py-[clamp(28px,3.4vw,48px)]">
         <nav aria-label="Breadcrumb" className="mb-8 text-[13.5px] text-muted">
           <Link href="/range" className="font-semibold text-red hover:text-red-dark">
-            Our Range
+            Our Products
           </Link>
           {product.departments[0] ? (
             <>

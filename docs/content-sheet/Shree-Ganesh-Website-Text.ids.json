@@ -1,0 +1,488 @@
+[
+  {
+    "id": "T1",
+    "section": "Every page / Top of every page",
+    "where": "Top bar, message 1",
+    "current": "Shree Ganesh Herbs & Spices"
+  },
+  {
+    "id": "T2",
+    "section": "Every page / Top of every page",
+    "where": "Top bar, message 2",
+    "current": "Traditional Amdavadi Snacks"
+  },
+  {
+    "id": "T3",
+    "section": "Every page / Top of every page",
+    "where": "Top bar, message 3",
+    "current": "Shree Ganesh Pickles & Chutneys"
+  },
+  {
+    "id": "T4",
+    "section": "Every page / Top of every page",
+    "where": "Menu",
+    "current": "Home · Our Products · Departments · About Us · Contact"
+  },
+  {
+    "id": "T5",
+    "section": "Every page / Top of every page",
+    "where": "Menu button",
+    "current": "Enquire now"
+  },
+  {
+    "id": "B1",
+    "section": "Every page / Business details (used everywhere)",
+    "where": "Phone",
+    "current": "0490 729 900"
+  },
+  {
+    "id": "B2",
+    "section": "Every page / Business details (used everywhere)",
+    "where": "Email",
+    "current": "info@shreeganesh.com.au"
+  },
+  {
+    "id": "B3",
+    "section": "Every page / Business details (used everywhere)",
+    "where": "Address",
+    "current": "Unit 3/32 Success St, Acacia Ridge QLD 4110"
+  },
+  {
+    "id": "B4",
+    "section": "Every page / Business details (used everywhere)",
+    "where": "Trading hours",
+    "current": "Monday to Friday: 9:30am to 3:30pm. Saturday and Sunday: Closed."
+  },
+  {
+    "id": "H1",
+    "section": "Home page / 1. Banner pictures",
+    "where": "Banner pictures",
+    "current": "4 pictures: Spices · Pickles · Snacks · Sweets"
+  },
+  {
+    "id": "H2",
+    "section": "Every page / 2. Benefits strip",
+    "where": "Benefit 1, title",
+    "current": "Fast, Free Local Delivery"
+  },
+  {
+    "id": "H3",
+    "section": "Every page / 2. Benefits strip",
+    "where": "Benefit 1, text",
+    "current": "On all orders over $500."
+  },
+  {
+    "id": "H4",
+    "section": "Every page / 2. Benefits strip",
+    "where": "Benefit 2, title",
+    "current": "Top Quality Products"
+  },
+  {
+    "id": "H5",
+    "section": "Every page / 2. Benefits strip",
+    "where": "Benefit 2, text",
+    "current": "Hand-selected, customer approved."
+  },
+  {
+    "id": "H6",
+    "section": "Every page / 2. Benefits strip",
+    "where": "Benefit 3, title",
+    "current": "Unbeatable Prices"
+  },
+  {
+    "id": "H7",
+    "section": "Every page / 2. Benefits strip",
+    "where": "Benefit 3, text",
+    "current": "Wholesale pricing for everyone."
+  },
+  {
+    "id": "H8",
+    "section": "Every page / 3. Welcome",
+    "where": "Heading",
+    "current": "Welcome to Shree Ganesh"
+  },
+  {
+    "id": "H9",
+    "section": "Every page / 3. Welcome",
+    "where": "Paragraph 1",
+    "current": "Shree Ganesh was founded by Shri Vrajlal Manilal Shah, the first to see the potential of the ready masala market. In 1969 he introduced \"Shree Ganesh Masala.\""
+  },
+  {
+    "id": "H10",
+    "section": "Every page / 3. Welcome",
+    "where": "Paragraph 2",
+    "current": "Quality has guided us ever since, by our golden words \"Health Is Wealth\": healthy cooking without compromising on taste and aroma."
+  },
+  {
+    "id": "H11",
+    "section": "Every page / 3. Welcome",
+    "where": "Button",
+    "current": "About us"
+  },
+  {
+    "id": "H12",
+    "section": "Every page / 4. What We Do",
+    "where": "Heading",
+    "current": "What We Do"
+  },
+  {
+    "id": "H13",
+    "section": "Every page / 4. What We Do",
+    "where": "Box 1, title",
+    "current": "Masalas since 1969"
+  },
+  {
+    "id": "H14",
+    "section": "Every page / 4. What We Do",
+    "where": "Box 1, text",
+    "current": "Regular and premium masalas, from the range our founder introduced as Shree Ganesh Masala."
+  },
+  {
+    "id": "H15",
+    "section": "Every page / 4. What We Do",
+    "where": "Box 2, title",
+    "current": "Instant Mixes"
+  },
+  {
+    "id": "H16",
+    "section": "Every page / 4. What We Do",
+    "where": "Box 2, text",
+    "current": "For changing times and busy lifestyles, we launched \"Shree Ganesh Instant Mix.\""
+  },
+  {
+    "id": "H17",
+    "section": "Every page / 4. What We Do",
+    "where": "Box 3, title",
+    "current": "Tested for Quality"
+  },
+  {
+    "id": "H18",
+    "section": "Every page / 4. What We Do",
+    "where": "Box 3, text",
+    "current": "Every product is tested with state-of-the-art technology and measurement before it reaches you."
+  },
+  {
+    "id": "H19",
+    "section": "Every page / 5. Our Products",
+    "where": "Heading",
+    "current": "Our Products"
+  },
+  {
+    "id": "H20",
+    "section": "Every page / 5. Our Products",
+    "where": "Row 1, title",
+    "current": "Premium Snacks"
+  },
+  {
+    "id": "H21",
+    "section": "Every page / 5. Our Products",
+    "where": "Row 1, text",
+    "current": "Amdavadi, Shree Ganesh, Lays, MoM, Sikandar and more."
+  },
+  {
+    "id": "H22",
+    "section": "Every page / 5. Our Products",
+    "where": "Row 2, title",
+    "current": "Indian Sweets"
+  },
+  {
+    "id": "H23",
+    "section": "Every page / 5. Our Products",
+    "where": "Row 2, text",
+    "current": "Ladoo, gajar halwa, kaju katli, barfi, peda and more."
+  },
+  {
+    "id": "H24",
+    "section": "Every page / 5. Our Products",
+    "where": "Row 3, title",
+    "current": "Herbs & Spices"
+  },
+  {
+    "id": "H25",
+    "section": "Every page / 5. Our Products",
+    "where": "Row 3, text",
+    "current": "Chilli powder, salt, turmeric, cloves, cardamom and more."
+  },
+  {
+    "id": "H26",
+    "section": "Every page / 5. Our Products",
+    "where": "Row 4, title",
+    "current": "Authentic Pickles"
+  },
+  {
+    "id": "H27",
+    "section": "Every page / 5. Our Products",
+    "where": "Row 4, text",
+    "current": "Mango pickle, chilli pickle, aamla pickle, garlic pickle and more."
+  },
+  {
+    "id": "H28",
+    "section": "Every page / 5. Our Products",
+    "where": "Row 5, title",
+    "current": "Instant Mixes"
+  },
+  {
+    "id": "H29",
+    "section": "Every page / 5. Our Products",
+    "where": "Row 5, text",
+    "current": "Dosa mix, gulab jamun mix, dhokla mix, juice mix and more."
+  },
+  {
+    "id": "H30",
+    "section": "Every page / 6. Departments, Brands and Why Choose Us",
+    "where": "Departments heading",
+    "current": "All Departments"
+  },
+  {
+    "id": "H31",
+    "section": "Every page / 6. Departments, Brands and Why Choose Us",
+    "where": "Brands heading",
+    "current": "Our Brands"
+  },
+  {
+    "id": "H32",
+    "section": "Every page / 6. Departments, Brands and Why Choose Us",
+    "where": "Why Choose Us heading",
+    "current": "Why Choose Us"
+  },
+  {
+    "id": "H33",
+    "section": "Every page / 6. Departments, Brands and Why Choose Us",
+    "where": "Why Choose Us, paragraph 1",
+    "current": "At Shree Ganesh, our sole objective is 100% customer satisfaction. Our regular masalas, premium masalas and instant mixes hold an indispensable place on kitchen shelves."
+  },
+  {
+    "id": "H34",
+    "section": "Every page / 6. Departments, Brands and Why Choose Us",
+    "where": "Why Choose Us, paragraph 2",
+    "current": "Every product that reaches the end user passes consistent testing with state-of-the-art technology and measurement, so it never falls short of the mark we set. We never compromise on quality or quantity."
+  },
+  {
+    "id": "H35",
+    "section": "Every page / 7. Certifications and Contact Us",
+    "where": "Certifications heading",
+    "current": "Certifications"
+  },
+  {
+    "id": "H36",
+    "section": "Every page / 7. Certifications and Contact Us",
+    "where": "Badge 1 caption",
+    "current": "Owned & operated"
+  },
+  {
+    "id": "H37",
+    "section": "Every page / 7. Certifications and Contact Us",
+    "where": "Badge 2 caption",
+    "current": "Australian Owned certified"
+  },
+  {
+    "id": "H38",
+    "section": "Every page / 7. Certifications and Contact Us",
+    "where": "Badge 3 caption",
+    "current": "HACCP certified"
+  },
+  {
+    "id": "H39",
+    "section": "Every page / 7. Certifications and Contact Us",
+    "where": "Contact heading",
+    "current": "Contact Us"
+  },
+  {
+    "id": "A1",
+    "section": "About page / Your story",
+    "where": "Small label above title",
+    "current": "About us"
+  },
+  {
+    "id": "A2",
+    "section": "About page / Your story",
+    "where": "Page title",
+    "current": "Welcome to Shree Ganesh"
+  },
+  {
+    "id": "A3",
+    "section": "About page / Your story",
+    "where": "Paragraph 1",
+    "current": "The founder of Shree Ganesh, Shri Vrajlal Manilal Shah, had a vision he called \"Quality Vision.\" Gifted with foresight and sharp business acumen, he was the first to identify the potential of the fast-growing ready masala market. In 1969, he introduced \"Shree Ganesh Masala.\""
+  },
+  {
+    "id": "A4",
+    "section": "About page / Your story",
+    "where": "Quote",
+    "current": "Health Is Wealth."
+  },
+  {
+    "id": "A5",
+    "section": "About page / Your story",
+    "where": "Under the quote",
+    "current": "Our golden words"
+  },
+  {
+    "id": "A6",
+    "section": "About page / Your story",
+    "where": "Paragraph 2",
+    "current": "Since the company began, quality has been our guiding force. We believe healthy cooking is the foundation of a healthy life, and our masalas carry a Quality Assurance for healthy cooking without compromising on taste and aroma."
+  },
+  {
+    "id": "A7",
+    "section": "About page / Your story",
+    "where": "Paragraph 3",
+    "current": "Spices, premium masalas and instant mixes hold a special place in our customers' hearts because we understand their needs. Recognising the demand for products that keep up with changing times and busier lifestyles, we launched \"Shree Ganesh Instant Mix.\""
+  },
+  {
+    "id": "A8",
+    "section": "About page / Your story",
+    "where": "Vision box, label",
+    "current": "Our Vision"
+  },
+  {
+    "id": "A9",
+    "section": "About page / Your story",
+    "where": "Vision box, text",
+    "current": "The vision set by our founder, Shri Parmanand Shah, is to provide quality products to end users and earn a well-deserved place in millions of hearts, establishing the brand value of \"Shree Ganesh.\""
+  },
+  {
+    "id": "P1",
+    "section": "Products page / Products page",
+    "where": "Page title",
+    "current": "Our Products"
+  },
+  {
+    "id": "P2",
+    "section": "Products page / Products page",
+    "where": "Text under title",
+    "current": "Our brands and more, across 30 departments. Wholesale pricing for everyone."
+  },
+  {
+    "id": "P3",
+    "section": "Products page / Products page",
+    "where": "Red box, heading",
+    "current": "Wholesale pricing for everyone"
+  },
+  {
+    "id": "P4",
+    "section": "Products page / Products page",
+    "where": "Red box, text",
+    "current": "Fast, free local delivery on all orders over $500."
+  },
+  {
+    "id": "P5",
+    "section": "Every page / Brand descriptions",
+    "where": "Shree Ganesh",
+    "current": "Masalas, spices, pickles, instant mixes, khakhra and sweets."
+  },
+  {
+    "id": "P6",
+    "section": "Every page / Brand descriptions",
+    "where": "Amdavadi",
+    "current": "Farsan, chevda, gathia, sev and mukhvas."
+  },
+  {
+    "id": "P7",
+    "section": "Every page / Brand descriptions",
+    "where": "Herbs & Spices",
+    "current": "Herbal powders: amla, ashwagandha, neem, shikakai, triphala and more."
+  },
+  {
+    "id": "P8",
+    "section": "Every page / Brand descriptions",
+    "where": "Dhiraj",
+    "current": "Cookies: cashew, chocolate, coconut, Surti jeera butter and nankhati."
+  },
+  {
+    "id": "P9",
+    "section": "Every page / Brand descriptions",
+    "where": "Vipul Dudhiya",
+    "current": "Frozen sweets: kaju katli, gajar halva, ghari, milk cake and more."
+  },
+  {
+    "id": "P10",
+    "section": "Every page / Brand descriptions",
+    "where": "Henaa",
+    "current": "Incense sticks and basmati rice."
+  },
+  {
+    "id": "P11",
+    "section": "Every page / Each product's page",
+    "where": "Button",
+    "current": "Enquire about this product"
+  },
+  {
+    "id": "P12",
+    "section": "Every page / Each product's page",
+    "where": "Text under button",
+    "current": "Call 0490 729 900 or send an enquiry for pricing and availability."
+  },
+  {
+    "id": "D1",
+    "section": "Departments page / Departments page",
+    "where": "Page title",
+    "current": "All Departments"
+  },
+  {
+    "id": "D2",
+    "section": "Departments page / Departments page",
+    "where": "Text under title",
+    "current": "30 departments and 1,174 products, from spices and frozen to kitchenware and religious items."
+  },
+  {
+    "id": "D3",
+    "section": "Departments page / Departments page",
+    "where": "Newsletter heading",
+    "current": "Newsletter"
+  },
+  {
+    "id": "D4",
+    "section": "Departments page / Departments page",
+    "where": "Newsletter text",
+    "current": "Subscribe to hear about new products. Unsubscribe any time."
+  },
+  {
+    "id": "C1",
+    "section": "Contact page / Contact page",
+    "where": "Page title",
+    "current": "Customer Support"
+  },
+  {
+    "id": "C2",
+    "section": "Contact page / Contact page",
+    "where": "Text under title",
+    "current": "Call, email or send us a message."
+  },
+  {
+    "id": "C3",
+    "section": "Contact page / Contact page",
+    "where": "Form heading",
+    "current": "Send us a message"
+  },
+  {
+    "id": "C4",
+    "section": "Contact page / Contact page",
+    "where": "After sending, heading",
+    "current": "Message sent"
+  },
+  {
+    "id": "C5",
+    "section": "Contact page / Contact page",
+    "where": "After sending, text",
+    "current": "Thanks, we'll get back to you soon."
+  },
+  {
+    "id": "F1",
+    "section": "Footer and Google / Footer",
+    "where": "Footer text",
+    "current": "Shree Ganesh Masala since 1969. Our brands: Shree Ganesh, Amdavadi, Herbs & Spices, Dhiraj, Vipul Dudhiya and Henaa."
+  },
+  {
+    "id": "F2",
+    "section": "Footer and Google / Footer",
+    "where": "Copyright line",
+    "current": "© 2026 Shree Ganesh Australia. All rights reserved."
+  },
+  {
+    "id": "G1",
+    "section": "Every page / Google search description",
+    "where": "Search description",
+    "current": "Shree Ganesh: masalas, spices, pickles, sweets and instant mixes since 1969. Wholesale pricing for everyone, with fast, free local delivery on orders over $500. Acacia Ridge, Brisbane."
+  }
+]
